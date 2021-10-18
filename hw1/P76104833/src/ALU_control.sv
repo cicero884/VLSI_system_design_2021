@@ -36,7 +36,6 @@ always_comb begin
 				3'b111: alu_ctrl_s={and_,1'b0};//ANDI
 				3'b001: alu_ctrl_s={sl_, 1'b0};//SLLI
 				3'b101: alu_ctrl_s={sr_, funct7[5]};//SRLI SRAI
-				default: alu_ctrl_s={nop_,1'b0};
 			endcase
 		end
 		7'b1100111,7'b0000011,7'b0100011: begin// I-type(JALR) I-type(M[]) S-type

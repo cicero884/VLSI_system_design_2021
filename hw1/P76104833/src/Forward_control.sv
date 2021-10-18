@@ -9,9 +9,9 @@ module Forward_control(
 
 //alu_in1
 always_comb begin
-	if(reg_w_mem && (rd_addr_mem == rs1_addr) && rs1_addr != 32'd0)
+	if(reg_w_mem && (rd_addr_mem == rs1_addr) && rs1_addr != 5'd0)
 		alu_in1_forward = 2'd2;
-	else if(reg_w_wb && (rd_addr_wb == rs1_addr) && rs1_addr != 32'd0)
+	else if(reg_w_wb && (rd_addr_wb == rs1_addr) && rs1_addr != 5'd0)
 		alu_in1_forward = 2'd1;
 	else 
 		alu_in1_forward = 2'd0;
@@ -19,9 +19,9 @@ end
 
 //alu_in2
 always_comb begin
-	if(reg_w_mem && (rd_addr_mem == rs2_addr) && rs2_addr != 32'd0)
+	if(reg_w_mem && (rd_addr_mem == rs2_addr) && rs2_addr != 5'd0)
 		alu_in2_forward = 2'd2;
-	else if(reg_w_wb && (rd_addr_wb == rs2_addr) && rs2_addr !=32'd0)
+	else if(reg_w_wb && (rd_addr_wb == rs2_addr) && rs2_addr !=5'd0)
 		alu_in2_forward = 2'd1;
 	else 
 		alu_in2_forward = 2'd0;

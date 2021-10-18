@@ -11,11 +11,11 @@ module DM_control(
 //read
 always_comb begin
 	case (funct3)
-		3'b000: rb_data_out=$signed(`RANGED_DATA(rb_data_in,8,mem_addr[1:0]));	//LB
-		3'b001: rb_data_out=$signed(`RANGED_DATA(rb_data_in,16,mem_addr[0]));	//LH
+		3'b000: rb_data_out=32'($signed(`RANGED_DATA(rb_data_in,8,mem_addr[1:0])));	//LB
+		3'b001: rb_data_out=32'($signed(`RANGED_DATA(rb_data_in,16,mem_addr[0])));	//LH
 		3'b010: rb_data_out=rb_data_in;											//LW
-		3'b100: rb_data_out=`RANGED_DATA(rb_data_in,8,mem_addr[1:0]);			//LBU
-		3'b101: rb_data_out=`RANGED_DATA(rb_data_in,16,mem_addr[0]);			//LHU
+		3'b100: rb_data_out=32'(`RANGED_DATA(rb_data_in,8,mem_addr[1:0]));			//LBU
+		3'b101: rb_data_out=32'(`RANGED_DATA(rb_data_in,16,mem_addr[0]));			//LHU
 		default:rb_data_out=32'd0;
 	endcase
 end
