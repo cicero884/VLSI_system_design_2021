@@ -1,0 +1,220 @@
+Magic 271485
+Revision Verdi_O-2018.09
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 0 1920 993 241 207
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 252233.474702 270408.764489
+cursor 269500.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+userMarker 262500 M1 ID_GREEN5 long_dashed
+
+; visible top row signal index
+top 0
+; marker line index
+markerPos 91
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G6LLLL"
+addSubGroup "G7"
+endSubGroup "G7"
+activeDirFile "" "/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb"
+addSignal -h 15 /top_tb/TOP/CPU1/pc_mux/ctrl[1:0]
+addSignal -h 15 /top_tb/TOP/CPU1/alu_out[31:0]
+addSignal -h 15 -holdScope pc_branch[31:0]
+addSignal -h 15 -UNSIGNED -BIN -holdScope im_data_out[31:0]
+addSignal -h 15 /top_tb/TOP/CPU1/if_id/pc_in[31:0]
+addSignal -h 15 /top_tb/TOP/IM1/DO[31:0]
+addGroup "ID"
+addSignal -h 15 /top_tb/TOP/CPU1/pc_src
+addSignal -h 15 -UNSIGNED -HEX /top_tb/TOP/CPU1/if_id/pc_out[31:0]
+addSignal -h 15 -UNSIGNED -BIN /top_tb/TOP/CPU1/instr_id[31:0]
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -UNSIGNED -BIN /top_tb/TOP/CPU1/id_ex/opcode_in[6:0]
+addSignal -h 15 -holdScope funct3_in[2:0]
+addSignal -h 15 /top_tb/TOP/CPU1/alu_control/alu_ctrl_s
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/rs1_addr_in[4:0]
+addSignal -h 15 -holdScope rs1_data_in[31:0]
+addSignal -h 15 -holdScope rs2_addr_in[4:0]
+addSignal -h 15 -holdScope rs2_data_in[31:0]
+addSignal -h 15 -holdScope reg_w_in
+addSignal -h 15 -UNSIGNED -HEX -holdScope rd_addr_in[4:0]
+addSignal -h 15 -UNSIGNED -BIN /top_tb/TOP/CPU1/immidiate_generator/instr_imm[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope immidiate[31:0]
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/rd_src_in
+addSignal -expanded -h 15 /top_tb/TOP/CPU1/register/reg_data[0:30]
+addSignal -h 15 -holdScope reg_data[0][31:0]
+addSignal -h 15 -holdScope reg_data[1][31:0]
+addSignal -h 15 -holdScope reg_data[2][31:0]
+addSignal -h 15 -holdScope reg_data[3][31:0]
+addSignal -h 15 -holdScope reg_data[4][31:0]
+addSignal -h 15 -holdScope reg_data[5][31:0]
+addSignal -h 15 -holdScope reg_data[6][31:0]
+addSignal -h 15 -holdScope reg_data[7][31:0]
+addSignal -h 15 -holdScope reg_data[8][31:0]
+addSignal -h 15 -holdScope reg_data[9][31:0]
+addSignal -h 15 -holdScope reg_data[10][31:0]
+addSignal -h 15 -holdScope reg_data[11][31:0]
+addSignal -h 15 -holdScope reg_data[12][31:0]
+addSignal -h 15 -holdScope reg_data[13][31:0]
+addSignal -h 15 -holdScope reg_data[14][31:0]
+addSignal -h 15 -holdScope reg_data[15][31:0]
+addSignal -h 15 -holdScope reg_data[16][31:0]
+addSignal -h 15 -holdScope reg_data[17][31:0]
+addSignal -h 15 -holdScope reg_data[18][31:0]
+addSignal -h 15 -holdScope reg_data[19][31:0]
+addSignal -h 15 -holdScope reg_data[20][31:0]
+addSignal -h 15 -holdScope reg_data[21][31:0]
+addSignal -h 15 -holdScope reg_data[22][31:0]
+addSignal -h 15 -holdScope reg_data[23][31:0]
+addSignal -h 15 -holdScope reg_data[24][31:0]
+addSignal -h 15 -holdScope reg_data[25][31:0]
+addSignal -h 15 -holdScope reg_data[26][31:0]
+addSignal -h 15 -holdScope reg_data[27][31:0]
+addSignal -h 15 -holdScope reg_data[28][31:0]
+addSignal -h 15 -holdScope reg_data[29][31:0]
+addSignal -h 15 -holdScope reg_data[30][31:0]
+addGroup "EX"
+addSignal -h 15 /top_tb/TOP/CPU1/pc_ex[31:0]
+addSignal -h 15 -holdScope pc_mux_out_ex[31:0]
+addSignal -h 15 -holdScope pc_src_ex
+addSignal -h 15 -UNSIGNED -BIN /top_tb/TOP/CPU1/branch_control/opcode[6:0]
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/funct3_out[2:0]
+addSignal -h 15 /top_tb/TOP/CPU1/branch_ctrl[1:0]
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/reg_w_out
+addSignal -h 15 -holdScope rd_addr_out[4:0]
+addSignal -h 15 /top_tb/TOP/CPU1/alu/alu_ctrl_s
+addSubGroup "in1"
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/rs1_data_out[31:0]
+addSignal -h 15 -UNSIGNED -HEX /top_tb/TOP/CPU1/forward_control/alu_in1_forward[1:0]
+addSignal -h 15 /top_tb/TOP/CPU1/alu/alu_in1[31:0]
+endSubGroup "in1"
+addSubGroup "in2"
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/rs2_addr_in[4:0]
+addSignal -h 15 -UNSIGNED -HEX /top_tb/TOP/CPU1/rs2_data_ex[31:0]
+addSignal -h 15 -holdScope alu_in2_forward[1:0]
+addSignal -h 15 -holdScope alu_in2_sel_ex
+addSignal -h 15 -holdScope imm_ex[31:0]
+addSignal -h 15 /top_tb/TOP/CPU1/alu/alu_in2[31:0]
+endSubGroup "in2"
+addSignal -h 15 /top_tb/TOP/CPU1/ex_mem/alu_out_in[31:0]
+addSignal -h 15 -holdScope rd_src_in
+addSignal -h 15 /top_tb/TOP/CPU1/id_ex/pc_src_out
+addSignal -h 15 /top_tb/TOP/CPU1/ex_mem/pc_in[31:0]
+addGroup "MEM"
+addSignal -h 15 /top_tb/TOP/CPU1/dm_control/write_bits[3:0]
+addSignal -h 15 -holdScope w_data[31:0]
+addSignal -h 15 -holdScope data[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope mem_addr[31:0]
+addSignal -h 15 /top_tb/TOP/CPU1/ex_mem/rd_src_out
+addSubGroup "MEM-1"
+addSignal -h 15 -UNSIGNED -UDEC /top_tb/TOP/DM1/A[13:0]
+addSignal -h 15 -holdScope DI[31:0]
+addSignal -h 15 -holdScope WEB[3:0]
+endSubGroup "MEM-1"
+addGroup "WB"
+addSignal -h 15 /top_tb/TOP/CPU1/mem_wb/wb_sel_out
+addSignal -h 15 -holdScope rd_addr_in[4:0]
+addSignal -h 15 -holdScope rd_data_out[31:0]
+addSignal -h 15 /top_tb/TOP/CPU1/register/reg_w
+addSignal -h 15 -holdScope wd[31:0]
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/top_tb"
+"/top_tb/TOP"
+"/top_tb/TOP/CPU1"
+"/top_tb/TOP/DM1"
+
+SCOPE_LIST_BEGIN
+"/top_tb"
+"/top_tb/TOP/CPU1/alu"
+"/top_tb/TOP"
+"/top_tb/TOP/CPU1"
+"/top_tb/TOP/CPU1/alu_control"
+"/top_tb/TOP/CPU1/if_id"
+"/top_tb/TOP/CPU1/id_ex"
+"/top_tb/TOP/CPU1/branch_control"
+"/top_tb/TOP/CPU1/control_unit"
+"/top_tb/TOP/CPU1/forward_control"
+"/top_tb/TOP/CPU1/alu_in2_mux"
+"/top_tb/TOP/CPU1/register"
+"/top_tb/TOP/CPU1/rs1_forward_mux"
+"/top_tb/TOP/CPU1/dm_control"
+"/top_tb/TOP/DM1"
+"/top_tb/TOP/DM1/i_SRAM"
+"/top_tb/TOP/CPU1/ex_mem"
+"/top_tb/TOP/CPU1/mem_wb"
+"/top_tb/TOP/CPU1/pc_adder_imm"
+"/top_tb/TOP/CPU1/pc_src_mux"
+"/top_tb/TOP/CPU1/rs2_forward_mux"
+"/top_tb/TOP/IM1"
+"/top_tb/TOP/CPU1/pc_mux"
+"/top_tb/TOP/CPU1/mem_forward_mux"
+"/top_tb/TOP/CPU1/immidiate_generator"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+
+
+FILTER_SIGNAL_BEGIN
+
+"*"
+
+FILTER_STRING_LIST_BEGIN
+FILTER_STRING_LIST_END
+
+FILTER_TYPE_LIST_BEGIN
+"All"
+"Input"
+"Output"
+"Inout"
+"Net"
+"Register"
+"Buffer"
+"Linkage"
+"ClassTransaction"
+"Property"
+"Others"
+FILTER_TYPE_LIST_END
+
+FILTER_SIGNAL_END

@@ -1,0 +1,1897 @@
+cp script/synopsys_dc.setup ./build/.synopsys_dc.setup; \
+cd ./build; \
+dc_shell -no_home_init -f ../script/synthesis.tcl
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version Q-2019.12 for linux64 - Nov 26, 2019 
+
+                    Copyright (c) 1988 - 2019 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ss1p62v125c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ff1p98vm40c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ss1p62v125c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ff1p98vm40c.db'
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_WC.db'
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_BC.db'
+set_svf top.svf
+1
+# Force multicore
+set_host_options -max_cores 16
+1
+# Read all Files
+set top top
+top
+read_file -autoread -top ${top} -recursive {../src} -library model
+== READ_FILE autoread for top design 'top' ==
+
+Starting READ_FILE autoread mode...
+Warning: Defining design library 'model' at directory '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/model_autoread'. (AUTOREAD-107)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src'.  (AUTOREAD-100)
+Warning: Adding missing directory to search_path - '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src'. (AUTOREAD-105)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/top.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/PC_reg.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Forward_control.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Adder.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Hazard_control.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Immidiate_generator.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_2in.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/SRAM_wrapper.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Control_unit.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/CPU.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/EX_MEM_reg.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_3in.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Branch_control.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/MEM_WB_reg.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ID_EX_reg.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Register.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv'.  (AUTOREAD-100)
+Information: Adding '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv'.  (AUTOREAD-100)
+Information: Scanning file { top.sv }. (AUTOREAD-303)
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Register.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/MEM_WB_reg.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/EX_MEM_reg.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Branch_control.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_3in.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Forward_control.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_2in.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Adder.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ID_EX_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Hazard_control.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/PC_reg.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Immidiate_generator.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Control_unit.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/CPU.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Adder.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_2in.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_3in.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ID_EX_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/EX_MEM_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/MEM_WB_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Control_unit.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Branch_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Forward_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Hazard_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/PC_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Immidiate_generator.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Register.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/SRAM_wrapper.sv
+Presto compilation completed successfully.
+Compiling source file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/top.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/CPU.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Adder.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_2in.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_3in.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ID_EX_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/EX_MEM_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/MEM_WB_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Control_unit.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Branch_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Forward_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Hazard_control.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/PC_reg.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Immidiate_generator.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Register.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_signal_def.sv
+Opening include file /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/SRAM_wrapper.sv
+Presto compilation completed successfully.
+Elaborating top design top
+Loading db file '/home/nfs_cad/synopsys/synthesis/cur/libraries/syn/dw_foundation.sldb'
+Loading db file '/home/nfs_cad/synopsys/synthesis/cur/libraries/syn/gtech.db'
+Loading db file '/home/nfs_cad/synopsys/synthesis/cur/libraries/syn/standard.sldb'
+  Loading link library 'fsa0m_a_generic_core_ss1p62v125c'
+  Loading link library 'fsa0m_a_generic_core_ff1p98vm40c'
+  Loading link library 'SRAM_WC'
+  Loading link library 'SRAM_BC'
+  Loading link library 'fsa0m_a_t33_generic_io_ss1p62v125c'
+  Loading link library 'fsa0m_a_t33_generic_io_ff1p98vm40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (top)
+Elaborated 1 design.
+Current design is now 'top'.
+Information: Building the design 'CPU'. (HDL-193)
+Presto compilation completed successfully. (CPU)
+Information: Building the design 'SRAM_wrapper'. (HDL-193)
+Presto compilation completed successfully. (SRAM_wrapper)
+Information: Building the design 'Hazard_control'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Hazard_control line 24 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Hazard_control.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    is_stall_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    pc_stall_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    IF_ID_sf_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    ID_EX_sf_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    EX_MEM_sf_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    MEM_WB_sf_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (Hazard_control)
+Information: Building the design 'Adder'. (HDL-193)
+Presto compilation completed successfully. (Adder)
+Information: Building the design 'Mux_3in'. (HDL-193)
+
+Statistics for case statements in always block at line 12 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Mux_3in.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            13            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (Mux_3in)
+Information: Building the design 'PC_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine PC_reg line 13 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/PC_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     pc_out_reg      | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (PC_reg)
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Information: Building the design 'Immidiate_generator'. (HDL-193)
+
+Statistics for case statements in always block at line 7 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Immidiate_generator.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            8             |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (Immidiate_generator)
+Information: Building the design 'Control_unit'. (HDL-193)
+
+Statistics for case statements in always block at line 8 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Control_unit.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            9             |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (Control_unit)
+Information: Building the design 'ALU_control'. (HDL-193)
+Warning:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv:30: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 10 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU_control.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            11            |    auto/auto     |
+|            14            |    auto/auto     |
+|            30            |    auto/auto     |
+|            48            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (ALU_control)
+Information: Building the design 'Register'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Register line 13 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Register.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    reg_data_reg     | Flip-flop | 1024  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|   Register/10    |   32   |   32    |      5       |
+|   Register/11    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully. (Register)
+Information: Building the design 'ID_EX_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine ID_EX_reg line 42 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ID_EX_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rd_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     pc_out_reg      | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     imm_out_reg     | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   opcode_out_reg    | Flip-flop |   7   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   pc_src_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    reg_w_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   wb_sel_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   rd_src_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    mem_r_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    mem_w_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   funct3_out_reg    | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  alu_ctrl_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+| alu_in2_sel_out_reg | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|  rs1_data_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rs2_data_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rs1_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rs2_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (ID_EX_reg)
+Information: Building the design 'Mux_2in'. (HDL-193)
+Presto compilation completed successfully. (Mux_2in)
+Information: Building the design 'Forward_control'. (HDL-193)
+Presto compilation completed successfully. (Forward_control)
+Information: Building the design 'ALU'. (HDL-193)
+Warning:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv:46: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 36 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/ALU.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            38            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (ALU)
+Information: Building the design 'Branch_control'. (HDL-193)
+
+Statistics for case statements in always block at line 9 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/Branch_control.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            11            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (Branch_control)
+Information: Building the design 'EX_MEM_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine EX_MEM_reg line 27 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/EX_MEM_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rd_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     pc_out_reg      | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    reg_w_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   wb_sel_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   rd_src_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    mem_r_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    mem_w_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   funct3_out_reg    | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   alu_out_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rs2_data_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rs2_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (EX_MEM_reg)
+Information: Building the design 'DM_control'. (HDL-193)
+Warning:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv:14: signed to unsigned assignment occurs. (VER-318)
+Warning:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv:15: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 12 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            13            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 24 in file
+	'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/DM_control.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            26            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (DM_control)
+Information: Building the design 'MEM_WB_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine MEM_WB_reg line 18 in file
+		'/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/MEM_WB_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rd_addr_out_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    reg_w_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   wb_sel_out_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   rd_data_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   rb_data_out_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (MEM_WB_reg)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Autoread command completed successfully.
+current_design ${top}
+Current design is 'top'.
+{top}
+link
+
+  Linking design 'top'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (19 designs)              /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.db, etc
+  fsa0m_a_generic_core_ss1p62v125c (library) /usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ss1p62v125c.db
+  fsa0m_a_generic_core_ff1p98vm40c (library) /usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ff1p98vm40c.db
+  SRAM_WC (library)           /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_WC.db
+  SRAM_BC (library)           /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_BC.db
+  fsa0m_a_t33_generic_io_ss1p62v125c (library) /usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ss1p62v125c.db
+  fsa0m_a_t33_generic_io_ff1p98vm40c (library) /usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ff1p98vm40c.db
+  dw_foundation.sldb (library) /home/nfs_cad/synopsys/synthesis/cur/libraries/syn/dw_foundation.sldb
+
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Warning: Unable to resolve reference 'IF_ID_reg' in 'CPU'. (LINK-5)
+0
+# Setting Clock Constraits
+source -echo -verbose ../script/DC.sdc
+#####CLK PERIOD CAN BE ADJUSTED UP TO 20.0 IF SYNTHESIS GOES WRONG#####
+create_clock -name clk -period 10.0 [get_ports clk]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_dont_touch_network      [all_clocks]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_fix_hold                [all_clocks]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_uncertainty  0.1  [all_clocks]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_latency      1.0  [all_clocks]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_ideal_network           [get_ports clk]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#####REMEMBER TO SET THIS MAX DELAY TO 1/2 CLK PERIOD#####
+set_input_delay  -max 5.0   -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_input_delay  -min 0.0   -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#set_output_delay  -max 5.0   -clock clk [all_outputs]
+#set_output_delay  -min 0.0   -clock clk [all_outputs]
+set_driving_cell -library fsa0m_a_t33_generic_io_ss1p62v125c -lib_cell XMD -pin {O} [all_inputs]
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+#set_drive        0.1   [all_inputs]
+#set_load         0.05  [all_outputs]
+set_operating_conditions -max_library fsa0m_a_generic_core_ss1p62v125c -max WCCOM -min_library fsa0m_a_generic_core_ff1p98vm40c -min BCCOM
+Using operating conditions 'WCCOM' found in library 'fsa0m_a_generic_core_ss1p62v125c'.
+Using operating conditions 'BCCOM' found in library 'fsa0m_a_generic_core_ff1p98vm40c'.
+1
+set auto_wire_load_selection
+true
+set_max_fanout 6 [all_inputs]
+1
+1
+# High fanout threshold
+set high_fanout_net_threshold 0
+0
+report_net_fanout -high_fanout
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Changed wire load model for 'SRAM_wrapper' from '(none)' to 'enG500K'. (OPT-170)
+Information: Changed minimum wire load model for 'SRAM_wrapper' from 'enG500K' to 'enG500K'. (OPT-171)
+Information: Changed wire load model for 'SRAM_wrapper' from '(none)' to 'enG500K'. (OPT-170)
+Information: Changed minimum wire load model for 'SRAM_wrapper' from 'enG500K' to 'enG500K'. (OPT-171)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'MEM_WB_reg' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DM_control' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'EX_MEM_reg' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Branch_control' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'ALU' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_3in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_3in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Forward_control' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_2in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Adder' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Adder' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'ID_EX_reg' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Register' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'ALU_control' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Control_unit' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Immidiate_generator' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'PC_reg' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Mux_3in' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Adder' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'Hazard_control' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'CPU' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_leftsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASH_UNS_UNS_OP_4_2_4' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_leftsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASH_UNS_UNS_OP_32_5_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_leftsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASH_UNS_UNS_OP_4_2_4' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_leftsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASH_UNS_UNS_OP_32_5_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_32_32_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_32_32_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp2_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*GEQ_UNS_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp2_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*GEQ_TC_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp2_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*LT_UNS_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp2_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*LT_TC_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*NE_UNS_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_32_32_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_rightsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASHR_UNS_UNS_OP_32_5_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_rightsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASHR_TC_UNS_OP_32_5_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW_leftsh' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ASH_UNS_UNS_OP_32_5_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_32_32_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_32_32_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp6_width5' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*EQ_UNS_OP_5_5_1' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'G5K'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_32_32_32' from '(none)' to 'G5K'. (OPT-170)
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : net fanout
+        -high_fanout
+Design : top
+Version: Q-2019.12
+Date   : Sun Oct 17 19:36:59 2021
+****************************************
+
+
+Operating Conditions: WCCOM   Library: fsa0m_a_generic_core_ss1p62v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+top                    G5K               fsa0m_a_generic_core_ss1p62v125c
+CPU                    G5K               fsa0m_a_generic_core_ss1p62v125c
+SRAM_wrapper           enG500K           fsa0m_a_generic_core_ss1p62v125c
+Hazard_control         G5K               fsa0m_a_generic_core_ss1p62v125c
+Adder                  G5K               fsa0m_a_generic_core_ss1p62v125c
+Mux_3in                G5K               fsa0m_a_generic_core_ss1p62v125c
+PC_reg                 G5K               fsa0m_a_generic_core_ss1p62v125c
+Immidiate_generator    G5K               fsa0m_a_generic_core_ss1p62v125c
+Control_unit           G5K               fsa0m_a_generic_core_ss1p62v125c
+ALU_control            G5K               fsa0m_a_generic_core_ss1p62v125c
+Register               G5K               fsa0m_a_generic_core_ss1p62v125c
+ID_EX_reg              G5K               fsa0m_a_generic_core_ss1p62v125c
+Mux_2in                G5K               fsa0m_a_generic_core_ss1p62v125c
+Forward_control        G5K               fsa0m_a_generic_core_ss1p62v125c
+ALU                    G5K               fsa0m_a_generic_core_ss1p62v125c
+Branch_control         G5K               fsa0m_a_generic_core_ss1p62v125c
+EX_MEM_reg             G5K               fsa0m_a_generic_core_ss1p62v125c
+DM_control             G5K               fsa0m_a_generic_core_ss1p62v125c
+MEM_WB_reg             G5K               fsa0m_a_generic_core_ss1p62v125c
+*ADD_UNS_OP_32_32_32   G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_add_width32       G5K               fsa0m_a_generic_core_ss1p62v125c
+*EQ_UNS_OP_5_5_1       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_add_width32       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_add_width32       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width5       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_add_width32       G5K               fsa0m_a_generic_core_ss1p62v125c
+*SUB_UNS_OP_32_32_32   G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_sub_width32       G5K               fsa0m_a_generic_core_ss1p62v125c
+*ASH_UNS_UNS_OP_32_5_32
+                       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_leftsh              G5K               fsa0m_a_generic_core_ss1p62v125c
+*ASHR_TC_UNS_OP_32_5_32
+                       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_rightsh             G5K               fsa0m_a_generic_core_ss1p62v125c
+*ASHR_UNS_UNS_OP_32_5_32
+                       G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_rightsh             G5K               fsa0m_a_generic_core_ss1p62v125c
+*EQ_UNS_OP_32_32_1     G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+*NE_UNS_OP_32_32_1     G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp6_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+*LT_TC_OP_32_32_1      G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp2_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+*LT_UNS_OP_32_32_1     G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp2_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+*GEQ_TC_OP_32_32_1     G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp2_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+*GEQ_UNS_OP_32_32_1    G5K               fsa0m_a_generic_core_ss1p62v125c
+DW01_cmp2_width32      G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_leftsh              G5K               fsa0m_a_generic_core_ss1p62v125c
+*ASH_UNS_UNS_OP_4_2_4  G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_leftsh              G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_leftsh              G5K               fsa0m_a_generic_core_ss1p62v125c
+DW_leftsh              G5K               fsa0m_a_generic_core_ss1p62v125c
+
+
+Attributes:
+   dr - drc disabled
+    c - annotated capacitance
+    d - dont_touch
+    i - ideal_net
+    I - ideal_network
+    p - includes pin load
+    r - annotated resistance
+    h - high fanout
+
+Net                 Fanout   Attributes   Capacitance   Driver
+--------------------------------------------------------------------------------
+clk                   1415   dr, d, I         0.00      multi-driver
+rst                   1413                    0.36      multi-driver
+CPU1/register/*Logic0*
+                      6240   dr               0.78      CPU1/register/U1/**logic_0**
+CPU1/id_ex/*Logic0*   1157   dr               0.34      CPU1/id_ex/U2/**logic_0**
+CPU1/ex_mem/*Logic0*
+                       800   dr               0.30      CPU1/ex_mem/U2/**logic_0**
+1
+uniquify
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Uniquified 2 instances of design 'SRAM_wrapper'. (OPT-1056)
+Information: Uniquified 3 instances of design 'Adder'. (OPT-1056)
+Information: Uniquified 3 instances of design 'Mux_3in'. (OPT-1056)
+Information: Uniquified 6 instances of design 'Mux_2in'. (OPT-1056)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+1
+set_fix_multiple_port_nets -all -buffer_constants [get_designs *]
+1
+set_structure -timing true
+1
+check_design
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12
+Date:        Sun Oct 17 19:36:59 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     73
+    Multiply driven inputs (LINT-6)                                34
+    Unconnected ports (LINT-28)                                    35
+    Shorted outputs (LINT-31)                                       2
+    Constant outputs (LINT-52)                                      2
+
+Cells                                                             116
+    Cells do not drive (LINT-1)                                     7
+    Connected to power or ground (LINT-32)                        104
+    Nets connected to multiple pins on same cell (LINT-33)          5
+
+Designs                                                             1
+    Design has no outputs ports (LINT-25)                           1
+
+Nets                                                                4
+    Unloaded nets (LINT-2)                                          4
+
+Tristate                                                           66
+    A tristate bus has a non tri-state driver (LINT-34)            34
+    Single tristate driver drives an input pin (LINT-63)           32
+--------------------------------------------------------------------------------
+
+Warning: In design 'ALU', cell 'B_1' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_2' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_3' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_5' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_6' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_7' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'B_8' does not drive any nets. (LINT-1)
+Warning: In design 'top', net 'CPU1/alu/net798' driven by pin 'CPU1/alu/C480/Z' has no loads. (LINT-2)
+Warning: In design 'top', net 'CPU1/alu/net797' driven by pin 'CPU1/alu/C479/Z' has no loads. (LINT-2)
+Warning: In design 'top', net 'CPU1/dm_control/net1705' driven by pin 'CPU1/dm_control/C371/Z' has no loads. (LINT-2)
+Warning: In design 'top', net 'CPU1/dm_control/net1704' driven by pin 'CPU1/dm_control/C366/Z' has no loads. (LINT-2)
+Warning: In design 'CPU', input port 'clk' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'rst' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[31]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[30]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[29]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[28]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[27]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[26]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[25]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[24]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[23]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[22]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[21]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[20]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[19]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[18]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[17]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[16]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[15]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[14]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[13]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[12]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'CPU', input port 'im_data_out[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: Design 'top' does not have any output ports. (LINT-25)
+Warning: In design 'Immidiate_generator', port 'instr_imm[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'Immidiate_generator', port 'instr_imm[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_control', port 'opcode[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_control', port 'opcode[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_control', port 'opcode[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[15]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[14]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[13]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[12]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[11]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'DM_control', port 'mem_addr[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'Hazard_control', output port 'IF_ID_sf[0]' is connected directly to output port 'ID_EX_sf[0]'. (LINT-31)
+Warning: In design 'Hazard_control', output port 'EX_MEM_sf[0]' is connected directly to output port 'MEM_WB_sf[0]'. (LINT-31)
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'CS' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'OE' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'WEB[3]' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'WEB[2]' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'WEB[1]' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'WEB[0]' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[31]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[30]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[29]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[28]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[27]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[26]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[25]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[24]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[23]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[22]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[21]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[20]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[19]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[18]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[17]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[16]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[15]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[14]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[13]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[12]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[11]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[10]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[9]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[8]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[7]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[6]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[5]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[4]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[3]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[2]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[1]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'IM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'DI[0]' is connected to logic 0. 
+Warning: In design 'top', a pin on submodule 'DM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'CS' is connected to logic 1. 
+Warning: In design 'top', a pin on submodule 'DM1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'OE' is connected to logic 1. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[31]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[30]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[29]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[28]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[27]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[26]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[25]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[24]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[23]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[22]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[21]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[20]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[19]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[18]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[17]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[16]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[15]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[14]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[13]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[12]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[11]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[10]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[9]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[8]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[7]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[6]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[5]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[4]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[3]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[2]' is connected to logic 1. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[1]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_if' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[0]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[31]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[30]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[29]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[28]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[27]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[26]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[25]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[24]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[23]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[22]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[21]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[20]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[19]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[18]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[17]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[16]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[15]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[14]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[13]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[12]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[11]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[10]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[9]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[8]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[7]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[6]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[5]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[4]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[3]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[2]' is connected to logic 1. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[1]' is connected to logic 0. 
+Warning: In design 'CPU', a pin on submodule 'pc_adder_ex' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in2[0]' is connected to logic 0. 
+Warning: In design 'top', the same net is connected to more than one pin on submodule 'IM1'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'CS', 'OE'', 'WEB[3]', 'WEB[2]', 'WEB[1]', 'WEB[0]'.
+Warning: In design 'top', the same net is connected to more than one pin on submodule 'IM1'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'DI[31]', 'DI[30]'', 'DI[29]', 'DI[28]', 'DI[27]', 'DI[26]', 'DI[25]', 'DI[24]', 'DI[23]', 'DI[22]', 'DI[21]', 'DI[20]', 'DI[19]', 'DI[18]', 'DI[17]', 'DI[16]', 'DI[15]', 'DI[14]', 'DI[13]', 'DI[12]', 'DI[11]', 'DI[10]', 'DI[9]', 'DI[8]', 'DI[7]', 'DI[6]', 'DI[5]', 'DI[4]', 'DI[3]', 'DI[2]', 'DI[1]', 'DI[0]'.
+Warning: In design 'top', the same net is connected to more than one pin on submodule 'DM1'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'CS', 'OE''.
+Warning: In design 'CPU', the same net is connected to more than one pin on submodule 'pc_adder_if'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in2[31]', 'in2[30]'', 'in2[29]', 'in2[28]', 'in2[27]', 'in2[26]', 'in2[25]', 'in2[24]', 'in2[23]', 'in2[22]', 'in2[21]', 'in2[20]', 'in2[19]', 'in2[18]', 'in2[17]', 'in2[16]', 'in2[15]', 'in2[14]', 'in2[13]', 'in2[12]', 'in2[11]', 'in2[10]', 'in2[9]', 'in2[8]', 'in2[7]', 'in2[6]', 'in2[5]', 'in2[4]', 'in2[3]', 'in2[1]', 'in2[0]'.
+Warning: In design 'CPU', the same net is connected to more than one pin on submodule 'pc_adder_ex'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in2[31]', 'in2[30]'', 'in2[29]', 'in2[28]', 'in2[27]', 'in2[26]', 'in2[25]', 'in2[24]', 'in2[23]', 'in2[22]', 'in2[21]', 'in2[20]', 'in2[19]', 'in2[18]', 'in2[17]', 'in2[16]', 'in2[15]', 'in2[14]', 'in2[13]', 'in2[12]', 'in2[11]', 'in2[10]', 'in2[9]', 'in2[8]', 'in2[7]', 'in2[6]', 'in2[5]', 'in2[4]', 'in2[3]', 'in2[1]', 'in2[0]'.
+Warning: In design 'top', three-state bus 'im_addr[0]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[2]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[1]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[3]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[2]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[4]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[3]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[5]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[4]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[6]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[5]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[7]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[6]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[8]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[7]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[9]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[8]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[10]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[9]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[11]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[10]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[12]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[11]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[13]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[12]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[14]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'im_addr[13]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[15]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now_0' has non three-state driver 'CPU1/pc_reg/pc_out_reg[0]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now_1' has non three-state driver 'CPU1/pc_reg/pc_out_reg[1]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[16]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[16]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[17]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[17]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[18]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[18]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[19]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[19]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[20]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[20]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[21]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[21]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[22]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[22]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[23]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[23]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[24]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[24]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[25]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[25]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[26]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[26]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[27]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[27]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[28]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[28]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[29]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[29]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[30]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[30]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/pc_now[31]' has non three-state driver 'CPU1/pc_reg/pc_out_reg[31]/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/ID_EX_sf[0]' has non three-state driver 'CPU1/hazard_control/B_0/Z'. (LINT-34)
+Warning: In design 'top', three-state bus 'CPU1/IF_ID_sf[1]' has non three-state driver 'CPU1/hazard_control/IF_ID_sf_reg[1]/Q'. (LINT-34)
+Warning: In design 'Hazard_control', output port 'EX_MEM_sf[0]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'Hazard_control', output port 'MEM_WB_sf[0]' is connected directly to 'logic 0'. (LINT-52)
+Warning: Net 'dm_data_out[0]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[1]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[2]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[3]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[4]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[5]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[6]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[7]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[8]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[9]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[10]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[11]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[12]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[13]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[14]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[15]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[16]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[17]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[18]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[19]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[20]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[21]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[22]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[23]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[24]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[25]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[26]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[27]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[28]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[29]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[30]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'dm_data_out[31]' has a single tri-state driver.  (LINT-63)
+1
+# Synthesize (high effort)
+compile -map_effort high 
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.0 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.0 |     *     |
+============================================================================
+
+
+Information: There are 260 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition WCCOM set on design top has different process,
+voltage and temperatures parameters than the parameters at which target library 
+fsa0m_a_generic_core_ff1p98vm40c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'SRAM_wrapper_0'
+  Processing 'Mux_2in_0'
+  Processing 'MEM_WB_reg'
+  Processing 'DM_control'
+Information: Added key list 'DesignWare' to design 'DM_control'. (DDB-72)
+  Processing 'EX_MEM_reg'
+  Processing 'Branch_control'
+  Processing 'ALU'
+  Processing 'Mux_3in_0'
+  Processing 'Forward_control'
+Information: Added key list 'DesignWare' to design 'Forward_control'. (DDB-72)
+  Processing 'Adder_0'
+  Processing 'ID_EX_reg'
+  Processing 'Register'
+Information: Added key list 'DesignWare' to design 'Register'. (DDB-72)
+Information: The register 'reg_data_reg[0][31]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_data_reg[0][0]' is a constant and will be removed. (OPT-1206)
+  Processing 'ALU_control'
+  Processing 'Control_unit'
+  Processing 'Immidiate_generator'
+  Processing 'PC_reg'
+  Processing 'Hazard_control'
+  Processing 'CPU'
+  Processing 'top'
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Warning: Unable to resolve reference 'IF_ID_reg' in 'CPU'. (LINK-5)
+
+  Updating timing information
+Information: Changed minimum wire load model for 'Mux_2in_0' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'MEM_WB_reg' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_2in_1' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'DM_control' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_2in_2' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_2in_3' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'EX_MEM_reg' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Branch_control' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_2in_4' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_3in_0' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_3in_1' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Forward_control' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_2in_5' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_0' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_1' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ID_EX_reg' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Register_MUX_OP_32_5_32_1' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Register_MUX_OP_32_5_32' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Register' from 'G5K' to 'enG30K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_control' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Control_unit' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Immidiate_generator' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'PC_reg' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Mux_3in_2' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_2' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Hazard_control' from 'G5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'CPU' from 'G5K' to 'enG30K'. (OPT-171)
+Information: Changed minimum wire load model for 'top' from 'G5K' to 'enG1000K'. (OPT-171)
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Mapping 'DW_leftsh'
+  Mapping 'DW_rightsh'
+Information: Added key list 'DesignWare' to design 'ALU'. (DDB-72)
+  Mapping 'DW_rightsh'
+  Mapping 'DW_leftsh'
+  Processing 'ALU_DW01_sub_0'
+Information: Changed minimum wire load model for 'ALU_DW01_sub_0' from 'enG5K' to 'enG5K'. (OPT-171)
+  Processing 'ALU_DW01_add_0'
+  Processing 'ALU_DW01_cmp2_0'
+Information: Changed minimum wire load model for 'ALU_DW01_cmp2_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_add_0' from 'enG5K' to 'enG5K'. (OPT-171)
+  Processing 'ALU_DW01_cmp6_0'
+Information: Changed minimum wire load model for 'ALU_DW01_cmp6_0' from 'enG5K' to 'enG5K'. (OPT-171)
+  Processing 'Adder_0_DW01_add_0_DW01_add_1'
+  Processing 'Adder_1_DW01_add_0_DW01_add_2'
+  Processing 'Adder_2_DW01_add_0_DW01_add_3'
+
+  Beginning Mapping Optimizations  (High effort)
+  -------------------------------
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ff1p98vm40c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ss1p62v125c.db'
+Information: Changed minimum wire load model for 'Adder_0_DW01_add_0_DW01_add_1' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_1_DW01_add_0_DW01_add_2' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_2_DW01_add_0_DW01_add_3' from 'enG5K' to 'enG5K'. (OPT-171)
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+Information: Changed minimum wire load model for 'ALU_DW01_cmp6_J33_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_cmp2_J32_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_add_J3_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_sub_J2_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU' from 'enG5K' to 'enG10K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_0_DW01_add_J19_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_1_DW01_add_J17_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'Adder_2_DW01_add_J18_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'CPU' from 'enG30K' to 'enG50K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_cmp6_J48_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_cmp2_J47_0' from 'enG5K' to 'enG5K'. (OPT-171)
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:29 5683291.6      1.07     225.2       3.3                                0.00  
+    0:00:30 5681457.3      1.11     231.6       3.3                                0.00  
+    0:00:30 5681457.3      1.11     231.6       3.3                                0.00  
+    0:00:30 5681479.2      1.11     231.6       3.3                                0.00  
+    0:00:30 5681479.2      1.11     231.6       3.3                                0.00  
+    0:00:34 5563077.4      3.35     626.7       4.7                                0.00  
+    0:00:35 5563683.6      3.38     621.3       6.3                                0.00  
+    0:00:36 5562752.4      2.54     470.2       6.3                                0.00  
+    0:00:36 5563427.4      3.27     666.2       6.3                                0.00  
+    0:00:36 5562971.1      2.38     437.7       6.3                                0.00  
+    0:00:36 5562730.5      2.09     433.5       6.3                                0.00  
+    0:00:37 5562474.3      1.83     385.5       6.3                                0.00  
+    0:00:37 5562443.1      1.72     368.9       6.3                                0.00  
+    0:00:37 5562568.0      1.72     349.1       6.3                                0.00  
+    0:00:37 5562389.9      1.99     412.1       6.3                                0.00  
+    0:00:37 5562427.4      2.18     393.1       6.3                                0.00  
+    0:00:38 5562602.4      1.63     347.3       6.3                                0.00  
+    0:00:38 5562652.4      1.61     343.0       6.3                                0.00  
+    0:00:38 5562668.0      1.59     343.1       6.3                                0.00  
+    0:00:38 5562708.7      1.56     331.6       6.3                                0.00  
+    0:00:38 5562727.4      1.51     328.2       6.3                                0.00  
+    0:00:38 5562727.4      1.51     328.2       6.3                                0.00  
+    0:00:38 5562727.4      1.51     328.2       6.3                                0.00  
+    0:00:38 5562727.4      1.51     328.2       6.3                                0.00  
+    0:00:38 5562755.5      1.51     328.2       6.0                                0.00  
+    0:00:38 5562783.7      1.51     328.2       5.6                                0.00  
+    0:00:38 5562811.8      1.51     328.2       5.3                                0.00  
+    0:00:38 5562839.9      1.51     328.2       4.9                                0.00  
+    0:00:38 5562855.5      1.51     328.2       3.6                                0.00  
+    0:00:38 5562874.3      1.51     328.2       4.3                                0.00  
+    0:00:38 5562889.9      1.51     328.2       3.2                                0.00  
+    0:00:38 5562924.3      1.51     328.2       3.1                                0.00  
+    0:00:38 5562918.0      1.51     328.2       3.7                                0.00  
+    0:00:38 5562918.0      1.51     328.2       3.7                                0.00  
+Information: Changed minimum wire load model for 'ALU' from 'enG10K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'CPU' from 'enG50K' to 'enG30K'. (OPT-171)
+    0:00:40 5563593.0      1.24     250.2       0.0 CPU1/id_ex/alu_ctrl_out_reg[0]/D      0.00  
+    0:00:40 5563814.8      1.19     241.2       0.0 CPU1/id_ex/alu_ctrl_out_reg[0]/D      0.00  
+    0:00:41 5564052.3      1.13     228.4       0.0 CPU1/pc_reg/pc_out_reg[2]/D      0.00  
+    0:00:41 5564099.2      1.10     223.6       0.0                                0.00  
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:41 5564099.2      1.10     223.6       0.0                                0.00  
+    0:00:41 5564171.1      1.10     223.0       0.0 CPU1/id_ex/funct3_out_reg[1]/D      0.00  
+    0:00:42 5564214.8      1.09     219.9       0.0 CPU1/id_ex/pc_out_reg[10]/D      0.00  
+    0:00:42 5563155.5      1.08     205.7       0.0 CPU1/id_ex/rs2_data_out_reg[26]/D      0.00  
+    0:00:43 5563702.3      0.97     203.8       0.0 CPU1/pc_reg/pc_out_reg[30]/D      0.00  
+    0:00:43 5563911.7      0.95     201.2       0.0 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:00:44 5563955.5      0.93     197.4       0.8 CPU1/id_ex/rs2_data_out_reg[26]/D      0.00  
+    0:00:44 5564324.2      0.92     194.0       0.9 CPU1/id_ex/rs2_data_out_reg[26]/D      0.00  
+    0:00:44 5564389.8      0.90     192.1       0.9 CPU1/id_ex/funct3_out_reg[0]/D      0.00  
+    0:00:45 5564580.4      0.89     188.7       0.9 CPU1/id_ex/alu_ctrl_out_reg[3]/D      0.00  
+    0:00:45 5565227.2      0.84     179.5       1.2 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:46 5565302.2      0.84     179.1       1.4 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:46 5565933.5      0.83     177.1       1.4 CPU1/id_ex/alu_ctrl_out_reg[3]/D      0.00  
+    0:00:47 5566017.8      0.82     175.2       1.4 CPU1/id_ex/rs2_data_out_reg[19]/D      0.00  
+    0:00:47 5566317.8      0.80     168.5       1.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:00:47 5566717.8      0.78     165.8       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:48 5566761.5      0.76     161.0       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:48 5566839.6      0.75     160.1       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:49 5567124.0      0.75     159.1       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:49 5567339.6      0.74     156.6       1.8 CPU1/pc_reg/pc_out_reg[30]/D      0.00  
+    0:00:49 5567599.0      0.74     156.1       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:50 5567908.3      0.73     155.5       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:50 5567939.6      0.73     154.5       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:50 5568011.4      0.72     152.0       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:51 5568005.2      0.72     150.9       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:51 5567967.7      0.71     148.9       1.8 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:51 5567980.2      0.70     146.9       2.4 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:52 5568036.4      0.69     145.8       2.5 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:52 5568111.4      0.69     144.6       2.5 CPU1/id_ex/rs1_data_out_reg[25]/D      0.00  
+    0:00:53 5568267.7      0.65     136.6       2.5 CPU1/pc_reg/pc_out_reg[2]/D      0.00  
+    0:00:53 5568502.0      0.65     135.5       2.5 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:53 5568798.9      0.65     134.4       2.1 CPU1/pc_reg/pc_out_reg[30]/D      0.00  
+    0:00:53 5568792.6      0.64     132.9       2.1 CPU1/pc_reg/pc_out_reg[30]/D      0.00  
+    0:00:54 5568927.0      0.64     131.7       2.1 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:00:54 5568986.4      0.63     131.4       2.1 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:54 5569058.3      0.63     131.2       2.1 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:55 5569089.5      0.63     130.6       2.5 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:55 5569198.9      0.62     129.1       2.5 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:55 5569223.9      0.62     128.8       2.8 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:55 5569489.5      0.62     127.6       2.8 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:56 5569614.5      0.61     126.1       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:00:56 5569817.6      0.61     124.5       3.5 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:00:56 5570355.0      0.58     120.7       3.6 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:00:57 5570433.2      0.58     119.7       3.2 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:00:57 5570551.9      0.58     119.1       3.2 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:00:57 5570567.5      0.56     116.6       3.4 CPU1/id_ex/pc_src_out_reg/D      0.00  
+    0:00:58 5570786.3      0.56     115.0       3.4 CPU1/id_ex/alu_ctrl_out_reg[1]/D      0.00  
+    0:00:58 5570923.8      0.55     114.7       3.4 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:00:58 5570980.0      0.55     112.0       3.4 CPU1/id_ex/alu_in2_sel_out_reg/D      0.00  
+    0:00:59 5571239.4      0.55     111.2       3.5 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:00:59 5571314.4      0.54     110.0       3.5 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:00 5571236.2      0.54     108.7       3.5 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:00 5571473.7      0.54     107.7       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:00 5571545.6      0.53     107.2       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:00 5571470.6      0.53     106.4       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:01 5571536.2      0.53     105.6       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:01 5571583.1      0.52     105.1       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:02 5571870.6      0.49      97.6       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:02 5571783.1      0.48      94.5       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:02 5571961.2      0.47      93.8       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:03 5572183.1      0.47      92.1       3.6 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:03 5572189.3      0.46      91.7       3.6 CPU1/pc_reg/pc_out_reg[10]/D      0.00  
+    0:01:03 5572236.2      0.46      91.6       3.6 CPU1/pc_reg/pc_out_reg[14]/D      0.00  
+    0:01:03 5572308.0      0.46      89.3       3.6 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:04 5572373.7      0.46      90.2       3.6 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:04 5572611.1      0.45      89.0       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:04 5572761.1      0.45      89.0       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:04 5572689.3      0.45      88.2       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:05 5572558.0      0.44      87.2       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:05 5572564.3      0.44      87.1       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:05 5572711.1      0.44      87.2       3.7 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:05 5572748.6      0.44      86.2       3.7 CPU1/pc_reg/pc_out_reg[11]/D      0.00  
+    0:01:06 5572748.6      0.44      86.2       3.7 CPU1/pc_reg/pc_out_reg[13]/D      0.00  
+    0:01:06 5572801.8      0.43      85.1       3.7 CPU1/pc_reg/pc_out_reg[13]/D      0.00  
+    0:01:06 5572823.6      0.43      84.9       3.7 CPU1/pc_reg/pc_out_reg[13]/D      0.00  
+    0:01:06 5572854.9      0.43      84.9       3.7 CPU1/pc_reg/pc_out_reg[15]/D      0.00  
+    0:01:07 5572858.0      0.43      85.0       3.9 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:07 5572979.9      0.43      84.3       3.9 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:07 5573054.9      0.42      82.1       3.9 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:08 5573167.4      0.42      82.0       3.9 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:08 5573054.9      0.41      81.1       3.8 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:08 5573251.7      0.41      79.7       3.8 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:09 5573258.0      0.41      79.5       3.7 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:09 5573267.4      0.41      79.5       3.7 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:09 5573611.1      0.40      79.7       3.7 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:09 5573570.5      0.40      79.1       3.7 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:09 5573761.1      0.40      77.9       3.8 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:10 5573773.6      0.40      77.8       3.8 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:10 5573842.3      0.39      77.4       4.3 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:10 5573954.8      0.39      77.3       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:10 5573961.1      0.39      76.6       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:11 5574023.6      0.39      76.6       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:11 5574036.1      0.39      76.5       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:11 5574129.8      0.39      76.5       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:11 5574161.1      0.39      76.3       4.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:12 5574126.7      0.39      76.2       4.5 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:12 5574195.4      0.38      75.7       4.5 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:12 5574423.5      0.38      74.2       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:12 5574539.2      0.38      74.0       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:13 5574595.4      0.37      72.3       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:13 5574604.8      0.37      71.3       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:13 5574654.8      0.37      70.9       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:14 5574673.5      0.37      70.9       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:14 5574682.9      0.36      70.9       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:14 5574617.3      0.36      70.8       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:14 5574701.6      0.36      70.3       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:15 5574717.3      0.36      69.3       4.6 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:15 5574923.5      0.35      68.8       4.6 CPU1/pc_reg/pc_out_reg[9]/D      0.00  
+    0:01:15 5575023.5      0.35      68.7       3.8 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:15 5575011.0      0.35      68.6       3.8 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:16 5575157.9      0.34      66.5       3.8 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:16 5575661.0      0.33      63.4       3.8 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:16 5575707.8      0.32      62.6       4.0 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:17 5575704.7      0.32      62.4       3.9 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:17 5575985.9      0.32      62.0       4.0 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:17 5576173.4      0.32      61.3       4.5 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:17 5576289.0      0.32      61.3       4.5 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:01:17 5576257.8      0.31      61.1       4.5 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:18 5576257.8      0.31      60.3       4.5 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:18 5576304.7      0.31      60.2       4.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:18 5576320.3      0.31      59.8       4.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:18 5576345.3      0.31      59.6       4.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:19 5576351.5      0.30      58.9       4.5 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:19 5576392.2      0.30      58.3       4.5 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:19 5576423.4      0.30      57.6       4.5 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:20 5576423.4      0.30      57.6       4.5 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:20 5576520.3      0.30      57.6       4.5 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:20 5576532.8      0.30      57.5       4.5 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:20 5576532.8      0.30      57.3       4.5 CPU1/pc_reg/pc_out_reg[20]/D      0.00  
+    0:01:21 5576532.8      0.30      57.3       4.5 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:24 5576598.4      0.29      56.9       1.9                                0.00  
+    0:01:24 5576617.1      0.29      56.7       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:24 5576682.8      0.29      56.6       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:24 5576701.5      0.29      56.3       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:24 5576776.5      0.29      55.7       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:24 5576810.9      0.29      55.2       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:24 5576792.1      0.28      54.7       1.9 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:25 5576748.4      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:25 5576764.0      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:26 5576764.0      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:26 5576764.0      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:26 5576764.0      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:27 5576782.8      0.28      54.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:28 5576801.5      0.28      54.3       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:28 5576820.3      0.28      54.0       1.9 CPU1/pc_reg/pc_out_reg[26]/D      0.00  
+    0:01:28 5576760.9      0.28      53.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:28 5576814.0      0.27      53.2       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:28 5576657.8      0.27      52.8       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:29 5576685.9      0.27      52.8       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:29 5576717.1      0.27      52.5       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:29 5576854.6      0.27      52.4       1.9 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:29 5576914.0      0.27      52.2       1.9 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:29 5576939.0      0.27      51.9       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:29 5577104.6      0.27      51.7       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:30 5577320.2      0.27      51.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:30 5577423.3      0.26      51.1       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:30 5577701.4      0.26      50.9       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:30 5577748.3      0.26      50.4       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:30 5577676.5      0.26      50.1       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:36 5577688.9      0.26      50.0       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:36 5577713.9      0.26      49.9       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:37 5577713.9      0.26      49.4       1.9 CPU1/pc_reg/pc_out_reg[17]/D      0.00  
+    0:01:37 5577720.2      0.25      48.7       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:38 5577757.7      0.25      48.3       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:38 5578176.4      0.25      48.2       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:38 5578207.7      0.25      48.2       1.9 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:39 5578207.7      0.25      48.1       1.9 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:39 5578192.0      0.25      48.1       1.9 CPU1/pc_reg/pc_out_reg[17]/D      0.00  
+    0:01:40 5578188.9      0.25      48.1       1.9 CPU1/pc_reg/pc_out_reg[18]/D      0.00  
+    0:01:40 5578173.3      0.25      48.0       1.9 CPU1/pc_reg/pc_out_reg[19]/D      0.00  
+    0:01:40 5578182.7      0.25      48.0       1.9 CPU1/pc_reg/pc_out_reg[20]/D      0.00  
+    0:01:40 5578192.0      0.25      48.0       1.9 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:41 5578251.4      0.25      47.9       1.9 CPU1/pc_reg/pc_out_reg[1]/D      0.00  
+    0:01:41 5578426.4      0.25      47.9       1.9 CPU1/id_ex/imm_out_reg[1]/D      0.00  
+    0:01:41 5578501.4      0.25      47.7       1.9 CPU1/pc_reg/pc_out_reg[4]/D      0.00  
+    0:01:41 5578551.4      0.25      45.4       2.7 CPU1/id_ex/imm_out_reg[1]/D      0.00  
+    0:01:42 5578588.9      0.25      45.4       2.7 CPU1/pc_reg/pc_out_reg[13]/D      0.00  
+    0:01:42 5578688.9      0.25      45.2       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:42 5578676.4      0.24      44.9       2.7 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:42 5578782.6      0.24      44.3       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:42 5578760.8      0.24      44.3       2.7 CPU1/pc_reg/pc_out_reg[18]/D      0.00  
+    0:01:42 5578810.8      0.24      44.3       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:43 5578913.9      0.24      43.9       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:43 5579076.4      0.24      43.6       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:43 5579117.0      0.24      43.3       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:43 5579213.9      0.23      43.0       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:44 5579376.3      0.23      41.9       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:44 5579510.7      0.23      41.3       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:44 5579688.8      0.22      40.5       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:44 5579873.2      0.22      39.6       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:45 5579954.4      0.21      38.9       2.7 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:01:45 5580023.2      0.21      38.7       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:45 5580173.2      0.21      38.0       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:46 5580288.8      0.21      37.7       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:46 5580407.5      0.21      37.5       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:46 5580420.0      0.21      37.2       2.7 CPU1/pc_reg/pc_out_reg[16]/D      0.00  
+    0:01:46 5580432.5      0.21      37.1       2.7 CPU1/pc_reg/pc_out_reg[11]/D      0.00  
+    0:01:46 5580620.0      0.20      36.8       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:47 5580682.5      0.20      36.5       2.7 CPU1/pc_reg/pc_out_reg[19]/D      0.00  
+    0:01:47 5580635.6      0.20      36.2       2.7 CPU1/pc_reg/pc_out_reg[19]/D      0.00  
+    0:01:47 5580732.5      0.20      36.0       2.7 CPU1/pc_reg/pc_out_reg[8]/D      0.00  
+    0:01:47 5580745.0      0.20      35.9       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:47 5580804.4      0.20      35.8       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:48 5580673.1      0.19      34.8       2.7 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:48 5580760.6      0.19      34.3       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:48 5580757.5      0.19      33.9       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:48 5580726.3      0.19      33.8       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:48 5580685.6      0.19      33.8       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:48 5580688.8      0.19      33.5       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:49 5580820.0      0.19      33.1       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:49 5580845.0      0.18      32.8       2.7 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:49 5580823.1      0.18      32.7       3.5 CPU1/pc_reg/pc_out_reg[7]/D      0.00  
+    0:01:49 5580804.4      0.18      32.7       3.5 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:01:50 5580813.7      0.18      32.7       3.5 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:01:50 5580804.4      0.18      32.6       3.5 CPU1/pc_reg/pc_out_reg[23]/D      0.00  
+    0:01:50 5580801.3      0.18      32.6       3.5 CPU1/pc_reg/pc_out_reg[26]/D      0.00  
+    0:01:50 5580801.3      0.18      32.6       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:50 5580835.6      0.18      32.3       3.5 CPU1/pc_reg/pc_out_reg[24]/D      0.00  
+    0:01:50 5580857.5      0.18      32.4       3.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:51 5580863.7      0.18      32.4       3.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:51 5581070.0      0.18      32.1       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:51 5581088.7      0.18      32.0       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:51 5581279.3      0.18      31.9       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:52 5581613.7      0.17      31.2       3.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:52 5581632.4      0.17      31.1       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:52 5581810.6      0.17      30.9       3.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:52 5581835.6      0.17      30.6       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:52 5581851.2      0.17      30.3       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:53 5581854.3      0.17      29.6       3.5 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:53 5581910.6      0.16      29.3       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:53 5581910.6      0.16      29.3       3.5 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:01:53 5581910.6      0.16      29.3       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:54 5581910.6      0.16      29.3       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:54 5581910.6      0.16      29.3       3.5 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:54 5581919.9      0.16      29.2       6.0 CPU1/pc_reg/pc_out_reg[4]/D      0.00  
+    0:01:55 5581904.3      0.16      29.2       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:56 5581888.7      0.16      29.1       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:56 5582066.8      0.16      29.0       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:56 5582426.1      0.16      28.8       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:56 5582582.4      0.16      28.6       6.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:01:57 5582685.5      0.16      27.8       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:57 5582916.7      0.15      27.6       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:57 5582926.1      0.15      27.5       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:01:58 5583163.6      0.15      27.3       6.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:01:58 5583579.2      0.15      27.2       6.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:01:59 5583660.4      0.15      27.0       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:59 5583841.7      0.15      26.8       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:01:59 5583872.9      0.15      26.7       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:00 5583944.8      0.15      26.7       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:00 5584101.0      0.15      26.4       6.1 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:00 5584122.9      0.15      26.1       6.1 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:00 5584185.4      0.14      25.8       6.1 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:00 5584179.2      0.14      25.6       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:01 5584157.3      0.14      25.2       6.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:02 5584210.4      0.14      25.0       6.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:02 5584294.8      0.14      24.7       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:02 5584204.2      0.14      24.1       6.0 CPU1/pc_reg/pc_out_reg[25]/D      0.00  
+    0:02:02 5584510.4      0.14      24.1       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:03 5584532.3      0.14      24.1       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:03 5584585.4      0.14      23.9       6.0 CPU1/pc_reg/pc_out_reg[25]/D      0.00  
+    0:02:03 5584935.4      0.13      23.8       6.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:02:03 5585054.1      0.13      23.6       6.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:04 5585007.2      0.13      23.2       6.0 CPU1/pc_reg/pc_out_reg[22]/D      0.00  
+    0:02:04 5585041.6      0.13      23.2       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:04 5585285.3      0.13      22.9       6.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:05 5585310.3      0.13      22.3       5.3 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:05 5585322.8      0.12      21.9       5.3 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:05 5585344.7      0.12      21.7       5.3 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:05 5585413.5      0.12      21.5       5.3 CPU1/pc_reg/pc_out_reg[29]/D      0.00  
+    0:02:05 5585494.7      0.12      21.1       4.4 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:06 5585622.8      0.12      20.9       4.4 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:06 5585647.8      0.12      20.8       4.4 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:06 5585622.8      0.12      20.6       4.4 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:06 5585672.8      0.12      20.2       4.4 CPU1/pc_reg/pc_out_reg[23]/D      0.00  
+    0:02:06 5585607.2      0.12      20.0       4.4 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:07 5585635.3      0.11      19.4       4.4 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:07 5585691.6      0.11      19.2       4.4 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:07 5585697.8      0.11      18.9       4.4 CPU1/pc_reg/pc_out_reg[22]/D      0.00  
+    0:02:08 5585694.7      0.11      18.9       4.4 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:08 5585697.8      0.11      18.5       4.4 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:08 5585716.6      0.11      18.2       4.4 CPU1/pc_reg/pc_out_reg[29]/D      0.00  
+    0:02:11 5585716.6      0.11      18.1       4.4                                0.00  
+    0:02:12 5585704.1      0.11      18.1       4.4                                0.00  
+Information: Changed minimum wire load model for 'ALU' from 'enG5K' to 'enG10K'. (OPT-171)
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:02:12 5585704.1      0.20      23.2       4.4                                0.00  
+    0:02:13 5585660.3      0.12      21.1       0.0 CPU1/pc_reg/pc_out_reg[22]/D      0.00  
+    0:02:13 5585647.8      0.12      20.6       0.0 CPU1/pc_reg/pc_out_reg[29]/D      0.00  
+    0:02:13 5585619.7      0.12      20.1       0.0 CPU1/pc_reg/pc_out_reg[29]/D      0.00  
+    0:02:14 5585785.3      0.11      19.4       0.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:14 5585791.6      0.11      19.2       0.0 CPU1/pc_reg/pc_out_reg[5]/D      0.00  
+    0:02:14 5585797.8      0.11      19.2       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:15 5585782.2      0.11      19.2       0.0 CPU1/pc_reg/pc_out_reg[11]/D      0.00  
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:02:15 5585782.2      0.11      19.2       0.0                                0.00  
+    0:02:15 5585782.2      0.11      19.2       0.0                                0.00  
+    0:02:17 5583569.8      0.21      31.8       0.0                                0.00  
+    0:02:18 5582801.1      0.21      32.6       0.0                                0.00  
+    0:02:18 5582341.8      0.24      39.1       0.0                                0.00  
+    0:02:18 5582041.8      0.24      40.0       0.0                                0.00  
+    0:02:18 5581801.2      0.24      39.4       0.0                                0.00  
+    0:02:18 5581801.2      0.24      39.4       0.0                                0.00  
+    0:02:19 5582038.7      0.18      33.3       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:20 5582094.9      0.17      32.4       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:20 5582151.2      0.17      32.5       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:21 5582154.3      0.17      31.7       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:22 5582241.8      0.16      30.1       0.0 CPU1/pc_reg/pc_out_reg[1]/D      0.00  
+    0:02:23 5582335.5      0.16      29.5       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:23 5582423.0      0.16      29.4       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:23 5582488.6      0.16      29.4       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:24 5582579.3      0.16      29.2       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:24 5582607.4      0.16      29.0       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:25 5582626.1      0.16      28.9       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:26 5582766.7      0.15      27.7       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:27 5582782.4      0.15      27.5       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:27 5582910.5      0.15      27.2       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:27 5582898.0      0.15      27.2       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:28 5582904.2      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:28 5582910.5      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:28 5582910.5      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:29 5582910.5      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:29 5582910.5      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:29 5582885.5      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[20]/D      0.00  
+    0:02:30 5582882.4      0.15      26.6       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:30 5582973.0      0.15      26.5       0.0 CPU1/pc_reg/pc_out_reg[3]/D      0.00  
+    0:02:30 5582948.0      0.15      25.9       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:30 5582919.9      0.14      25.9       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:31 5582926.1      0.14      25.9       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:31 5582976.1      0.14      25.9       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:31 5582919.9      0.14      25.7       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:32 5582935.5      0.14      25.5       0.0 CPU1/pc_reg/pc_out_reg[4]/D      0.00  
+    0:02:32 5582923.0      0.14      25.3       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:32 5582919.9      0.14      24.9       0.0 CPU1/pc_reg/pc_out_reg[4]/D      0.00  
+    0:02:32 5582938.6      0.14      24.9       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:33 5582948.0      0.14      24.9       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:02:33 5582938.6      0.14      24.7       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:33 5582960.5      0.14      24.7       0.0 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:02:34 5583019.9      0.14      24.5       0.0 CPU1/pc_reg/pc_out_reg[26]/D      0.00  
+    0:02:34 5582941.7      0.14      24.4       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:34 5583044.9      0.14      24.2       0.0 CPU1/pc_reg/pc_out_reg[12]/D      0.00  
+    0:02:35 5582988.6      0.14      24.6       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:35 5582976.1      0.14      24.4       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:35 5583094.9      0.14      24.6       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:35 5583138.6      0.14      24.6       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:36 5583163.6      0.13      24.4       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:36 5583319.8      0.13      23.2       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:36 5583329.2      0.13      23.2       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:37 5583432.3      0.13      23.0       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:37 5583463.6      0.13      22.3       0.0 CPU1/pc_reg/pc_out_reg[14]/D      0.00  
+    0:02:37 5583463.6      0.13      21.8       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:38 5583579.2      0.12      20.1       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:38 5583597.9      0.12      20.9       0.0 CPU1/pc_reg/pc_out_reg[2]/D      0.00  
+    0:02:39 5583735.4      0.12      20.5       0.0 CPU1/pc_reg/pc_out_reg[30]/D      0.00  
+    0:02:39 5583766.7      0.11      20.4       0.0                                0.00  
+    0:02:39 5579829.4      0.66      96.8       0.0                                0.00  
+    0:02:40 5577592.1      1.03     103.7       0.0                                0.00  
+    0:02:40 5577385.8      1.02     104.6       0.0                                0.00  
+    0:02:40 5577295.2      1.02     104.8       0.0                                0.00  
+    0:02:40 5577295.2      1.02     104.8       0.0                                0.00  
+    0:02:40 5577295.2      1.02     104.8       0.0                                0.00  
+    0:02:40 5577295.2      1.02     104.8       0.0                                0.00  
+    0:02:40 5577295.2      1.02     104.8       0.0                                0.00  
+    0:02:41 5577520.2      0.35      48.9       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:42 5577888.9      0.29      39.5       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:43 5578104.5      0.26      34.3       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:44 5578210.8      0.25      32.5       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:44 5578267.0      0.24      29.0       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:45 5578273.3      0.23      28.9       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:46 5578413.9      0.22      26.7       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:46 5578442.0      0.22      25.8       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:47 5578620.1      0.22      27.3       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:47 5578638.9      0.21      25.8       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:48 5578563.9      0.21      25.8       0.0 CPU1/id_ex/imm_out_reg[13]/D      0.00  
+    0:02:48 5578626.4      0.21      23.4       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:49 5578801.4      0.21      25.2       0.0 CPU1/id_ex/imm_out_reg[18]/D      0.00  
+    0:02:50 5578954.5      0.20      23.0       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:50 5578948.2      0.20      22.6       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:50 5579042.0      0.19      21.5       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:51 5579079.5      0.19      21.4       0.0 CPU1/id_ex/imm_out_reg[31]/D      0.00  
+    0:02:51 5579088.9      0.19      16.2       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:52 5579192.0      0.17      16.2       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:53 5579267.0      0.17      15.8       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:02:53 5579310.7      0.17      15.5       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:54 5579404.5      0.17      15.4       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:54 5579651.3      0.17      13.6       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:54 5579663.8      0.16      13.1       0.0 CPU1/id_ex/imm_out_reg[26]/D      0.00  
+    0:02:55 5579854.4      0.15      25.6       0.0 CPU1/pc_reg/pc_out_reg[22]/D      0.00  
+    0:02:55 5580023.2      0.14      25.6       0.0 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:02:56 5580154.4      0.14      18.7       0.0 CPU1/pc_reg/pc_out_reg[31]/D      0.00  
+    0:02:56 5580179.4      0.14      18.7       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:02:56 5580282.5      0.13      17.2       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:57 5580395.0      0.13      17.0       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:57 5580385.7      0.12      16.7       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:57 5580363.8      0.12      16.7       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:02:58 5580457.5      0.12      16.6       0.0 CPU1/id_ex/imm_out_reg[1]/D      0.00  
+    0:02:58 5580523.1      0.12      16.1       0.0 CPU1/id_ex/imm_out_reg[1]/D      0.00  
+    0:02:58 5580520.0      0.12      15.8       0.0 CPU1/id_ex/opcode_out_reg[3]/D      0.00  
+    0:02:59 5580535.6      0.12      15.6       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:02:59 5580591.9      0.12      16.5       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:03:00 5580548.1      0.12      15.9       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:03:00 5580585.6      0.12      15.6       0.0 CPU1/id_ex/imm_out_reg[0]/D      0.00  
+    0:03:00 5580726.3      0.12      15.2       0.0 CPU1/pc_reg/pc_out_reg[24]/D      0.00  
+    0:03:01 5580970.0      0.11      14.8       0.0 CPU1/pc_reg/pc_out_reg[22]/D      0.00  
+    0:03:01 5581045.0      0.11      14.7       0.0 CPU1/id_ex/imm_out_reg[16]/D      0.00  
+    0:03:01 5581023.1      0.11      14.4       0.0 CPU1/pc_reg/pc_out_reg[0]/D      0.00  
+    0:03:02 5581032.5      0.11      14.3       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:02 5581007.5      0.11      14.0       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:02 5581020.0      0.11      13.7       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:03 5581029.4      0.11      13.4       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:03 5581060.6      0.11      12.8       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:03 5581110.6      0.10      12.7       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:04 5581148.1      0.10      12.5       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:04 5581151.2      0.10      12.4       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:05 5581132.5      0.10      12.3       0.0                                0.00  
+    0:03:05 5581076.2      0.10      12.3       0.0                                0.00  
+    0:03:05 5580876.2      0.10      12.3       0.0                                0.00  
+    0:03:05 5580698.1      0.10      12.3       0.0                                0.00  
+    0:03:05 5580548.1      0.10      12.3       0.0                                0.00  
+    0:03:05 5580491.9      0.10      12.3       0.0                                0.00  
+    0:03:06 5580432.5      0.10      11.5       0.0 CPU1/id_ex/imm_out_reg[27]/D      0.00  
+    0:03:07 5580529.4      0.10      12.2       0.0 CPU1/pc_reg/pc_out_reg[21]/D      0.00  
+    0:03:07 5580635.6      0.09      13.3       0.0 CPU1/pc_reg/pc_out_reg[27]/D      0.00  
+    0:03:07 5580695.0      0.09      13.4       0.0 CPU1/pc_reg/pc_out_reg[1]/D      0.00  
+    0:03:07 5580829.4      0.09      13.3       0.0 CPU1/pc_reg/pc_out_reg[28]/D      0.00  
+    0:03:07 5581016.9      0.09      13.3       0.0 CPU1/id_ex/rs1_addr_out_reg[1]/D      0.00  
+    0:03:08 5581204.3      0.09      13.3       0.0 CPU1/id_ex/rs2_data_out_reg[5]/D      0.00  
+    0:03:08 5581316.8      0.09      13.4       0.0 CPU1/id_ex/imm_out_reg[16]/D      0.00  
+    0:03:09 5581310.6      0.09      13.5       0.0                                0.00  
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_WC.db'
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_BC.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ss1p62v125c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ff1p98vm40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+compile -map_effort high -inc
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Warning: Unable to resolve reference 'IF_ID_reg' in 'CPU'. (LINK-5)
+
+Information: There are 157 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition WCCOM set on design top has different process,
+voltage and temperatures parameters than the parameters at which target library 
+fsa0m_a_generic_core_ff1p98vm40c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Warning: Unable to resolve reference 'IF_ID_reg' in 'CPU'. (LINK-5)
+
+  Updating timing information
+Information: Changed minimum wire load model for 'ALU_DW01_add_J3_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Changed minimum wire load model for 'ALU_DW01_sub_J2_0' from 'enG5K' to 'enG5K'. (OPT-171)
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Mapping 'ALU_DW01_cmp6_0'
+  Mapping 'Adder_2_DW01_add_0'
+  Mapping 'Adder_1_DW01_add_0'
+  Mapping 'Adder_0_DW01_add_0'
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:04 5581257.5      0.09      13.5       0.0                                0.00  
+    0:00:05 5581276.2      0.09      13.5       0.0 CPU1/id_ex/imm_out_reg[25]/D      0.00  
+    0:00:11 5581276.2      0.09      13.5       0.0                                0.00  
+    0:00:12 5581270.0      0.09      13.4       0.0                                0.00  
+    0:00:14 5581313.7      0.09      13.4       0.0                                0.00  
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ff1p98vm40c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2009Q2v2.0/GENERIC_CORE/FrontEnd/synopsys/fsa0m_a_generic_core_ss1p62v125c.db'
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_WC.db'
+Loading db file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/sim/SRAM/SRAM_BC.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ss1p62v125c.db'
+Loading db file '/usr/cad/CBDK/CBDK018_UMC_Faraday_v1.0/orig_lib/fsa0m_a/2008Q3v1.2/T33_GENERIC_IO/FrontEnd/synopsys/fsa0m_a_t33_generic_io_ff1p98vm40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+# Ultra
+#compile_ultra 
+#compile_ultra -inc
+current_design [get_designs ${top}]
+Current design is 'top'.
+{top}
+remove_unconnected_ports -blast_buses [get_cells -hierarchical *]
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Error:  /home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/src/IF_ID_reg.sv:20: The expression in the reset condition of the 'if' statement in this 'always' block can only be a simple identifier or its negation. (ELAB-303)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'IF_ID_reg'. (HDL-193)
+Warning: Unable to resolve reference 'IF_ID_reg' in 'CPU'. (LINK-5)
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Removing port 'mem_addr[31]' from design 'DM_control'
+Removing port 'mem_addr[30]' from design 'DM_control'
+Removing port 'mem_addr[29]' from design 'DM_control'
+Removing port 'mem_addr[28]' from design 'DM_control'
+Removing port 'mem_addr[27]' from design 'DM_control'
+Removing port 'mem_addr[26]' from design 'DM_control'
+Removing port 'mem_addr[25]' from design 'DM_control'
+Removing port 'mem_addr[24]' from design 'DM_control'
+Removing port 'mem_addr[23]' from design 'DM_control'
+Removing port 'mem_addr[22]' from design 'DM_control'
+Removing port 'mem_addr[21]' from design 'DM_control'
+Removing port 'mem_addr[20]' from design 'DM_control'
+Removing port 'mem_addr[19]' from design 'DM_control'
+Removing port 'mem_addr[18]' from design 'DM_control'
+Removing port 'mem_addr[17]' from design 'DM_control'
+Removing port 'mem_addr[16]' from design 'DM_control'
+Removing port 'mem_addr[15]' from design 'DM_control'
+Removing port 'mem_addr[14]' from design 'DM_control'
+Removing port 'mem_addr[13]' from design 'DM_control'
+Removing port 'mem_addr[12]' from design 'DM_control'
+Removing port 'mem_addr[11]' from design 'DM_control'
+Removing port 'mem_addr[10]' from design 'DM_control'
+Removing port 'mem_addr[9]' from design 'DM_control'
+Removing port 'mem_addr[8]' from design 'DM_control'
+Removing port 'mem_addr[7]' from design 'DM_control'
+Removing port 'mem_addr[6]' from design 'DM_control'
+Removing port 'mem_addr[5]' from design 'DM_control'
+Removing port 'mem_addr[4]' from design 'DM_control'
+Removing port 'mem_addr[3]' from design 'DM_control'
+Removing port 'mem_addr[2]' from design 'DM_control'
+Removing port 'opcode[4]' from design 'Branch_control'
+Removing port 'opcode[1]' from design 'Branch_control'
+Removing port 'opcode[0]' from design 'Branch_control'
+Removing port 'TC' from design 'ALU_DW01_cmp6_J48_0'
+Removing port 'GT' from design 'ALU_DW01_cmp6_J48_0'
+Removing port 'EQ' from design 'ALU_DW01_cmp6_J48_0'
+Removing port 'LE' from design 'ALU_DW01_cmp6_J48_0'
+Removing port 'TC' from design 'ALU_DW01_cmp2_J47_0'
+Removing port 'GE_GT' from design 'ALU_DW01_cmp2_J47_0'
+Removing port 'CI' from design 'ALU_DW01_add_J3_0'
+Removing port 'CO' from design 'ALU_DW01_add_J3_0'
+Removing port 'CI' from design 'ALU_DW01_sub_J2_0'
+Removing port 'CO' from design 'ALU_DW01_sub_J2_0'
+Removing port 'CI' from design 'Adder_0_DW01_add_J19_0'
+Removing port 'CO' from design 'Adder_0_DW01_add_J19_0'
+Removing port 'CI' from design 'Adder_1_DW01_add_J17_0'
+Removing port 'CO' from design 'Adder_1_DW01_add_J17_0'
+Removing port 'instr_imm[1]' from design 'Immidiate_generator'
+Removing port 'instr_imm[0]' from design 'Immidiate_generator'
+Removing port 'CI' from design 'Adder_2_DW01_add_J18_0'
+Removing port 'CO' from design 'Adder_2_DW01_add_J18_0'
+1
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -hierarchy -rule verilog
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _}   -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+define_name_rules name_rule -case_insensitive
+1
+change_names -hierarchy -rules name_rule
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+write -format ddc  -hierarchy -output "${top}_syn.ddc"
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing ddc file 'top_syn.ddc'.
+1
+write_sdf -version 2.0 -context verilog  -load_delay net ../syn/${top}_syn.sdf
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Writing timing information to file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/syn/top_syn.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design contains black-box components.  These cells will have no timing information. (WT-7)
+1
+write_sdc -version 2.0 "${top}_syn.sdc"
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+write_file -format verilog -hierarchy -output ../syn/${top}_syn.v
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing verilog file '/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/syn/top_syn.v'.
+1
+report_area > area.log
+report_timing > timing.log
+report_power > power.log
+report_qor > ${top}_syn.qor
+# exit
+Warning: Cannot use command line editor for terminal type 'xterm-256color'.  (UI-74)
+dc_shell> 
+Information: Ignoring interrupt signal since design is being mapped.
+             One more interrupt will abort optimization without
+             transferring the design... (INT-7)
+
+Information: Aborting optimization without transferring the design... (INT-8)
+
+Information: Process terminated by interrupt. (INT-4)
