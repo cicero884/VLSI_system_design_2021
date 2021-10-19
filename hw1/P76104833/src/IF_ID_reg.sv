@@ -23,7 +23,17 @@ always_ff @(posedge clk, posedge rst) begin
 		flush_prev_instr<=1'b1;
 	end
 	else begin
-		if(sf[0]) begin
+		if(sf[1]) begin//stall
+			instr_tmp	<=instr_in;
+			instr_stalled<=1'b1;
+		end
+		else if(instr_stalled) begin
+			pc_out 		<=pc_tmp;
+			pc_tmp 		<=pc_in;
+			instr_stalled<=1'b0;
+			instr_out 	<=instr_tmp;
+		end
+		else if(sf[0]) begin
 			`IF_ID_RESET
 			pc_tmp		<=32'd0;
 			flush_prev_instr<=1'b1;
@@ -34,16 +44,6 @@ always_ff @(posedge clk, posedge rst) begin
 			flush_prev_instr<=1'b0;
 		end
 
-		else if(sf[1]) begin//stall
-			instr_tmp	<=instr_in;
-			instr_stalled<=1'b1;
-		end
-		else if(instr_stalled) begin
-			pc_out 		<=pc_tmp;
-			pc_tmp 		<=pc_in;
-			instr_stalled<=1'b0;
-			instr_out 	<=instr_tmp;
-		end
 		else begin
 			pc_out 		<=pc_tmp;
 			pc_tmp 		<=pc_in;

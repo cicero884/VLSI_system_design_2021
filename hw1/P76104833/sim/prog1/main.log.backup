@@ -1,0 +1,303 @@
+
+main:     file format elf32-littleriscv
+main
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x000002d0 memsz 0x000002d0 flags r-x
+    LOAD off    0x00002000 vaddr 0x00008000 paddr 0x00008000 align 2**12
+         filesz 0x00000100 memsz 0x00001100 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000024c  00000000  00000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       00000084  0000024c  0000024c  0000124c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 _test         00000100  00008000  00008000  00002000  2**0
+                  ALLOC
+  3 .data         00000000  00008100  00008100  00002100  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .bss          00000000  00008100  00008100  00002100  2**0
+                  ALLOC
+  5 .stack        00001000  00008100  00008100  00002100  2**0
+                  ALLOC
+  6 .comment      00000012  00000000  00000000  00002100  2**0
+                  CONTENTS, READONLY
+  7 .riscv.attributes 0000001c  00000000  00000000  00002112  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+0000024c l    d  .rodata	00000000 .rodata
+00008000 l    d  _test	00000000 _test
+00008100 l    d  .data	00000000 .data
+00008100 l    d  .bss	00000000 .bss
+00008100 l    d  .stack	00000000 .stack
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    df *ABS*	00000000 setup.o
+00000084 l       .text	00000000 init_bss
+00000104 l       .text	00000000 fill_block
+0000009c l       .text	00000000 init_sbss
+000000b4 l       .text	00000000 write_stack_pattern
+000000cc l       .text	00000000 init_stack
+000000d4 l       .text	00000000 write_test_pattern
+000000ec l       .text	00000000 SystemInit
+000000f0 l       .text	00000000 SystemExit
+00000100 l       .text	00000000 dead_loop
+00000114 l       .text	00000000 fb_end
+00000000 l    df *ABS*	00000000 main.c
+00008000 g       _test	00000000 _test_start
+00008100 g       _test	00000000 __sbss_start
+00008900 g       _test	00000000 _gp
+00008100 g       _test	00000000 _test_end
+00000100 g       *ABS*	00000000 _TEST_SIZE
+000002d0 g       .rodata	00000000 __rodata_end
+00008100 g       .bss	00000000 __bss_end
+00000250 g       .rodata	00000000 array_addr
+00008100 g       _test	00000000 __sbss_end
+00000000 g       .text	00000000 _start
+0000024c g       .rodata	00000000 __rodata_start
+00008100 g       .data	00000000 __data_end
+00008100 g       .bss	00000000 __bss_start
+00001000 g       *ABS*	00000000 _STACK_SIZE
+0000fffc g       .stack	00000000 _sim_end
+00000118 g     F .text	00000134 main
+00008100 g       .stack	00000000 _stack_end
+00009100 g       .stack	00000000 __stack
+00010000 g       .stack	00000000 _end
+0000024c g       .rodata	00000000 array_size
+00009100 g       .stack	00000000 _stack
+00008100 g       .data	00000000 __data_start
+
+
+Contents of section .text:
+ 0000 93000000 13010000 93010000 13020000  ................
+ 0010 93020000 13030000 93030000 13040000  ................
+ 0020 93040000 13050000 93050000 13060000  ................
+ 0030 93060000 13070000 93070000 13080000  ................
+ 0040 93080000 13090000 93090000 130a0000  ................
+ 0050 930a0000 130b0000 930b0000 130c0000  ................
+ 0060 930c0000 130d0000 930d0000 130e0000  ................
+ 0070 930e0000 130f0000 930f0000 97910000  ................
+ 0080 93814188 17850000 1305c507 97850000  ..A.............
+ 0090 93850507 13060000 ef00c006 17850000  ................
+ 00a0 13054506 97850000 93858505 13060000  ..E.............
+ 00b0 ef004005 17850000 1305c504 97950000  ..@.............
+ 00c0 93850504 13060000 ef00c003 17910000  ................
+ 00d0 13014103 17850000 1305c5f2 97850000  ..A.............
+ 00e0 93850502 13060000 ef00c001 ef00c002  ................
+ 00f0 97020100 9382c2f0 1303f0ff 23a06200  ............#.b.
+ 0100 6f000000 6378b500 2320c500 13054500  o...cx..# ....E.
+ 0110 6ff05fff 67800000 130101fe 232e8100  o._.g.......#...
+ 0120 13040102 13030100 930e0300 0323c024  .............#.$
+ 0130 130ef3ff 2322c4ff 130e0300 13080e00  ....#"..........
+ 0140 93080000 135eb801 93965800 b366de00  .....^....X..f..
+ 0150 13165800 93060300 13850600 93050000  ..X.............
+ 0160 9356b501 93975500 b3e7f600 13175500  .V....U.......U.
+ 0170 93070300 93972700 9387f700 93d74700  ......'.......G.
+ 0180 93974700 3301f140 93070100 93873700  ..G.3..@......7.
+ 0190 93d72700 93972700 2320f4fe 232404fe  ..'...'.# ..#$..
+ 01a0 6f008003 832784fe 13972700 93070025  o....'....'....%
+ 01b0 b307f700 03a70700 832604fe 832784fe  .........&...'..
+ 01c0 93972700 b387f600 23a0e700 832784fe  ..'.....#....'..
+ 01d0 93871700 2324f4fe 8327c024 032784fe  ....#$...'.$.'..
+ 01e0 e342f7fc 232604fe 6f00c003 8327c4fe  .B..#&..o....'..
+ 01f0 13972700 b7870000 93870700 b307f700  ..'.............
+ 0200 832604fe 0327c4fe 13172700 3387e600  .&...'....'.3...
+ 0210 03270700 23a0e700 8327c4fe 93871700  .'..#....'......
+ 0220 2326f4fe 8327c024 0327c4fe e340f7fc  #&...'.$.'...@..
+ 0230 13810e00 93070000 13850700 130104fe  ................
+ 0240 0324c101 13010102 67800000           .$......g...    
+Contents of section .rodata:
+ 024c 20000000 3d7a70c5 a8f3505d 0bb86cf0   ...=zp...P]..l.
+ 025c 917c32b1 4f8ec13a aff8574b 346118d6  .|2.O..:..WK4a..
+ 026c 31c98d60 494188fe 5a96f89e 669192f1  1..`IA..Z...f...
+ 027c 14adada5 c0db11e6 e8f70b1e d56427db  .............d'.
+ 028c dc87c2c2 a2e9fc3d d884eb43 6fc6277a  .......=...Co.'z
+ 029c a18ae342 b565cd02 beec4986 5d2c9073  ...B.e....I.],.s
+ 02ac e1d61e7b fa249f4c afd5c516 83042966  ...{.$.L......)f
+ 02bc a99a1cac 24d012e9 b5561389 9e363de9  ....$....V...6=.
+ 02cc 261f3b42                             &.;B            
+Contents of section .comment:
+ 0000 4743433a 2028474e 55292031 312e312e  GCC: (GNU) 11.1.
+ 0010 3000                                 0.              
+Contents of section .riscv.attributes:
+ 0000 411b0000 00726973 63760001 11000000  A....riscv......
+ 0010 04100572 76333269 32703000           ...rv32i2p0.    
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00000093          	li	ra,0
+   4:	00000113          	li	sp,0
+   8:	00000193          	li	gp,0
+   c:	00000213          	li	tp,0
+  10:	00000293          	li	t0,0
+  14:	00000313          	li	t1,0
+  18:	00000393          	li	t2,0
+  1c:	00000413          	li	s0,0
+  20:	00000493          	li	s1,0
+  24:	00000513          	li	a0,0
+  28:	00000593          	li	a1,0
+  2c:	00000613          	li	a2,0
+  30:	00000693          	li	a3,0
+  34:	00000713          	li	a4,0
+  38:	00000793          	li	a5,0
+  3c:	00000813          	li	a6,0
+  40:	00000893          	li	a7,0
+  44:	00000913          	li	s2,0
+  48:	00000993          	li	s3,0
+  4c:	00000a13          	li	s4,0
+  50:	00000a93          	li	s5,0
+  54:	00000b13          	li	s6,0
+  58:	00000b93          	li	s7,0
+  5c:	00000c13          	li	s8,0
+  60:	00000c93          	li	s9,0
+  64:	00000d13          	li	s10,0
+  68:	00000d93          	li	s11,0
+  6c:	00000e13          	li	t3,0
+  70:	00000e93          	li	t4,0
+  74:	00000f13          	li	t5,0
+  78:	00000f93          	li	t6,0
+  7c:	00009197          	auipc	gp,0x9
+  80:	88418193          	addi	gp,gp,-1916 # 8900 <_gp>
+
+00000084 <init_bss>:
+  84:	00008517          	auipc	a0,0x8
+  88:	07c50513          	addi	a0,a0,124 # 8100 <__bss_end>
+  8c:	00008597          	auipc	a1,0x8
+  90:	07058593          	addi	a1,a1,112 # 80fc <_test_start+0xfc>
+  94:	00000613          	li	a2,0
+  98:	06c000ef          	jal	ra,104 <fill_block>
+
+0000009c <init_sbss>:
+  9c:	00008517          	auipc	a0,0x8
+  a0:	06450513          	addi	a0,a0,100 # 8100 <__bss_end>
+  a4:	00008597          	auipc	a1,0x8
+  a8:	05858593          	addi	a1,a1,88 # 80fc <_test_start+0xfc>
+  ac:	00000613          	li	a2,0
+  b0:	054000ef          	jal	ra,104 <fill_block>
+
+000000b4 <write_stack_pattern>:
+  b4:	00008517          	auipc	a0,0x8
+  b8:	04c50513          	addi	a0,a0,76 # 8100 <__bss_end>
+  bc:	00009597          	auipc	a1,0x9
+  c0:	04058593          	addi	a1,a1,64 # 90fc <_gp+0x7fc>
+  c4:	00000613          	li	a2,0
+  c8:	03c000ef          	jal	ra,104 <fill_block>
+
+000000cc <init_stack>:
+  cc:	00009117          	auipc	sp,0x9
+  d0:	03410113          	addi	sp,sp,52 # 9100 <__stack>
+
+000000d4 <write_test_pattern>:
+  d4:	00008517          	auipc	a0,0x8
+  d8:	f2c50513          	addi	a0,a0,-212 # 8000 <_test_start>
+  dc:	00008597          	auipc	a1,0x8
+  e0:	02058593          	addi	a1,a1,32 # 80fc <_test_start+0xfc>
+  e4:	00000613          	li	a2,0
+  e8:	01c000ef          	jal	ra,104 <fill_block>
+
+000000ec <SystemInit>:
+  ec:	02c000ef          	jal	ra,118 <main>
+
+000000f0 <SystemExit>:
+  f0:	00010297          	auipc	t0,0x10
+  f4:	f0c28293          	addi	t0,t0,-244 # fffc <_sim_end>
+  f8:	fff00313          	li	t1,-1
+  fc:	0062a023          	sw	t1,0(t0)
+
+00000100 <dead_loop>:
+ 100:	0000006f          	j	100 <dead_loop>
+
+00000104 <fill_block>:
+ 104:	00b57863          	bgeu	a0,a1,114 <fb_end>
+ 108:	00c52023          	sw	a2,0(a0)
+ 10c:	00450513          	addi	a0,a0,4
+ 110:	ff5ff06f          	j	104 <fill_block>
+
+00000114 <fb_end>:
+ 114:	00008067          	ret
+
+00000118 <main>:
+ 118:	fe010113          	addi	sp,sp,-32
+ 11c:	00812e23          	sw	s0,28(sp)
+ 120:	02010413          	addi	s0,sp,32
+ 124:	00010313          	mv	t1,sp
+ 128:	00030e93          	mv	t4,t1
+ 12c:	24c02303          	lw	t1,588(zero) # 24c <__rodata_start>
+ 130:	fff30e13          	addi	t3,t1,-1
+ 134:	ffc42223          	sw	t3,-28(s0)
+ 138:	00030e13          	mv	t3,t1
+ 13c:	000e0813          	mv	a6,t3
+ 140:	00000893          	li	a7,0
+ 144:	01b85e13          	srli	t3,a6,0x1b
+ 148:	00589693          	slli	a3,a7,0x5
+ 14c:	00de66b3          	or	a3,t3,a3
+ 150:	00581613          	slli	a2,a6,0x5
+ 154:	00030693          	mv	a3,t1
+ 158:	00068513          	mv	a0,a3
+ 15c:	00000593          	li	a1,0
+ 160:	01b55693          	srli	a3,a0,0x1b
+ 164:	00559793          	slli	a5,a1,0x5
+ 168:	00f6e7b3          	or	a5,a3,a5
+ 16c:	00551713          	slli	a4,a0,0x5
+ 170:	00030793          	mv	a5,t1
+ 174:	00279793          	slli	a5,a5,0x2
+ 178:	00f78793          	addi	a5,a5,15
+ 17c:	0047d793          	srli	a5,a5,0x4
+ 180:	00479793          	slli	a5,a5,0x4
+ 184:	40f10133          	sub	sp,sp,a5
+ 188:	00010793          	mv	a5,sp
+ 18c:	00378793          	addi	a5,a5,3
+ 190:	0027d793          	srli	a5,a5,0x2
+ 194:	00279793          	slli	a5,a5,0x2
+ 198:	fef42023          	sw	a5,-32(s0)
+ 19c:	fe042423          	sw	zero,-24(s0)
+ 1a0:	0380006f          	j	1d8 <main+0xc0>
+ 1a4:	fe842783          	lw	a5,-24(s0)
+ 1a8:	00279713          	slli	a4,a5,0x2
+ 1ac:	25000793          	li	a5,592
+ 1b0:	00f707b3          	add	a5,a4,a5
+ 1b4:	0007a703          	lw	a4,0(a5)
+ 1b8:	fe042683          	lw	a3,-32(s0)
+ 1bc:	fe842783          	lw	a5,-24(s0)
+ 1c0:	00279793          	slli	a5,a5,0x2
+ 1c4:	00f687b3          	add	a5,a3,a5
+ 1c8:	00e7a023          	sw	a4,0(a5)
+ 1cc:	fe842783          	lw	a5,-24(s0)
+ 1d0:	00178793          	addi	a5,a5,1
+ 1d4:	fef42423          	sw	a5,-24(s0)
+ 1d8:	24c02783          	lw	a5,588(zero) # 24c <__rodata_start>
+ 1dc:	fe842703          	lw	a4,-24(s0)
+ 1e0:	fcf742e3          	blt	a4,a5,1a4 <main+0x8c>
+ 1e4:	fe042623          	sw	zero,-20(s0)
+ 1e8:	03c0006f          	j	224 <main+0x10c>
+ 1ec:	fec42783          	lw	a5,-20(s0)
+ 1f0:	00279713          	slli	a4,a5,0x2
+ 1f4:	000087b7          	lui	a5,0x8
+ 1f8:	00078793          	mv	a5,a5
+ 1fc:	00f707b3          	add	a5,a4,a5
+ 200:	fe042683          	lw	a3,-32(s0)
+ 204:	fec42703          	lw	a4,-20(s0)
+ 208:	00271713          	slli	a4,a4,0x2
+ 20c:	00e68733          	add	a4,a3,a4
+ 210:	00072703          	lw	a4,0(a4)
+ 214:	00e7a023          	sw	a4,0(a5) # 8000 <_test_start>
+ 218:	fec42783          	lw	a5,-20(s0)
+ 21c:	00178793          	addi	a5,a5,1
+ 220:	fef42623          	sw	a5,-20(s0)
+ 224:	24c02783          	lw	a5,588(zero) # 24c <__rodata_start>
+ 228:	fec42703          	lw	a4,-20(s0)
+ 22c:	fcf740e3          	blt	a4,a5,1ec <main+0xd4>
+ 230:	000e8113          	mv	sp,t4
+ 234:	00000793          	li	a5,0
+ 238:	00078513          	mv	a0,a5
+ 23c:	fe040113          	addi	sp,s0,-32
+ 240:	01c12403          	lw	s0,28(sp)
+ 244:	02010113          	addi	sp,sp,32
+ 248:	00008067          	ret

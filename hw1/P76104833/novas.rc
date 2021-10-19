@@ -201,7 +201,7 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
+nWaveOpenFsdbDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\"" "\"/home/zzhong/VLSI_system_design_2021/hw1/P76104833/build/top.fsdb\""
 nWaveRestoreRCDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/signal.rc\""
 [Form]
 version = Verdi_O-2018.09
@@ -322,13 +322,14 @@ FileName = test.ps
 PaperSize = A4 - 210x297 (mm)
 ColorPrint = FALSE
 [QtDialog]
-QwUserAskDlg = 788,446,324,128
-saveSigDlg = 684,344,551,386
 QwQuestionMsgDlg = 788,484,324,114
 QwWarnMsgDlg = 650,580,600,250
-openFileDlg = 659,296,602,483
-restoreSigDlg = 684,318,551,438
-qWaveSignalDialog = 799,176,800,479
+QwInfoMsgDlg = 1655,959,750,250
+QwUserAskDlg = 756,487,324,128
+saveSigDlg = 1504,841,551,386
+qWaveSignalDialog = 1640,717,800,479
+openFileDlg = 1739,797,602,483
+restoreSigDlg = 1764,819,551,438
 [Session Cache]
 1 = string (session file name)
 2 = string (session file name)
@@ -539,8 +540,8 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-getSignalForm = 799 135 800 479 241 381 313 89
-viewPort = 0 0 1920 993 241 207
+getSignalForm = 1640 717 800 479 241 381 313 89
+viewPort = 1080 442 1920 1111 241 207
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -810,7 +811,8 @@ hspiceIncOpenMode = TRUE
 pcSelectMode = TRUE
 hierarchyDelimiter = /
 RecentFile1 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/signal.rc\""
-RecentFile2 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
+RecentFile2 = "\"/home/zzhong/VLSI_system_design_2021/hw1/P76104833/build/top.fsdb\""
+RecentFile3 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto

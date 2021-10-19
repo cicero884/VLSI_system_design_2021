@@ -10,8 +10,14 @@
 	alu_out=alu_in1 EXPR alu_in2;
 
 `define COMP_S(EXPR) \
-	if((alu_ctrl_s.is_signed && ($signed(alu_in1) EXPR $signed(alu_in2))) || \
-			(!alu_ctrl_s.is_signed && (alu_in1 EXPR alu_in2))) begin \
+	if(alu_ctrl_s.is_signed) begin \
+		if($signed(alu_in1) EXPR $signed(alu_in2)) begin\
+		alu_out=32'd1; \
+		branch_flag=1'b1; \
+		end \
+		else alu_out=32'd0; \
+	end \
+	else if(alu_in1 EXPR alu_in2) begin \
 		alu_out=32'd1; \
 		branch_flag=1'b1; \
 	end \
