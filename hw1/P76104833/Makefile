@@ -1,3 +1,5 @@
+SHELL := /bin/bash # Use bash syntax
+
 root_dir := $(PWD)
 src_dir := ./src
 syn_dir := ./syn
