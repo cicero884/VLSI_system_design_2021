@@ -48,7 +48,7 @@ always_comb begin
 			mem_w   = 1'b1;
 		end
 		7'b1100011: begin// B-type
-			pc_src  = 1'b1;
+			pc_src  = 1'bx;
 			reg_w   = 1'b0;
 			wb_sel  = 1'bx;
 			rd_src  = 1'bx;
@@ -64,7 +64,7 @@ always_comb begin
 			mem_w   = 1'b0;
 		end
 		7'b0110111: begin// U-type(LUI)
-			pc_src  = 1'b1;
+			pc_src  = 1'bx;
 			reg_w   = 1'b1;
 			wb_sel  = 1'b1;
 			rd_src  = 1'b0;
