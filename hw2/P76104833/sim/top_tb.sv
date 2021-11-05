@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 `define CYCLE 10.0 // Cycle time
-`define MAX 100000 // Max cycle number
+`define MAX 300000 // Max cycle number
 `ifdef SYN
 `include "top_syn.v"
 `include "SRAM/SRAM.v"
@@ -18,12 +18,16 @@
   TOP.DM1.i_SRAM.Memory_byte0[addr]}
 `define SIM_END 'h3fff
 `define SIM_END_CODE -32'd1
-`define TEST_START 'h2000
+`define TEST_START 'h0000
 module top_tb;
 
   logic clk;
   logic rst;
   logic [31:0] GOLDEN[64];
+  logic [7:0] Memory_byte0[32768];
+  logic [7:0] Memory_byte1[32768];
+  logic [7:0] Memory_byte2[32768];
+  logic [7:0] Memory_byte3[32768];
   integer gf, i, num;
   integer err;
   string prog_path;
@@ -39,14 +43,21 @@ module top_tb;
     $value$plusargs("prog_path=%s", prog_path);
     clk = 0; rst = 1;
     #(`CYCLE) rst = 0;
-    $readmemh({prog_path, "/main0.hex"}, TOP.IM1.i_SRAM.Memory_byte0);
-    $readmemh({prog_path, "/main0.hex"}, TOP.DM1.i_SRAM.Memory_byte0); 
-    $readmemh({prog_path, "/main1.hex"}, TOP.IM1.i_SRAM.Memory_byte1);
-    $readmemh({prog_path, "/main1.hex"}, TOP.DM1.i_SRAM.Memory_byte1); 
-    $readmemh({prog_path, "/main2.hex"}, TOP.IM1.i_SRAM.Memory_byte2);
-    $readmemh({prog_path, "/main2.hex"}, TOP.DM1.i_SRAM.Memory_byte2); 
-    $readmemh({prog_path, "/main3.hex"}, TOP.IM1.i_SRAM.Memory_byte3);
-    $readmemh({prog_path, "/main3.hex"}, TOP.DM1.i_SRAM.Memory_byte3); 
+    $readmemh({prog_path, "/main0.hex"}, Memory_byte0);
+    $readmemh({prog_path, "/main1.hex"}, Memory_byte1);
+    $readmemh({prog_path, "/main2.hex"}, Memory_byte2);
+    $readmemh({prog_path, "/main3.hex"}, Memory_byte3);
+    for (i = 0; i < 16384; i++)
+    begin
+      TOP.IM1.i_SRAM.Memory_byte0[i] = Memory_byte0[i];
+      TOP.DM1.i_SRAM.Memory_byte0[i] = Memory_byte0[i + 16384];
+      TOP.IM1.i_SRAM.Memory_byte1[i] = Memory_byte1[i];
+      TOP.DM1.i_SRAM.Memory_byte1[i] = Memory_byte1[i + 16384];
+      TOP.IM1.i_SRAM.Memory_byte2[i] = Memory_byte2[i];
+      TOP.DM1.i_SRAM.Memory_byte2[i] = Memory_byte2[i + 16384];
+      TOP.IM1.i_SRAM.Memory_byte3[i] = Memory_byte3[i];
+      TOP.DM1.i_SRAM.Memory_byte3[i] = Memory_byte3[i + 16384];
+    end
     num = 0;
     gf = $fopen({prog_path, "/golden.hex"}, "r");
     while (!$feof(gf))
@@ -95,10 +106,9 @@ module top_tb;
       if (`mem_word(`TEST_START + i) !== GOLDEN[i])
       begin
         $display("DM[%4d] = %h, expect = %h", `TEST_START + i, `mem_word(`TEST_START + i), GOLDEN[i]);
-        err = err + 1;
+        err=err+1;
       end
-      else
-      begin
+      else begin
         $display("DM[%4d] = %h, pass", `TEST_START + i, `mem_word(`TEST_START + i));
       end
     end

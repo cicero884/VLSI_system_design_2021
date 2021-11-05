@@ -7,8 +7,8 @@ _TEST_SIZE = DEFINED(_TEST_SIZE) ? _TEST_SIZE : 0x100;
  * Define memory layout
  ****************************************************************************/
 MEMORY {
-  imem : ORIGIN = 0x00000000, LENGTH = 0x00008000
-  dmem : ORIGIN = 0x00008000, LENGTH = 0x00008000
+  imem : ORIGIN = 0x00000000, LENGTH = 0x00010000
+  dmem : ORIGIN = 0x00010000, LENGTH = 0x00010000
 }
 
 /* Specify the default entry point to the program */
