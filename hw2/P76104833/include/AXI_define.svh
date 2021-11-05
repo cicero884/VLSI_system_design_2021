@@ -51,13 +51,14 @@
 	endinterface
 
 	// define interface addr
-	interface AddrInfo(parameter ID_bits);
+	interface AddrInfo(HandShake handshake);
 		BurstType burst;
 		logic [`AXI_ADDR_BITS	-1:0] addr;
 		logic [`AXI_LEN_BITS	-1:0] len;
 		logic [`AXI_SIZE_BITS	-1:0] size;
-		modport out	(output burst,output addr,output len,output size);
-		modport in	(input 	burst,input  addr,input  len,input  size);
+		HandShake handshake;
+		modport out	(output burst,output addr,output len,output size,handshake.sender);
+		modport in	(input 	burst,input  addr,input  len,input  size,handshake.receiver);
 	endinterface
 
 	// define interface data
@@ -65,8 +66,9 @@
 		logic [`AXI_DATA_BITS	-1:0] data,
 		logic [`AXI_STRB_BITS	-1:0] strb,
 		logic last,
-		modport out(output data,output strb,output last)
-		modport in (input  data,input  strb,input  last)
+		HandShake handshake;
+		modport out(output data,output strb,output last,handshake.sender)
+		modport in (input  data,input  strb,input  last,handshake.receiver)
 	endinterface
 
 `endif
