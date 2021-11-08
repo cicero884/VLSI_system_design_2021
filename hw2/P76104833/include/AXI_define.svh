@@ -81,7 +81,7 @@
 		modport out(output data,output strb,output last);
 		modport in (input  data,input  strb,input  last);
 	endinterface
-	`define MetaData_prepare(ROLE,RW) \
+	`define MetaData_prepare(RW,ROLE) \
 		//ex: MetaData W_M1();
 		MetaData ``RW``_``ROLE``(); \
 		//ex: W_M1.data=WDATA_M1;

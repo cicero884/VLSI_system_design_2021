@@ -8,7 +8,7 @@
 
 // define AW,AR for model input
 // AW|AR=ID+`AddrInfo+`HandShake
-`define A(ROLE,RW) \
+`define A(RW,ROLE) \
 	A``RW``ID_``ROLE``, \
 	A``RW``_``ROLE``, \
 	HSA``RW``_``ROLE``
@@ -42,7 +42,7 @@ module AXI(
 	//SLAVE INTERFACE FOR MASTERS
 	//WRITE ADDRESS	=ID +`AddrInfo +`HandShake
 	input [`AXI_IDM_BITS-1:0] AWID_M1,
-	input [`AXI_ADDR_BITS-1:0] AWADDR_M1,
+	input [`AXI_ADDR_BITS-1:0] AWADDR_M1, in interfac
 	input [`AXI_LEN_BITS-1:0] AWLEN_M1,
 	input [`AXI_SIZE_BITS-1:0] AWSIZE_M1,
 	input [1:0] AWBURST_M1,
@@ -168,7 +168,27 @@ module AXI(
     //---------- you should put your dumb design here ----------//
 	//input master 0(AR),1(AW,AR,W)
 	//output slave ?(AW,AR,W)
-Arbiter_A()
+`AddrInfo_prepare(R,M0)
+`HandShake_prepare(AR,M0)
+`AddrInfo_prepare(W,M1)
+`HandShake_prepare(AW,M1) in interfac
+`AddrInfo_prepare(R,M1)
+`HandShake_prepare(AR,M1)
+`MetaData_prepare(W,M1)
+`HandShake_prepare(W,M1)
+
+`AddrInfo_prepare(W,S0)
+`HandShake_prepare(AW,S0)
+`AddrInfo_prepare(R,S0)
+`HandShake_prepare(AR,S0)
+`MetaData_prepare(W,S0)
+`HandShake_prepare(W,S0)
+Arbiter_A(
+	ACLK,ARESETn,
+	`A(R,M0),
+	`A(W,M1),`A(R,M1),`W(M1),
+	`A(W,S0),`A(R,S0),`W(S0)
+);
 	
 	
 	
