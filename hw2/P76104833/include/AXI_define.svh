@@ -49,7 +49,7 @@
 		modport out(input  ready,output valid);//sender
 		modport in (output ready,input  valid);//receiver
 	endinterface
-	`define HandShake_prepare(ROLE,TYPE) \
+	`define HandShake_prepare(TYPE,ROLE) \
 		//ex HandShake HSAW_M1
 		HandShake HS``TYPE``_``ROLE``(); \
 		HS``TYPE``_``ROLE``.ready=``TYPE``READY_``ROLE`` \
@@ -64,7 +64,7 @@
 		modport out	(output burst,output addr,output len,output size);
 		modport in	(input 	burst,input  addr,input  len,input  size);
 	endinterface
-	`define AddrInfo_prepare(ROLE,RW) \
+	`define AddrInfo_prepare(RW,ROLE) \
 		//ex: AddrInfo AW_M1();
 		AddrInfo A``RW``_``ROLE``(); \
 		//ex: AW_M1.addr=AWADDR_M1;
