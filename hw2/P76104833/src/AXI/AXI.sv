@@ -6,6 +6,34 @@
 //================================================
 `include "AXI_define.svh"
 
+// define AW,AR for model input
+// AW|AR=ID+`AddrInfo+`HandShake
+`define A(ROLE,RW) \
+	A``RW``ID_``ROLE``, \
+	A``RW``_``ROLE``, \
+	HSA``RW``_``ROLE``
+
+//define W model input
+// W=`MetaData+`HandShake
+`define W(ROLE) \
+	W_``ROLE``, \
+	HSW_``ROLE``
+
+//define R model input
+// R=ID +`MetaData +`HandShake +RESP
+// need add RESP by hane if is for master 
+`define R(ROLE) \
+	RID_``ROLE``, \
+	R_``ROLE``, \
+	HSR_``ROLE``
+
+//define B model input
+// B=ID +RESP +`Handshake
+`define B(ROLE) \
+	BID_``ROLE``, \
+	BRESP_``ROLE``, \
+	HSAR_``ROLE``
+
 module AXI(
 
 	input ACLK,
@@ -13,27 +41,27 @@ module AXI(
 
 	//SLAVE INTERFACE FOR MASTERS
 	//WRITE ADDRESS	=ID +`AddrInfo +`HandShake
-	input [`AXI_ID_BITS-1:0] AWID_M1,
+	input [`AXI_IDM_BITS-1:0] AWID_M1,
 	input [`AXI_ADDR_BITS-1:0] AWADDR_M1,
 	input [`AXI_LEN_BITS-1:0] AWLEN_M1,
 	input [`AXI_SIZE_BITS-1:0] AWSIZE_M1,
 	input [1:0] AWBURST_M1,
 	input AWVALID_M1,
 	output AWREADY_M1,
-	//WRITE DATA	=ID +`MetaData +`HandShake
+	//WRITE DATA	=   +`MetaData +`HandShake
 	input [`AXI_DATA_BITS-1:0] WDATA_M1,
 	input [`AXI_STRB_BITS-1:0] WSTRB_M1,
 	input WLAST_M1,
 	input WVALID_M1,
 	output WREADY_M1,
 	//WRITE RESPONSE=ID +RESP +`Handshake
-	output [`AXI_ID_BITS-1:0] BID_M1,
+	output [`AXI_IDM_BITS-1:0] BID_M1,
 	output [1:0] BRESP_M1,
 	output BVALID_M1,
 	input BREADY_M1,
 
 	//READ ADDRESS0	=ID +`AddrInfo +`HandShake
-	input [`AXI_ID_BITS-1:0] ARID_M0,
+	input [`AXI_IDM_BITS-1:0] ARID_M0,
 	input [`AXI_ADDR_BITS-1:0] ARADDR_M0,
 	input [`AXI_LEN_BITS-1:0] ARLEN_M0,
 	input [`AXI_SIZE_BITS-1:0] ARSIZE_M0,
@@ -41,14 +69,14 @@ module AXI(
 	input ARVALID_M0,
 	output ARREADY_M0,
 	//READ DATA0	=ID +`MetaData +`HandShake +RESP
-	output [`AXI_ID_BITS-1:0] RID_M0,
+	output [`AXI_IDM_BITS-1:0] RID_M0,
 	output [`AXI_DATA_BITS-1:0] RDATA_M0,
 	output [1:0] RRESP_M0,
 	output RLAST_M0,
 	output RVALID_M0,
 	input RREADY_M0,
 	//READ ADDRESS1	=ID +`AddrInfo +`HandShake
-	input [`AXI_ID_BITS-1:0] ARID_M1,
+	input [`AXI_IDM_BITS-1:0] ARID_M1,
 	input [`AXI_ADDR_BITS-1:0] ARADDR_M1,
 	input [`AXI_LEN_BITS-1:0] ARLEN_M1,
 	input [`AXI_SIZE_BITS-1:0] ARSIZE_M1,
@@ -56,7 +84,7 @@ module AXI(
 	input ARVALID_M1,
 	output ARREADY_M1,
 	//READ DATA1	=ID +`MetaData +`HandShake +RESP
-	output [`AXI_ID_BITS-1:0] RID_M1,
+	output [`AXI_IDM_BITS-1:0] RID_M1,
 	output [`AXI_DATA_BITS-1:0] RDATA_M1,
 	output [1:0] RRESP_M1,
 	output RLAST_M1,
@@ -124,7 +152,7 @@ module AXI(
 	output [`AXI_ADDR_BITS-1:0] ARADDR_S1,
 	output [`AXI_LEN_BITS-1:0] ARLEN_S1,
 	output [`AXI_SIZE_BITS-1:0] ARSIZE_S1,
-	output [1:0] ARBURST_S1,
+	output [1:0] ARBURST_S1, 
 	output ARVALID_S1,
 	input ARREADY_S1,
 	//READ DATA1	=ID +`MetaData +`HandShake
@@ -138,7 +166,9 @@ module AXI(
 );
 
     //---------- you should put your dumb design here ----------//
-	
+	//input master 0(AR),1(AW,AR,W)
+	//output slave ?(AW,AR,W)
+Arbiter_A()
 	
 	
 	
