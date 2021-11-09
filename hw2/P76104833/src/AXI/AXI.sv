@@ -5,6 +5,7 @@
 // Version:     1.0 
 //================================================
 `include "AXI_define.svh"
+`include "AXI_Arbiter_define.svh"
 
 // define AW,AR for model input
 // AW|AR=ID+`AddrInfo+`HandShake
@@ -33,6 +34,11 @@
 	BID_``ROLE``, \
 	BRESP_``ROLE``, \
 	HSAR_``ROLE``
+
+// Arbiter
+`ARBITER(AW,S0,AddrInfo)
+`ARBITER(AR,S0,AddrInfo)
+`ARBITER(W,S0,MetaData)
 
 module AXI(
 
@@ -140,7 +146,7 @@ module AXI(
 	output [1:0] ARBURST_S0,
 	output ARVALID_S0,
 	input ARREADY_S0,
-	//READ DATA0	=ID +`MetaData +`HandShake
+	//READ DATA0	=ID +`MetaData +`HandShake +RESP
 	input [`AXI_IDS_BITS-1:0] RID_S0,
 	input [`AXI_DATA_BITS-1:0] RDATA_S0,
 	input [1:0] RRESP_S0,
@@ -155,7 +161,7 @@ module AXI(
 	output [1:0] ARBURST_S1, 
 	output ARVALID_S1,
 	input ARREADY_S1,
-	//READ DATA1	=ID +`MetaData +`HandShake
+	//READ DATA1	=ID +`MetaData +`HandShake +RESP
 	input [`AXI_IDS_BITS-1:0] RID_S1,
 	input [`AXI_DATA_BITS-1:0] RDATA_S1,
 	input [1:0] RRESP_S1,
@@ -183,12 +189,6 @@ module AXI(
 `HandShake_prepare(AR,S0)
 `MetaData_prepare(W,S0)
 `HandShake_prepare(W,S0)
-Arbiter_A(
-	ACLK,ARESETn,
-	`A(R,M0),
-	`A(W,M1),`A(R,M1),`W(M1),
-	`A(W,S0),`A(R,S0),`W(S0)
-);
 	
 	
 	
