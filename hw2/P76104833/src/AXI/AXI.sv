@@ -5,36 +5,19 @@
 // Version:     1.0 
 //================================================
 `include "AXI_define.svh"
+`include "AXI_package.svh"
 `include "Arbiter.sv"
 `include "Decoder.sv"
 
-// define AW,AR for model input
-// AW|AR=ID+`AddrInfo+`HandShake
-`define A(RW,ROLE) \
-	A``RW``ID_``ROLE``, \
-	A``RW``_``ROLE``, \
-	HSA``RW``_``ROLE``
 
-//define W model input
-// W=`MetaData+`HandShake
-`define W(ROLE) \
-	W_``ROLE``, \
-	HSW_``ROLE``
+// define read Mux port
+//READ ADDRESS1	=ID +`AddrInfo +`HandShake
+//READ DATA0	=ID +`MetaData +`HandShake +RESP
 
-//define R model input
-// R=ID +`MetaData +`HandShake +RESP
-// need add RESP by hane if is for master 
-`define R(ROLE) \
-	RID_``ROLE``, \
-	R_``ROLE``, \
-	HSR_``ROLE``
 
-//define B model input
-// B=ID +RESP +`Handshake
-`define B(ROLE) \
-	BID_``ROLE``, \
-	BRESP_``ROLE``, \
-	HSAR_``ROLE``
+
+// define write Mux port
+//WRITE ADDRESS0=ID +`AddrInfo +`HandShake
 
 
 module AXI(
@@ -103,7 +86,7 @@ module AXI(
 	output [1:0] AWBURST_S0,
 	output AWVALID_S0,
 	input AWREADY_S0,
-	//WRITE DATA0	=   +`MetaData +`HandShake
+	//WRITE DATA0	=   +`MetaData +`HandShake +STRB
 	output [`AXI_DATA_BITS-1:0] WDATA_S0,
 	output [`AXI_STRB_BITS-1:0] WSTRB_S0,
 	output WLAST_S0,
@@ -123,7 +106,7 @@ module AXI(
 	output [1:0] AWBURST_S1,
 	output AWVALID_S1,
 	input AWREADY_S1,
-	//WRITE DATA1	=   +`MetaData +`HandShake
+	//WRITE DATA1	=   +`MetaData +`HandShake +STRB
 	output [`AXI_DATA_BITS-1:0] WDATA_S1,
 	output [`AXI_STRB_BITS-1:0] WSTRB_S1,
 	output WLAST_S1,
@@ -214,7 +197,20 @@ module AXI(
 `HandShake_prepare(	W,	S1)
 `HandShake_prepare(	B,	S1)
 
+// Default Master
+`CREATE_R(MD)
+`CREATE_W(MD)
+
+// Default Slave
+`CREATE_R(SD)
+`CREATE_W(SD)
+
 // Decoder
-Decoder 
+`CREATE_R(M0_1)
+`CREATE_R(M0_2)
+`CREATE_R(M0_D)
+Pointer R_M0;
+Decoder DecoderR_M0(AR_M0.addr,R_M0)
+
 
 endmodule
