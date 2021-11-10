@@ -8,12 +8,12 @@
 	`define ARBITER(TYPE,ROLE,DATA) \
 		module Arbiter``TYPE``_``INDEX``( \
 			input ACLK,input ARESETn, \
-			input [`AXI_IDIDS_BITS]ID1, DATA.in data1, input resp1, HandShake.in hs1, \
-			input [`AXI_IDIDS_BITS]ID2, DATA.in data2, input resp2, HandShake.in hs2, \
-			input [`AXI_IDIDS_BITS]IDD, DATA.in dataD, input respD, HandShake.in hsD, \
-			output [`AXI_IDIDS_BITS]IDOut, DATA.out dataOut, output respOut, HandShake.out hsOut \
+			HandShake.in hs1, \
+			HandShake.in hs2, \
+			HandShake.in hsD, \
+			output Direction receive_direction \
 		); \
-		Direction receive_direction,last_direction; \
+		Direction last_direction; \
 		always_ff(posedge ACLK,negedge ARESETn) begin \
 			if(!ARESETn) begin \
 				receive_direction<=DEFAULT; \

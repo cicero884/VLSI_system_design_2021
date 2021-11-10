@@ -5,7 +5,8 @@
 // Version:     1.0 
 //================================================
 `include "AXI_define.svh"
-`include "AXI_Arbiter_define.svh"
+`include "Arbiter.sv"
+`include "Decoder.sv"
 
 // define AW,AR for model input
 // AW|AR=ID+`AddrInfo+`HandShake
@@ -35,10 +36,6 @@
 	BRESP_``ROLE``, \
 	HSAR_``ROLE``
 
-// Arbiter
-`ARBITER(AW,S0,AddrInfo)
-`ARBITER(AR,S0,AddrInfo)
-`ARBITER(W,S0,MetaData)
 
 module AXI(
 
@@ -172,25 +169,52 @@ module AXI(
 );
 
     //---------- you should put your dumb design here ----------//
-	//input master 0(AR),1(AW,AR,W)
-	//output slave ?(AW,AR,W)
-`AddrInfo_prepare(R,M0)
-`HandShake_prepare(AR,M0)
-`AddrInfo_prepare(W,M1)
-`HandShake_prepare(AW,M1) in interfac
-`AddrInfo_prepare(R,M1)
-`HandShake_prepare(AR,M1)
-`MetaData_prepare(W,M1)
-`HandShake_prepare(W,M1)
 
-`AddrInfo_prepare(W,S0)
-`HandShake_prepare(AW,S0)
-`AddrInfo_prepare(R,S0)
-`HandShake_prepare(AR,S0)
-`MetaData_prepare(W,S0)
-`HandShake_prepare(W,S0)
+//verilog "generate" sucks,
+//you cant concate it on variable name
+//copy paste =_=
+// concate wire to struct or interface
+`AddrInfo_prepare(	R,	M0)
+`HandShake_prepare(	AR,	M0)
+`MetaData_prepare(	R,	M0)
+`HandShake_prepare(	R,	M0)
+//`AddrInfo_prepare(	W,	M0)
+//`HandShake_prepare(	AW,	M0)
+//`MetaData_prepare(	W,	M0)
+//`HandShake_prepare(	W,	M0)
+//`HandShake_prepare(	B,	M0)
 	
+`AddrInfo_prepare(	R,	M1)
+`HandShake_prepare(	AR,	M1)
+`MetaData_prepare(	R,	M1)
+`HandShake_prepare(	R,	M1)
+`AddrInfo_prepare(	W,	M1)
+`HandShake_prepare(	AW,	M1)
+`MetaData_prepare(	W,	M1)
+`HandShake_prepare(	W,	M1)
+`HandShake_prepare(	B,	M1)
 	
+`AddrInfo_prepare(	R,	S0)
+`HandShake_prepare(	AR,	S0)
+`MetaData_prepare(	R,	S0)
+`HandShake_prepare(	R,	S0)
+`AddrInfo_prepare(	W,	S0)
+`HandShake_prepare(	AW,	S0)
+`MetaData_prepare(	W,	S0)
+`HandShake_prepare(	W,	S0)
+`HandShake_prepare(	B,	S0)
 	
-	
+`AddrInfo_prepare(	R,	S1)
+`HandShake_prepare(	AR,	S1)
+`MetaData_prepare(	R,	S1)
+`HandShake_prepare(	R,	S1)
+`AddrInfo_prepare(	W,	S1)
+`HandShake_prepare(	AW,	S1)
+`MetaData_prepare(	W,	S1)
+`HandShake_prepare(	W,	S1)
+`HandShake_prepare(	B,	S1)
+
+// Decoder
+Decoder 
+
 endmodule
