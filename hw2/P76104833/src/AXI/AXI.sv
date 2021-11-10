@@ -9,17 +9,6 @@
 `include "Arbiter.sv"
 `include "Decoder.sv"
 
-
-// define read Mux port
-//READ ADDRESS1	=ID +`AddrInfo +`HandShake
-//READ DATA0	=ID +`MetaData +`HandShake +RESP
-
-
-
-// define write Mux port
-//WRITE ADDRESS0=ID +`AddrInfo +`HandShake
-
-
 module AXI(
 
 	input ACLK,
