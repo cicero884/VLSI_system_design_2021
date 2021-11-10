@@ -8,6 +8,8 @@
 `include "AXI_package.svh"
 `include "Arbiter.sv"
 `include "Decoder.sv"
+`include "Mux_1_to_N.sv"
+`include "Mux_N_to_1.sv"
 
 module AXI(
 
@@ -186,10 +188,6 @@ module AXI(
 `HandShake_prepare(	W,	S1)
 `HandShake_prepare(	B,	S1)
 
-// Default Master
-`CREATE_R(MD)
-`CREATE_W(MD)
-
 // Default Slave
 `CREATE_R(SD)
 `CREATE_W(SD)
@@ -198,8 +196,63 @@ module AXI(
 `CREATE_R(M0_1)
 `CREATE_R(M0_2)
 `CREATE_R(M0_D)
-Pointer R_M0;
-Decoder DecoderR_M0(AR_M0.addr,R_M0)
+Pointer Pointer_R_M0;
+Decoder Decoder_R_M0(AR_M0.addr,Pointer_R_M0);
+Mux_1_to_N #(.SIZE($bits(`R_R_channel(M0))))R_M0_1_to_N(
+	`R_R_channel(M0),Pointer_R_M0,
+	`R_R_channel(M0_1),`R_R_channel(M0_2),`R_R_channel(M0_D)
+)
+Mux_N_to_1 #(.SIZE($bits(`R_B_channel(M0))))R_M0_N_to_1(
+	`R_B_channel(M0),Pointer_R_M0,
+	`R_B_channel(M0_1),`R_B_channel(M0_2),`R_B_channel(M0_D)
+)
 
+//`CREATE_W(M0_1)
+//`CREATE_W(M0_2)
+//`CREATE_W(M0_D)
+//Pointer Pointer_W_M0;
+//Decoder DecoderW_M0(AW_M0.addr,Pointer_W_M0);
+//Mux_1_to_N #(.SIZE($bits(`W_R_channel(M0))))R_M0_1_to_N(
+//	`W_R_channel(M0),Pointer_W_M0,
+//	`W_R_channel(M0_1),`W_R_channel(M0_2),`W_R_channel(M0_D)
+//)
+//Mux_N_to_1 #(.SIZE($bits(`W_B_channel(M0))))R_M0_N_to_1(
+//	`W_B_channel(M0),Pointer_W_M0,
+//	`W_B_channel(M0_1),`W_B_channel(M0_2),`W_B_channel(M0_D)
+//)
 
+`CREATE_R(M1_1)
+`CREATE_R(M1_2)
+`CREATE_R(M1_D)
+Pointer Pointer_R_M1;
+Decoder Decoder_R_M1(AR_M1.addr,Pointer_R_M1);
+Mux_1_to_N #(.SIZE($bits(`R_R_channel(M1))))R_M1_1_to_N(
+	`R_R_channel(M1),Pointer_R_M1,
+	`R_R_channel(M1_1),`R_R_channel(M1_2),`R_R_channel(M1_D)
+)
+Mux_N_to_1 #(.SIZE($bits(`R_B_channel(M1))))R_M1_N_to_1(
+	`R_B_channel(M1),Pointer_R_M1,
+	`R_B_channel(M1_1),`R_B_channel(M1_2),`R_B_channel(M1_D)
+)
+
+`CREATE_W(M1_1)
+`CREATE_W(M1_2)
+`CREATE_W(M1_D)
+Pointer Pointer_W_M1;
+Decoder Decoder_W_M1(AW_M1.addr,Pointer_W_M1);
+Mux_1_to_N #(.SIZE($bits(`W_R_channel(M1))))R_M1_1_to_N(
+	`W_R_channel(M1),Pointer_W_M1,
+	`W_R_channel(M1_1),`W_R_channel(M1_2),`W_R_channel(M1_D)
+)
+Mux_N_to_1 #(.SIZE($bits(`W_B_channel(M1))))R_M1_N_to_1(
+	`W_B_channel(M1),Pointer_W_M1,
+	`W_B_channel(M1_1),`W_B_channel(M1_2),`W_B_channel(M1_D)
+)
+
+// Arbiter
+Pointer Pointer_R_S0;
+Arbiter Arbiter_R_S0(
+	ACLK,ARESETn,
+	HSAR_M0_1
+);
 endmodule

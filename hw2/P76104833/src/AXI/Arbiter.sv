@@ -36,27 +36,5 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 		endcase
 	end
 end
-//always_comb begin
-//	case(receive_direction):
-//		SEL1:begin
-//			IDOut=ID1;
-//			dataOut=data1;
-//			respOut=resp1;
-//			hsOut=hs1
-//		end
-//		SEL2:begin
-//			IDOut=ID2;
-//			dataOut=data2;
-//			respOut=resp2;
-//			hsOut=hs2
-//		end
-//		default:begin
-//			IDOut=IDD;
-//			dataOut=dataD;
-//			respOut=respD;
-//			hsOut=hsD
-//		end
-//	endcase
-//end
 endmodule
 

@@ -19,35 +19,6 @@
 		``RW``_``ROLE``.data	=``RW``DATA_``ROLE``; \
 		``RW``_``ROLE``.last	=``RW``LAST_``ROLE``; 
 
-
-	// define AW,AR for model input
-	// AW|AR=ID+`AddrInfo+`HandShake
-	`define A(RW,ROLE) \
-		A``RW``ID_``ROLE``, \
-		A``RW``_``ROLE``, \
-		HSA``RW``_``ROLE``
-
-	//define W model input
-	// W=`MetaData+`HandShake
-	`define W(ROLE) \
-		W_``ROLE``, \
-		HSW_``ROLE``
-
-	//define R model input
-	// R=ID +`MetaData +`HandShake +RESP
-	// need add RESP by hane if is for master 
-	`define R(ROLE) \
-		RID_``ROLE``, \
-		R_``ROLE``, \
-		HSR_``ROLE``
-
-	//define B model input
-	// B=ID +RESP +`Handshake
-	`define B(ROLE) \
-		BID_``ROLE``, \
-		BRESP_``ROLE``, \
-		HSAR_``ROLE``
-
 	//create wires
 	//create R channel wires
 	`define CREATE_R(NAME) \
@@ -71,18 +42,14 @@
 		wire [1:0] BRESP_``NAME``; \
 		HandShake HSB_``NAME``;
 
+	//package same direction
+	//package R_R(Read Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
+	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
+	//package R_B(Read Back)(ID,MetaData,HSAR.ready,RRESP,HSR.valid)
+	`define R_B_channel(NAME) {RID_``NAME``,R_``NAME``,RRESP_``NAME``,HSR_``NAME``.valid,HSR_``NAME``.ready}
+	//package W_R(Write Request)(ID,AddrInfo,HSAW.valid,MetaData,WSTRB,HSW.valid,HSB.ready)
+	`define W_R_channel(NAME) {AWID_``NAME``,AW_``NAME``,HSAW_``NAME``.valid,W_``NAME``,WSTRB_``NAME``,HSW_``NAME``.valid,HSB_``NAME``.ready}
+	//package W_B(Write Back)(ID,BRESP,HSB.valid,HSW.ready,HSAW.ready)
+	`define W_B_channel(NAME) {BID_``NAME``,BRESP_``NAME``,HSB_``NAME``.valid,HSW_``NAME``.ready,HSAW_``NAME``.ready}
 
-	//package R_R(Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
-	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
-	//package R_B(Back)(ID,AddrInfo,HSAR.valid,HSR.ready)
-	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
-	//package W_R(Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
-	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
-	//package W_B(Back)(ID,AddrInfo,HSAR.valid,HSR.ready)
-	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
-
-	//create MUX_R_1_to_N
-	//create MUX_W_N_to_1
-	//create MUX_W_1_to_N
-	
 `endif
