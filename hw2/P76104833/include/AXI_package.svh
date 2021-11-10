@@ -72,6 +72,17 @@
 		HandShake HSB_``NAME``;
 
 
-	//create MUX_R
+	//package R_R(Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
+	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
+	//package R_B(Back)(ID,AddrInfo,HSAR.valid,HSR.ready)
+	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
+	//package W_R(Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
+	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
+	//package W_B(Back)(ID,AddrInfo,HSAR.valid,HSR.ready)
+	`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}
 
+	//create MUX_R_1_to_N
+	//create MUX_W_N_to_1
+	//create MUX_W_1_to_N
+	
 `endif
