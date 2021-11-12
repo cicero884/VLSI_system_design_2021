@@ -6,9 +6,10 @@ module MUX_1_to_N #(parameter SIZE=1)(
 	output [SIZE-1:0]out1,output [SIZE-1:0]out2,output [SIZE-1:0]out_default
 )
 always_comb begin
-	out1=0;
-	out2=0;
-	out_default=0;
+	out1={SIZE{1'b0}};
+	out2={SIZE{1'b0}};
+	out_default={SIZE{1'b0}};
+	
 	case(cond):
 		SEL1:	out1		=in;
 		SEL2:	out2		=in;

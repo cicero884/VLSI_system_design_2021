@@ -10,6 +10,7 @@
 `include "Decoder.sv"
 `include "Mux_1_to_N.sv"
 `include "Mux_N_to_1.sv"
+`include "Default_Slave.sv"
 
 module AXI(
 
@@ -188,71 +189,164 @@ module AXI(
 `HandShake_prepare(	W,	S1)
 `HandShake_prepare(	B,	S1)
 
+// Default Master
+//`CREATE_R(MD)
+//`CREATE_W(MD)
+
 // Default Slave
 `CREATE_R(SD)
 `CREATE_W(SD)
 
 // Decoder
-`CREATE_R(M0_1)
-`CREATE_R(M0_2)
-`CREATE_R(M0_D)
+`CREATE_R(C_0_0)
+`CREATE_R(C_0_1)
+`CREATE_R(C_0_D)
 Pointer Pointer_R_M0;
 Decoder Decoder_R_M0(AR_M0.addr,Pointer_R_M0);
 Mux_1_to_N #(.SIZE($bits(`R_R_channel(M0))))R_M0_1_to_N(
 	`R_R_channel(M0),Pointer_R_M0,
-	`R_R_channel(M0_1),`R_R_channel(M0_2),`R_R_channel(M0_D)
+	`R_R_channel(C_0_0),`R_R_channel(C_0_1),`R_R_channel(C_0_D)
 )
 Mux_N_to_1 #(.SIZE($bits(`R_B_channel(M0))))R_M0_N_to_1(
 	`R_B_channel(M0),Pointer_R_M0,
-	`R_B_channel(M0_1),`R_B_channel(M0_2),`R_B_channel(M0_D)
+	`R_B_channel(C_0_0),`R_B_channel(C_0_1),`R_B_channel(C_0_D)
 )
 
-//`CREATE_W(M0_1)
-//`CREATE_W(M0_2)
-//`CREATE_W(M0_D)
+//`CREATE_W(C_0_0)
+//`CREATE_W(C_0_1)
+//`CREATE_W(C_0_D)
 //Pointer Pointer_W_M0;
 //Decoder DecoderW_M0(AW_M0.addr,Pointer_W_M0);
 //Mux_1_to_N #(.SIZE($bits(`W_R_channel(M0))))R_M0_1_to_N(
 //	`W_R_channel(M0),Pointer_W_M0,
-//	`W_R_channel(M0_1),`W_R_channel(M0_2),`W_R_channel(M0_D)
+//	`W_R_channel(C_0_0),`W_R_channel(C_0_1),`W_R_channel(C_0_D)
 //)
 //Mux_N_to_1 #(.SIZE($bits(`W_B_channel(M0))))R_M0_N_to_1(
 //	`W_B_channel(M0),Pointer_W_M0,
-//	`W_B_channel(M0_1),`W_B_channel(M0_2),`W_B_channel(M0_D)
+//	`W_B_channel(C_0_0),`W_B_channel(C_0_1),`W_B_channel(C_0_D)
 //)
 
-`CREATE_R(M1_1)
-`CREATE_R(M1_2)
-`CREATE_R(M1_D)
+`CREATE_R(C_1_0)
+`CREATE_R(C_1_1)
+`CREATE_R(C_1_D)
 Pointer Pointer_R_M1;
 Decoder Decoder_R_M1(AR_M1.addr,Pointer_R_M1);
 Mux_1_to_N #(.SIZE($bits(`R_R_channel(M1))))R_M1_1_to_N(
 	`R_R_channel(M1),Pointer_R_M1,
-	`R_R_channel(M1_1),`R_R_channel(M1_2),`R_R_channel(M1_D)
+	`R_R_channel(C_1_0),`R_R_channel(C_1_1),`R_R_channel(C_1_D)
 )
 Mux_N_to_1 #(.SIZE($bits(`R_B_channel(M1))))R_M1_N_to_1(
 	`R_B_channel(M1),Pointer_R_M1,
-	`R_B_channel(M1_1),`R_B_channel(M1_2),`R_B_channel(M1_D)
+	`R_B_channel(C_1_0),`R_B_channel(C_1_1),`R_B_channel(C_1_D)
 )
 
-`CREATE_W(M1_1)
-`CREATE_W(M1_2)
-`CREATE_W(M1_D)
+`CREATE_W(C_1_0)
+`CREATE_W(C_1_1)
+`CREATE_W(C_1_D)
 Pointer Pointer_W_M1;
 Decoder Decoder_W_M1(AW_M1.addr,Pointer_W_M1);
 Mux_1_to_N #(.SIZE($bits(`W_R_channel(M1))))R_M1_1_to_N(
 	`W_R_channel(M1),Pointer_W_M1,
-	`W_R_channel(M1_1),`W_R_channel(M1_2),`W_R_channel(M1_D)
+	`W_R_channel(C_1_0),`W_R_channel(C_1_1),`W_R_channel(C_1_D)
 )
 Mux_N_to_1 #(.SIZE($bits(`W_B_channel(M1))))R_M1_N_to_1(
 	`W_B_channel(M1),Pointer_W_M1,
-	`W_B_channel(M1_1),`W_B_channel(M1_2),`W_B_channel(M1_D)
+	`W_B_channel(C_1_0),`W_B_channel(C_1_1),`W_B_channel(C_1_D)
 )
+
+`CREATE_R(C_D_0)
+`CREATE_R(C_D_1)
+`CREATE_R(C_D_D)
+`EMPTY_R(C_D_0)
+`EMPTY_R(C_D_1)
+`EMPTY_R(C_D_D)
+//Pointer Pointer_R_MD;
+//Decoder Decoder_R_MD(AR_MD.addr,Pointer_R_MD);
+//Mux_1_to_N #(.SIZE($bits(`R_R_channel(MD))))R_MD_1_to_N(
+//	`R_R_channel(MD),Pointer_R_MD,
+//	`R_R_channel(C_D_0),`R_R_channel(C_D_1),`R_R_channel(C_D_D)
+//)
+//Mux_N_to_1 #(.SIZE($bits(`R_B_channel(MD))))R_MD_N_to_1(
+//	`R_B_channel(MD),Pointer_R_MD,
+//	`R_B_channel(C_D_0),`R_B_channel(C_D_1),`R_B_channel(C_D_D)
+//)
+
+`CREATE_W(C_D_0)
+`CREATE_W(C_D_1)
+`CREATE_W(C_D_D)
+`EMPTY_W(C_D_0)
+`EMPTY_W(C_D_1)
+`EMPTY_W(C_D_D)
+//Pointer Pointer_W_MD;
+//Decoder Decoder_W_MD(AW_MD.addr,Pointer_W_MD);
+//Mux_1_to_N #(.SIZE($bits(`W_R_channel(MD))))R_MD_1_to_N(
+//	`W_R_channel(MD),Pointer_W_MD,
+//	`W_R_channel(C_D_0),`W_R_channel(C_D_1),`W_R_channel(C_D_D)
+//)
+//Mux_N_to_1 #(.SIZE($bits(`W_B_channel(MD))))R_MD_N_to_1(
+//	`W_B_channel(MD),Pointer_W_MD,
+//	`W_B_channel(C_D_0),`W_B_channel(C_D_1),`W_B_channel(C_D_D)
+//)
 
 // Arbiter
 Pointer Pointer_R_S0;
 Arbiter Arbiter_R_S0(
 	ACLK,ARESETn,
-	HSAR_M0_1
+	HSAR_C_0_0,HSAR_C_1_0,
+	Pointer_R_S0
+);
+Mux_N_to_1 #(.SIZE($bits(`R_R_channel(S0))))R_S0_N_to_1(
+	`R_R_channel(S0),Pointer_R_S0,
+	`R_R_channel(C_0_0),`R_R_channel(C_1_0),`R_R_channel(C_D_0)
+)
+Mux_1_to_N #(.SIZE($bits(`R_B_channel(S0))))R_S0_1_to_N(
+	`R_B_channel(S0),Pointer_R_S0,
+	`R_B_channel(C_0_0),`R_B_channel(C_1_0),`R_B_channel(C_D_0)
+)
+
+assign W_R_channel(S0)=W_R_channel(C_1_0);
+assign W_B_channel(C_1_0)=W_R_channel(S0);
+
+Pointer Pointer_R_S1;
+Arbiter Arbiter_R_S1(
+	ACLK,ARESETn,
+	HSAR_C_0_1,HSAR_C_1_1,
+	Pointer_R_S1
+);
+Mux_N_to_1 #(.SIZE($bits(`R_R_channel(S1))))R_S1_N_to_1(
+	`R_R_channel(S1),Pointer_R_S1,
+	`R_R_channel(C_0_1),`R_R_channel(C_1_1),`R_R_channel(C_D_1)
+)
+Mux_1_to_N #(.SIZE($bits(`R_B_channel(S1))))R_S1_1_to_N(
+	`R_B_channel(S1),Pointer_R_S1,
+	`R_B_channel(C_0_1),`R_B_channel(C_1_1),`R_B_channel(C_D_1)
+)
+
+
+assign W_R_channel(S1)=W_R_channel(C_1_1);
+assign W_B_channel(C_1_1)=W_R_channel(S1);
+
+Pointer Pointer_R_SD;
+Arbiter Arbiter_R_SD(
+	ACLK,ARESETn,
+	HSAR_C_0_1,HSAR_C_1_1,
+	Pointer_R_SD
+);
+Mux_N_to_1 #(.SIZE($bits(`R_R_channel(SD))))R_SD_N_to_1(
+	`R_R_channel(SD),Pointer_R_SD,
+	`R_R_channel(C_0_D),`R_R_channel(C_1_D),`R_R_channel(C_D_D)
+)
+Mux_1_to_N #(.SIZE($bits(`R_B_channel(SD))))R_SD_1_to_N(
+	`R_B_channel(SD),Pointer_R_SD,
+	`R_B_channel(C_0_D),`R_B_channel(C_1_D),`R_B_channel(C_D_D)
+)
+
+assign W_R_channel(SD)=W_R_channel(C_1_D);
+assign W_B_channel(C_1_D)=W_R_channel(SD);
+
+Default_Slave default slave(
+	HSAR_SD,HSAW_SD,HSW_SD,
+	HSR_SD,HSB_SD,
+	RRESP_SD,BRESP_SD
 );
 endmodule
