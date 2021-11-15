@@ -16,24 +16,10 @@
 	`define AXI_STRB_WORD 4'b1111
 	`define AXI_STRB_HWORD 4'b0011
 	`define AXI_STRB_BYTE 4'b0001
-	`define AXI_RESP_OKAY 2'h0
-	`define AXI_RESP_SLVERR 2'h2
-	`define AXI_RESP_DECERR 2'h3
+////`define AXI_RESP_OKAY 2'h0
+////`define AXI_RESP_SLVERR 2'h2
+////`define AXI_RESP_DECERR 2'h3
 
-////// define MASTER ID
-////typedef enum bit[`AXI_ID_BITS-1:0] {
-////	AXI_MASTER0		=`AXI_ID_BITS'd0,
-////	AXI_MASTER1		=`AXI_ID_BITS'd1,
-////	AXI_DEFAULT_MASTER 
-////} MasterID;
-
-////// define SLAVE ID
-////typedef enum bit[`AXI_IDS_BITS-1:0] {
-////	AXI_SLAVE0		=`AXI_IDS_BITS'd0,
-////	AXI_SLAVE1		=`AXI_IDS_BITS'd1,
-////	AXI_SLAVE2		=`AXI_IDS_BITS'd2,
-////	AXI_DEFAULT_SLAVE	
-////} SlaveID;
 	// define burst type
 	typedef enum bit[1:0] {
 		FIXED	=2'b00,
@@ -66,6 +52,6 @@
 	}MetaData;
 
 	// direction macro (one-hot)
-	typedef enum {SEL1	,SEL2	,DEFAULT} Pointer;
+	typedef enum {SEL1,SEL2,DEFAULT} Pointer;
 
 `endif
