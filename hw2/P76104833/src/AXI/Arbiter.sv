@@ -4,32 +4,34 @@ module Arbiter(
 	input ACLK,input ARESETn,
 	HandShake.in hs1,
 	HandShake.in hs2,
-	output Pointer receive_direction
+	output logic[AXI_POINTER_BITS-1:0] receive_direction
 );
 Pointer last_direction;
+Pointer direction;
+assign receive_direction=direction;
 always_ff(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
-		receive_direction<=DEFAULT;
+		direction<=DEFAULT;
 		last_direction<=DEFAULT;
 	end
 	else begin
-		last_direction<=receive_direction;
-		case(receive_direction):
-			SEL1: if(hs1.ready) receive_direction<=DEFAULT;
-			SEL2: if(hs2.ready) receive_direction<=DEFAULT;
+		last_direction<=direction;
+		case(direction):
+			SEL0: if(hs1.ready) direction<=DEFAULT;
+			SEL1: if(hs2.ready) direction<=DEFAULT;
 			default: begin
 				case(last_direction):
-					SEL1: begin
-						if(hs2.valid) receive_direction<=SEL2;
-						if(hs1.valid) receive_direction<=SEL1;
+					SEL0: begin
+						if(hs2.valid) direction<=SEL1;
+						if(hs1.valid) direction<=SEL0;
 					end
-					SEL2: begin
-						if(hs1.valid) receive_direction<=SEL1;
-						if(hs2.valid) receive_direction<=SEL2;
+					SEL1: begin
+						if(hs1.valid) direction<=SEL0;
+						if(hs2.valid) direction<=SEL1;
 					end
 					default: begin
-						if(hs1.valid) receive_direction<=SEL1;
-						if(hs2.valid) receive_direction<=SEL2;
+						if(hs1.valid) direction<=SEL0;
+						if(hs2.valid) direction<=SEL1;
 					end
 				endcase
 			end
