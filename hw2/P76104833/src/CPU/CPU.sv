@@ -28,7 +28,7 @@
 
 module CPU(
 	//input
-	input clk,input rst,input [31:0]im_data_out,input [31:0]dm_data_out,
+	input clk,input rst,input [31:0]im_data_out,input [31:0]dm_data_out,input sync_i,input sync_d,
 	//output
 	output [13:0]im_addr,output [3:0]dm_write_en,output [13:0]dm_addr,output [31:0]dm_data_in
 );
@@ -45,7 +45,7 @@ wire [1:0]EX_MEM_sf;
 wire [1:0]MEM_WB_sf;
 Hazard_control hazard_control(
 	.clk(clk),.rst(rst),
-	.branch_ctrl(branch_ctrl),.mem_r_ex(mem_r_ex),
+	.branch_ctrl(branch_ctrl),.sync_i(sync_i),.sync_d(sync_d),
 	.pc_stall(pc_stall),.IF_ID_sf(IF_ID_sf),.ID_EX_sf(ID_EX_sf),.EX_MEM_sf(EX_MEM_sf),.MEM_WB_sf(MEM_WB_sf)
 );
 

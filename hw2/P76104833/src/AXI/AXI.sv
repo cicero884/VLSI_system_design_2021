@@ -212,7 +212,7 @@ Mux_3 mux_AR_M0 #(.in_size($bits(`AR_in(M0))),.out_size($bits(AR_out(M0))))(
 Point Pointer_R_M0;
 Arbiter Arbiter_R_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSR_0_0),.hs2(HSR_0_1),
+	.hs0(HSR_0_0),.hs1(HSR_0_1),
 	.receive_direction(Pointer_R_M0),
 );
 Mux_3 mux_R_M0 #(.in_size($bits(`R_out(M0))),.out_size($bits(R_in(M0))))(
@@ -239,7 +239,7 @@ Mux_3 mux_W_M0 #(.in_size($bits(`W_in(M0))),.out_size($bits(W_out(M0))))(
 Point Pointer_B_M0;
 Arbiter Arbiter_B_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSB_0_0),.hs2(HSB_0_1),
+	.hs0(HSB_0_0),.hs1(HSB_0_1),
 	.receive_direction(Pointer_B_M0),
 );
 Mux_3 mux_B_M0 #(.in_size($bits(`B_out(M0))),.out_size($bits(B_in(M0))))(
@@ -267,7 +267,7 @@ Mux_3 mux_AR_M1 #(.in_size($bits(`AR_in(M1))),.out_size($bits(AR_out(M1))))(
 Point Pointer_R_M1;
 Arbiter Arbiter_R_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSR_1_0),.hs2(HSR_1_1),
+	.hs0(HSR_1_0),.hs1(HSR_1_1),
 	.receive_direction(Pointer_R_M1),
 );
 Mux_3 mux_R_M1 #(.in_size($bits(`R_out(M1))),.out_size($bits(R_in(M1))))(
@@ -294,7 +294,7 @@ Mux_3 mux_W_M1 #(.in_size($bits(`W_in(M1))),.out_size($bits(W_out(M1))))(
 Point Pointer_B_M1;
 Arbiter Arbiter_B_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSB_1_0),.hs2(HSB_1_1),
+	.hs0(HSB_1_0),.hs1(HSB_1_1),
 	.receive_direction(Pointer_B_M1),
 );
 Mux_3 mux_B_M1 #(.in_size($bits(`B_out(M1))),.out_size($bits(B_in(M1))))(
@@ -308,7 +308,7 @@ Mux_3 mux_B_M1 #(.in_size($bits(`B_out(M1))),.out_size($bits(B_in(M1))))(
 Pointer Pointer_AR_S0;
 Arbiter Arbiter_AR_S0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSAR_0_0),.hs2(HSAR_1_0),
+	.hs0(HSAR_0_0),.hs1(HSAR_1_0),
 	.receive_direction(Pointer_AR_S0),
 );
 Mux_2 mux_AR_S0 #(.in_size($bits(`AR_out(S0))),.out_size($bits(AR_in(S0))))(
@@ -342,7 +342,7 @@ assign B_out(S0)=B_out(1_0);
 Pointer Pointer_AR_S1;
 Arbiter Arbiter_AR_S1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSAR_0_1),.hs2(HSAR_1_1),
+	.hs0(HSAR_0_1),.hs1(HSAR_1_1),
 	.receive_direction(Pointer_AR_S1),
 );
 Mux_2 mux_AR_S1 #(.in_size($bits(`AR_out(S1))),.out_size($bits(AR_in(S1))))(
@@ -376,7 +376,7 @@ assign B_out(S1)=B_out(1_0);
 Pointer Pointer_AR_SD;
 Arbiter Arbiter_AR_SD(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs1(HSAR_0_1),.hs2(HSAR_1_1),
+	.hs0(HSAR_0_1),.hs1(HSAR_1_1),
 	.receive_direction(Pointer_AR_SD),
 );
 Mux_2 mux_AR_SD #(.in_size($bits(`AR_out(SD))),.out_size($bits(AR_in(SD))))(
@@ -402,7 +402,7 @@ assign W_in(SD)={{Pointer_W_SD,WID_1_0},AR_1_0,W_1_0,HSW_1_0.valid,W_1_0,HSW_1_0
 assign W_out(1_0)=W_out(SD);
 
 Pointer Pointer_B_SD;
-assign Pointer_B_SD=SEL1;
+assign Pointer_B_SD=BID_SD[AXI_IDS_BITS-1:AXI_IDM_BITS];
 assign B_in(1_0)={BID_SD[`AXI_IDM_BITS-1:0],BRESP_SD,HSB_SD.valid};
 assign B_out(SD)=B_out(1_0);
 

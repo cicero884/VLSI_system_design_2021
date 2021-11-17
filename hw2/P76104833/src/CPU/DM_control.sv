@@ -26,25 +26,25 @@ always_comb begin
 		case (funct3)
 			3'b000: begin //SB
 				w_data=data<<{mem_addr[1:0],3'd0};
-				write_bits= ~(4'b0001<<mem_addr[1:0]);
+				write_bits= (4'b0001<<mem_addr[1:0]);
 			end
 			3'b001: begin //SH
 				w_data=data<<{mem_addr[1:0],3'd0};
-				write_bits=~(4'b0011<<mem_addr[1:0]);
+				write_bits=(4'b0011<<mem_addr[1:0]);
 			end
 			3'b010: begin //SW
 				w_data=data;
-				write_bits=4'b0000;
+				write_bits=4'b1111;
 			end
 			default: begin
 				w_data=32'd0;
-				write_bits=4'b1111;
+				write_bits=4'b0000;
 			end
 		endcase
 	end
 	else begin
 		w_data=32'd0;
-		write_bits=4'b1111;
+		write_bits=4'b0000;
 	end
 end
 endmodule

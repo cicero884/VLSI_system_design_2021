@@ -117,11 +117,11 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 			end
 			TRANSMITTING:begin
 				if(HSB.ready) begin
+					HSB.valid<=1'b1;// tmp put there to decrease cycle?(test)
 					if(HSW.ready) HSW.ready<=1'b0;
 					else if(HSW.valid) begin
 						HSW.ready<=1'b1;
 						if(w.last) begin
-							HSB.valid<=1'b1;
 							HSAW.ready<=1'b1;// default high(view spec)
 							write_state<=IDLE;
 						end
