@@ -61,8 +61,8 @@ assign resp=OKAY;
 assign RRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_r;
 
-always_ff(posedge ACLK,negedge ARESETn) begin
-	if(!ARESETn) begin
+always_ff(posedge ACLK,posedge rst) begin
+	if(!rst) begin
 		read_state<=IDLE;
 		HSAR_S.ready<=1'b1;// default high(view spec)
 		HSR_S.valid<=1'b0;
@@ -110,8 +110,8 @@ AddrInfo aw;
 assign BRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_w;
 
-always_ff(posedge ACLK,negedge ARESETn) begin
-	if(!ARESETn) begin
+always_ff(posedge ACLK,posedge rst) begin
+	if(!rst) begin
 		write_state<=IDLE;
 		HSAW_S.ready<=1'b1;// default high(view spec)
 		HSW_S.ready<=1'b0;

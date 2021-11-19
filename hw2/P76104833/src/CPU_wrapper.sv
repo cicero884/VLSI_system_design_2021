@@ -1,5 +1,6 @@
 `include "AXI_define.svh"
 `include "AXI_wrapper.svh"
+`include "CPU_wrapper.svh"
 
 `include "CPU.sv"
 
@@ -67,23 +68,29 @@ module CPU_wrapper(
 // Instruction
 // read handler
 State read_state_M0;
-logic [`PC_BITS-1:0]im_addr;
-logic [31:0]im_read;
+wire [`PC_BITS-1:0]im_addr;
+wire [31:0]im_read;
 logic sync_i;
 // tmp mini cache...
-Cache c;
+Cache c_i;
+assign im_read<=c_i.data;
+
 Burst burst_type;
 assign burst_type=INCR;
+logic [`AXI_LEN_BITS-1:0]len_cnt_M0_r;
 
-always_ff(posedge clk,negedge rst)begin 
+always_ff(posedge clk,posedge rst)begin 
 	if(rst) begin
+		read_state_M0<=IDLE;
+		HSAR_M0.valid<=1'b0;
+		HSR_M0.ready<=1'b0;
 	end
 	else begin
 		case(read_state_M0):
 			IDLE:begin
-				if(c.pc!=im_addr) begin
+				if(c_i.addr!=im_addr) begin
 					read_state_M0<=ADDR_HANDSHAKE;
-					`SEND_ADDR(M0,im_addr)
+					`SEND_ADDR(R,M0,im_addr)
 					HSAR_M0.valid<=1'b1;
 					sync_i<=1'b1;
 				end
@@ -99,13 +106,15 @@ always_ff(posedge clk,negedge rst)begin
 				if(HSR.valid&&RRESP_M0==OKAY) begin
 					if(R_M0.last) begin
 						read_state_M0<=(c.pc==im_addr)? IDLE:ADDR_HANDSHAKE;
-						`SEND_ADDR(M0,im_addr)
+						`SEND_ADDR(R,M0,im_addr)
 						HSAR_M0.valid<=1'b1;
 						sync_i<=1'b1;
 						HSR_M0.ready<=1'b0;
 					end
 						//TODO
-					
+					c_i.data<=R_M0.data;
+					c_i.addr<=im_addr+len_cnt_M0_r;
+					len_cnt_M0_r<=len_cnt_M0_r+1;
 				end
 			end
 		endcase
@@ -113,14 +122,85 @@ always_ff(posedge clk,negedge rst)begin
 end
 
 // Data
-logic [`PC_BITS-1:0]dm_addr;
-logic [31:0]dm_read;
-logic [31:0]dm_write;
-logic sync_d;
-State data_read_state;
-State data_write_state;
+wire [`PC_BITS-1:0]dm_addr;
+wire [31:0]dm_read;
+wire [31:0]dm_write;
+logic sync_d_r;
 // read handler
+State read_state_M1;
+// tmp mini cache...
+Cache c_d;
+
+Burst burst_type;
+assign burst_type=INCR;
+logic [`AXI_LEN_BITS-1:0]len_cnt_M1_r;
+
+always_ff(posedge clk,posedge rst)begin 
+	if(rst) begin
+		read_state_M1<=IDLE;
+		HSAR_M1.valid<=1'b0;
+		HSR_M1.ready<=1'b0;
+	end
+	else begin
+		case(read_state_M1):
+			IDLE:begin
+				if(c_d.addr!=dm_addr) begin
+					read_state_M1<=ADDR_HANDSHAKE;
+					`SEND_ADDR(R,M1,dm_addr)
+					HSAR_M1.valid<=1'b1;
+					sync_d<=1'b1;
+				end
+			end
+			ADDR_HANDSHAKE:begin
+				if(HSAR_M1.ready) begin
+					read_state_M1<=TRANSMITTING;
+					HSAR_M1.valid<=1'b0;
+					HSR_M1.ready<=1'b1;
+				end
+			end
+			TRANSMITTING:begin
+				if(HSR.valid&&RRESP_M1==OKAY) begin
+					if(R_M1.last) begin
+						read_state_M1<=(c.pc==dm_addr)? IDLE:ADDR_HANDSHAKE;
+						`SEND_ADDR(R,M1,dm_addr)
+						HSAR_M1.valid<=1'b1;
+						sync_i<=1'b1;
+						HSR_M1.ready<=1'b0;
+					end
+						//TODO cache
+					c_d.data<=R_M1.data;
+					c_d.addr<=dm_addr+len_cnt_M1_r;
+					len_cnt_M1_r<=len_cnt_M1_r+1;
+				end
+			end
+		endcase
+	end
+end
+
 // write handler
+always_ff(posedge clk,posedge rst) begin
+	if(rst) begin
+	end
+	else begin
+		case(data_write_state)
+			IDLE:begin
+				if(c_d.addr!=dm_addr) begin
+					write_state_M1<=ADDR_HANDSHAKE;
+					`SEND_ADDR(W,M1,dm_addr)
+					HSAW_M1.valid<=1'b1;
+					sync_d<=1'b1;
+				end
+			end
+			ADDR_HANDSHAKE:begin
+				//TODO
+			end
+			TRANSMITTING:begin
+			end
+			BACK:begin
+			end
+		endcase
+	end
+end
 
 // connect CPU
 CPU cpu(
