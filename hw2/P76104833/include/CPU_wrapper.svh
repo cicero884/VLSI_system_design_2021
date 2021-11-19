@@ -9,10 +9,11 @@
 	} Cache;
 
 	`define SEND_ADDR(RW,ROLE,ADDR) \
-		A``RW``ID_``ROLE``	<=`AXI_ID_BITS'd0; \
-		A``RW``ADDR_``ROLE``	<={ADDR,2'b0}; \
+		HSA``RW``_``ROLE``.valid<=1'b1; \
+		A``RW``ID_``ROLE``<=`AXI_ID_BITS'd0; \
+		A``RW``ADDR_``ROLE``<={ADDR,2'b0}; \
 		A``RW``LEN_``ROLE``	<=`AXI_LEN_BITS'd0; \
-		A``RW``SIZE_``ROLE``	<=`AXI_SIZE_BITS'd2; \
+		A``RW``SIZE_``ROLE``<=`AXI_SIZE_BITS'd2; \
 		A``RW``BURST_``ROLE``<=burst_type; 
 
 

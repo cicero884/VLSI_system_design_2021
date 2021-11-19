@@ -105,10 +105,14 @@ always_ff(posedge clk,posedge rst)begin
 			TRANSMITTING:begin
 				if(HSR.valid&&RRESP_M0==OKAY) begin
 					if(R_M0.last) begin
-						read_state_M0<=(c.pc==im_addr)? IDLE:ADDR_HANDSHAKE;
-						`SEND_ADDR(R,M0,im_addr)
-						HSAR_M0.valid<=1'b1;
-						sync_i<=1'b1;
+						if(c_i.pc==dm_addr) begin
+							read_state_M0<=IDLE;
+							sync_i<=1'b1;
+						end
+						else begin
+							read_state_M0<=ADDR_HANDSHAKE;
+							`SEND_ADDR(R,M0,dm_addr)
+						end
 						HSR_M0.ready<=1'b0;
 					end
 						//TODO
@@ -125,7 +129,7 @@ end
 wire [`PC_BITS-1:0]dm_addr;
 wire [31:0]dm_read;
 wire [31:0]dm_write;
-logic sync_d_r;
+logic [1:0]sync_d;//1:r  0:d
 // read handler
 State read_state_M1;
 // tmp mini cache...
@@ -147,8 +151,7 @@ always_ff(posedge clk,posedge rst)begin
 				if(c_d.addr!=dm_addr) begin
 					read_state_M1<=ADDR_HANDSHAKE;
 					`SEND_ADDR(R,M1,dm_addr)
-					HSAR_M1.valid<=1'b1;
-					sync_d<=1'b1;
+					sync_d[1]<=1'b1;
 				end
 			end
 			ADDR_HANDSHAKE:begin
@@ -161,10 +164,14 @@ always_ff(posedge clk,posedge rst)begin
 			TRANSMITTING:begin
 				if(HSR.valid&&RRESP_M1==OKAY) begin
 					if(R_M1.last) begin
-						read_state_M1<=(c.pc==dm_addr)? IDLE:ADDR_HANDSHAKE;
-						`SEND_ADDR(R,M1,dm_addr)
-						HSAR_M1.valid<=1'b1;
-						sync_i<=1'b1;
+						if(c_d.pc==dm_addr) begin
+							read_state_M1<=IDLE;
+							sync_d[1]<=1'b1;
+						end
+						else begin
+							read_state_M1<=ADDR_HANDSHAKE;
+							`SEND_ADDR(R,M1,dm_addr)
+						end
 						HSR_M1.ready<=1'b0;
 					end
 						//TODO cache
@@ -187,16 +194,32 @@ always_ff(posedge clk,posedge rst) begin
 				if(c_d.addr!=dm_addr) begin
 					write_state_M1<=ADDR_HANDSHAKE;
 					`SEND_ADDR(W,M1,dm_addr)
-					HSAW_M1.valid<=1'b1;
-					sync_d<=1'b1;
+					sync_d[0]<=1'b1;
 				end
 			end
 			ADDR_HANDSHAKE:begin
-				//TODO
+				if(HSAW_M1.ready) begin
+					write_state_M1<=TRANSMITTING;
+					HSAW_M1.valid<=1'b0;
+					HSB_M1.ready<=1'b1;
+				end
 			end
 			TRANSMITTING:begin
+				if(HSW.valid) begin
+					//TODO
+				end
 			end
 			BACK:begin
+				if(HSB_M1.valid&&BRESP_M1==OKAY) begin
+					if(c_d.pc==dm_addr) begin
+						write_state_M1<=BACK;
+					end
+					else begin
+						write_state_M1<=ADDR_HANDSHAKE;
+						`SEND_ADDR(W,M1,dm_addr)
+					end
+					HSB_M1.ready<=1'b0;
+				end
 			end
 		endcase
 	end
