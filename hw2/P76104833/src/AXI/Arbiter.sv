@@ -15,7 +15,7 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 		last_direction<=DEFAULT;
 	end
 	else begin
-		case(direction):
+		case(direction)
 			SEL0: begin
 				if(hs0.ready) begin
 					if(hs1.valid) direction<=SEL1;
@@ -33,7 +33,7 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 				end
 			end
 			default: begin
-				case(last_direction):
+				case(last_direction)
 					SEL0: begin
 						if(hs1.valid) direction<=SEL1;
 						else if(hs0.valid) direction<=SEL0;

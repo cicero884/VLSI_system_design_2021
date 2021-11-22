@@ -55,7 +55,7 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 		r.last<=1'b0;
 	end
 	else begin
-		case(read_state):
+		case(read_state)
 			IDLE:begin
 				if(HSAR.valid) begin
 					read_state<=TRANSMITTING;
@@ -104,7 +104,7 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 		HSB.valid<=1'b0;
 	end
 	else begin
-		case(write_state):
+		case(write_state)
 			IDLE:begin
 				HSB.valid<=1'b0;
 				HSW.ready<=1'b0;

@@ -9,7 +9,7 @@
 module CPU_wrapper(
 	input clk,input rst,
 	//READ ADDRESS0
-	output logic [`AXI_ID_BITS-1:0] ARID_M0,
+	output logic [`AXI_IDM_BITS-1:0] ARID_M0,
 	output logic [`AXI_ADDR_BITS-1:0] ARADDR_M0,
 	output logic [`AXI_LEN_BITS-1:0] ARLEN_M0,
 	output logic [`AXI_SIZE_BITS-1:0] ARSIZE_M0,
@@ -17,7 +17,7 @@ module CPU_wrapper(
 	output logic ARVALID_M0,
 	input ARREADY_M0,
 	//READ DATA0
-	input [`AXI_ID_BITS-1:0] RID_M0,
+	input [`AXI_IDM_BITS-1:0] RID_M0,
 	input [`AXI_DATA_BITS-1:0] RDATA_M0,
 	input [1:0] RRESP_M0,
 	input RLAST_M0,
@@ -25,7 +25,7 @@ module CPU_wrapper(
 	output logic RREADY_M0,
 
 	//READ ADDRESS1
-	output logic [`AXI_ID_BITS-1:0] ARID_M1,
+	output logic [`AXI_IDM_BITS-1:0] ARID_M1,
 	output logic [`AXI_ADDR_BITS-1:0] ARADDR_M1,
 	output logic [`AXI_LEN_BITS-1:0] ARLEN_M1,
 	output logic [`AXI_SIZE_BITS-1:0] ARSIZE_M1,
@@ -42,7 +42,7 @@ module CPU_wrapper(
 
 
 	//WRITE ADDRESS
-	output logic [`AXI_ID_BITS-1:0] AWID_M1,
+	output logic [`AXI_IDM_BITS-1:0] AWID_M1,
 	output logic [`AXI_ADDR_BITS-1:0] AWADDR_M1,
 	output logic [`AXI_LEN_BITS-1:0] AWLEN_M1,
 	output logic [`AXI_SIZE_BITS-1:0] AWSIZE_M1,
@@ -75,20 +75,20 @@ wire [31:0]im_read;
 logic sync_i;
 // tmp mini cache...
 Cache c_i;
-assign im_read<=c_i.data;
+assign im_read=c_i.data;
 
-Burst burst_type;
+BurstType burst_type;
 assign burst_type=INCR;
 logic [`AXI_LEN_BITS-1:0]len_cnt_M0_r;
 
-always_ff(posedge clk,posedge rst)begin 
+always_ff @(posedge clk,posedge rst)begin 
 	if(rst) begin
 		read_state_M0<=IDLE;
 		HSAR_M0.valid<=1'b0;
 		HSR_M0.ready<=1'b0;
 	end
 	else begin
-		case(read_state_M0):
+		case(read_state_M0)
 			IDLE:begin
 				if(c_i.addr!=im_addr) begin
 					read_state_M0<=ADDR_HANDSHAKE;
@@ -107,7 +107,7 @@ always_ff(posedge clk,posedge rst)begin
 			TRANSMITTING:begin
 				if(HSR.valid&&RRESP_M0==OKAY) begin
 					if(R_M0.last) begin
-						if(c_i.pc==dm_addr) begin
+						if(c_i.pc==im_addr) begin
 							read_state_M0<=IDLE;
 							sync_i<=1'b1;
 						end
@@ -128,7 +128,7 @@ always_ff(posedge clk,posedge rst)begin
 end
 
 // Data
-wire [`ADDR_BITS-1:0]dm_addr;
+wire [`CPU_ADDR_BITS-1:0]dm_addr;
 wire [31:0]dm_read;
 wire [31:0]dm_write;
 logic [1:0]sync_d;//1:r  0:d
@@ -137,18 +137,16 @@ State read_state_M1;
 // tmp mini cache...
 Cache c_d;
 
-Burst burst_type;
-assign burst_type=INCR;
 logic [`AXI_LEN_BITS-1:0]len_cnt_M1_r;
 
-always_ff(posedge clk,posedge rst)begin 
+always_ff @(posedge clk,posedge rst)begin 
 	if(rst) begin
 		read_state_M1<=IDLE;
 		HSAR_M1.valid<=1'b0;
 		HSR_M1.ready<=1'b0;
 	end
 	else begin
-		case(read_state_M1):
+		case(read_state_M1)
 			IDLE:begin
 				if(c_d.addr!=dm_addr) begin
 					read_state_M1<=ADDR_HANDSHAKE;
@@ -189,11 +187,11 @@ end
 State write_state_M1;
 logic [`AXI_LEN_BITS-1:0]len_cnt_M1_w;
 // write handler
-always_ff(posedge clk,posedge rst) begin
+always_ff @(posedge clk,posedge rst) begin
 	if(rst) begin
 	end
 	else begin
-		case(data_write_state)
+		case(write_state_M1)
 			IDLE:begin
 				if(WSTRB_M1!=0) begin
 					write_state_M1<=ADDR_HANDSHAKE;
@@ -238,7 +236,7 @@ end
 // connect CPU
 CPU cpu(
 	//input
-	.clk(clk),.rst(rst),.im_data_out(im_read),.dm_data_out(dm_read),.sync_i(sync_i),.sync_d((sync_d!=2'b00))
+	.clk(clk),.rst(rst),.im_data_out(im_read),.dm_data_out(dm_read),.sync_i(sync_i),.sync_d((sync_d!=2'b00)),
 	//output
 	.im_addr(im_addr),.dm_write_en(WSTRB_M1),.dm_addr(dm_addr),.dm_data_in(dm_write)
 );

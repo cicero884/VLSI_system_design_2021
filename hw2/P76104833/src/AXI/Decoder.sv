@@ -1,9 +1,9 @@
 `include "AXI_define.svh"
 
 module Decoder(
-	input [`AXI_ADDR_BITS]addr,
+	input [`AXI_ADDR_BITS-1:0]addr,
 	output Pointer send_direction
-)
+);
 always_comb begin
 	case(addr[`AXI_ADDR_BITS-1:`AXI_ADDR_BITS-16])
 		16'd0:	send_direction<=SEL0;

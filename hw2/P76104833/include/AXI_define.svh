@@ -42,6 +42,5 @@
 	} DataInfo;
 
 	// direction macro
-	typedef enum bit[`AXI_POINTER_BITS-1:0]{SEL0,SEL1,DEFAULT} Pointer;
-
+	typedef enum logic[`AXI_POINTER_BITS-1:0]{SEL0,SEL1,DEFAULT} Pointer;
 `endif

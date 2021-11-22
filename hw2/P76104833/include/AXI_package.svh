@@ -1,6 +1,5 @@
 `ifndef AXI_PACKAGE_SVH
 	`define AXI_PACKAGE_SVH
-	`include AXI_define.svh
 
 	`define HandShake_in(TYPE,ROLE) \
 		HandShake HS``TYPE``_``ROLE``(); \
@@ -51,16 +50,16 @@
 
 	`define W_in_convert(ROLE) \
 		`HandShake_in(AW,ROLE) \
-		`AddrInfo_in(R,ROLE) \
-		`HandShake_in(R,ROLE) \
-		`Data_in(R,ROLE) \
+		`AddrInfo_in(W,ROLE) \
+		`HandShake_in(W,ROLE) \
+		`Data_in(W,ROLE) \
 		`HandShake_out(B,ROLE)
 		
 	`define W_out_convert(ROLE) \
 		`HandShake_out(AW,ROLE) \
-		`AddrInfo(R,ROLE) \
-		`HandShake_out(R,ROLE) \
-		`Data_out(R,ROLE) \
+		`AddrInfo_out(W,ROLE) \
+		`HandShake_out(W,ROLE) \
+		`Data_out(W,ROLE) \
 		`HandShake_in(B,ROLE)
 
 	// create wires

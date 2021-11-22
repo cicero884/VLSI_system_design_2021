@@ -32,7 +32,7 @@
 
 module ALU(
 	//input
-	input ALU_sig alu_ctrl,input [31:0]alu_in1,input [31:0]alu_in2,
+	input [$bits(ALU_sig)-1:0] alu_ctrl,input [31:0]alu_in1,input [31:0]alu_in2,
 	//output 
 	output logic branch_flag,output logic [31:0]alu_out
 );

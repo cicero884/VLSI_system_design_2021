@@ -57,12 +57,12 @@ State read_state;
 //save read AddrInfo in AR_S(in convert),cast on ar to use
 AddrInfo ar;
 
-Responce resp
+Responce resp;
 assign resp=OKAY;
 assign RRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_r;
 
-always_ff(posedge ACLK,posedge rst) begin
+always_ff @(posedge clk,posedge rst) begin
 	if(!rst) begin
 		read_state<=IDLE;
 		HSAR_S.ready<=1'b1;// default high(view spec)
@@ -70,7 +70,7 @@ always_ff(posedge ACLK,posedge rst) begin
 		r.last<=1'b0;
 	end
 	else begin
-		case(read_state):
+		case(read_state)
 			IDLE:begin
 				r.last<=1'b0;
 				len_cnt_r<=`AXI_LEN_BITS'd0;
@@ -111,7 +111,7 @@ AddrInfo aw;
 assign BRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_w;
 
-always_ff(posedge ACLK,posedge rst) begin
+always_ff @(posedge clk,posedge rst) begin
 	if(!rst) begin
 		write_state<=IDLE;
 		HSAW_S.ready<=1'b1;// default high(view spec)
@@ -119,7 +119,7 @@ always_ff(posedge ACLK,posedge rst) begin
 		HSB_S.valid<=1'b0;
 	end
 	else begin
-		case(write_state):
+		case(write_state)
 			IDLE:begin
 				HSB_S.valid<=1'b0;
 				HSW_S.ready<=1'b0;
