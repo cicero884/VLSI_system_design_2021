@@ -1,26 +1,26 @@
 `include "CPU_define.svh"
 
 
-`include "Adder.sv"
-`include "Mux_2in.sv"
-`include "Mux_3in.sv"
+`include "CPU/Adder.sv"
+`include "CPU/Mux_2in.sv"
+`include "CPU/Mux_3in.sv"
 
-`include "IF_ID_reg.sv"
-`include "ID_EX_reg.sv"
-`include "EX_MEM_reg.sv"
-`include "MEM_WB_reg.sv"
+`include "CPU/IF_ID_reg.sv"
+`include "CPU/ID_EX_reg.sv"
+`include "CPU/EX_MEM_reg.sv"
+`include "CPU/MEM_WB_reg.sv"
 
-`include "Control_unit.sv"
-`include "ALU_control.sv"
-`include "Branch_control.sv"
-`include "Forward_control.sv"
-`include "DM_control.sv"
-`include "Hazard_control.sv"
+`include "CPU/Control_unit.sv"
+`include "CPU/ALU_control.sv"
+`include "CPU/Branch_control.sv"
+`include "CPU/Forward_control.sv"
+`include "CPU/DM_control.sv"
+`include "CPU/Hazard_control.sv"
 
-`include "PC_reg.sv"
-`include "Immidiate_generator.sv"
-`include "Register.sv"
-`include "ALU.sv"
+`include "CPU/PC_reg.sv"
+`include "CPU/Immidiate_generator.sv"
+`include "CPU/Register.sv"
+`include "CPU/ALU.sv"
 
 
 

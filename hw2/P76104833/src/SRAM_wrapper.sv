@@ -1,4 +1,5 @@
 `include "AXI_define.svh"
+`include "AXI_package.svh"
 `include "AXI_wrapper.svh"
 
 module SRAM_wrapper(
@@ -37,7 +38,7 @@ module SRAM_wrapper(
 	output logic [`AXI_IDS_BITS-1:0] BID_S,
 	output logic [1:0] BRESP_S,
 	output logic BVALID_S,
-	input BREADY_S,
+	input BREADY_S
 );
 // wires for SRAM
 wire [13:0]A;

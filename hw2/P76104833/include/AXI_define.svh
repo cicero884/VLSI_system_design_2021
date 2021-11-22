@@ -28,8 +28,7 @@
 	endinterface
 
 	// define interface addr
-	typedef struct packed
-	{
+	typedef struct packed{
 		BurstType burst;
 		logic [`AXI_ADDR_BITS	-1:0] addr;
 		logic [`AXI_LEN_BITS	-1:0] len;
@@ -43,6 +42,6 @@
 	} DataInfo;
 
 	// direction macro
-	typedef enum bit[0:`AXI_POINTER_BITS-1]{SEL0,SEL1,DEFAULT} Pointer;
+	typedef enum bit[`AXI_POINTER_BITS-1:0]{SEL0,SEL1,DEFAULT} Pointer;
 
 `endif

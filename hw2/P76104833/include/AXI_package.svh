@@ -1,5 +1,6 @@
 `ifndef AXI_PACKAGE_SVH
 	`define AXI_PACKAGE_SVH
+	`include AXI_define.svh
 
 	`define HandShake_in(TYPE,ROLE) \
 		HandShake HS``TYPE``_``ROLE``(); \

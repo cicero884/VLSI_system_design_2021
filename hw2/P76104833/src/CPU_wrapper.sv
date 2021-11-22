@@ -2,8 +2,9 @@
 `include "CPU_define.svh"
 `include "AXI_wrapper.svh"
 `include "CPU_wrapper.svh"
+`include "AXI_package.svh"
 
-`include "CPU.sv"
+`include "CPU/CPU.sv"
 
 module CPU_wrapper(
 	input clk,input rst,
@@ -32,7 +33,7 @@ module CPU_wrapper(
 	output logic ARVALID_M1,
 	input ARREADY_M1,
 	//READ DATA1
-	input [`AXI_ID_BITS-1:0] RID_M1,
+	input [`AXI_IDM_BITS-1:0] RID_M1,
 	input [`AXI_DATA_BITS-1:0] RDATA_M1,
 	input [1:0] RRESP_M1,
 	input RLAST_M1,
@@ -55,7 +56,7 @@ module CPU_wrapper(
 	output logic WVALID_M1,
 	input WREADY_M1,
 	//WRITE RESPONSE
-	input [`AXI_ID_BITS-1:0] BID_M1,
+	input [`AXI_IDM_BITS-1:0] BID_M1,
 	input [1:0] BRESP_M1,
 	input BVALID_M1,
 	output logic BREADY_M1

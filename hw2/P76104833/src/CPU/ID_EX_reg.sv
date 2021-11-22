@@ -1,4 +1,4 @@
-`include "ALU_signal_def.svf"
+`include "ALU_signal_def.svh"
 `define ID_EX_RESET \
 	begin \
 	pc_out			<=32'd0			; \
@@ -13,7 +13,7 @@
 	mem_w_out 		<=1'd0			; \
 	\
 	funct3_out 		<=3'd0 			; \
-	alu_ctrl_out	<={nop_,1'b0} 	; \
+	alu_ctrl_out	<={ALU_op.nop_,1'b0} 	; \
 	alu_in2_sel_out<=1'd0			; \
 	\
 	rs1_data_out	<=32'd0			; \

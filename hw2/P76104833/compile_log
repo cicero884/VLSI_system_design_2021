@@ -1,0 +1,1491 @@
+make[1]: Entering directory '/home/zzhong/VLSI_system_design_2021/hw2/P76104833/sim/prog0'
+riscv64-unknown-elf-gcc setup.o main.o -static -nostdlib -nostartfiles -march=rv32i -mabi=ilp32 -Tlink.ld -lgcc -o main
+riscv64-unknown-elf-objdump -xsd main > main.log
+riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 0 main0.hex
+riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 1 main1.hex
+riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 2 main2.hex
+riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 3 main3.hex
+make[1]: Leaving directory '/home/zzhong/VLSI_system_design_2021/hw2/P76104833/sim/prog0'
+irun: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv
+`define CYCLE 10.0 // Cycle time
+                                |
+ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,2|32): The text macro 'CYCLE' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
+`define MAX 300000 // Max cycle number
+                                      |
+ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
+	typedef struct packed{
+	      |
+ncvlog: *E,SVEXTK (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh,5|7): expecting a ';' (to terminate a type_declaration).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh line 5, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		logic [`CPU_ADDR_BITS-1:0] addr;
+		                              |
+ncvlog: *E,SVEXTK (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh,6|32): expecting a ';' (to terminate a type_declaration).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh line 6, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	} Cache;
+	|
+ncvlog: *E,MPANDC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh,8|1): expecting the keyword 'module', 'macromodule', 'primitive', 'connectmodule','connect', 'discipline' or 'nature' [A.1].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/CPU_wrapper.svh line 8, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	`include AXI_define.svh
+	                  |
+ncvlog: *E,INCEXS (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh,3|19): expecting a string containing an include file name.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 3, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 5, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		ALU_op op;
+		     |
+ncvlog: *E,SVNOTY (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/ALU_signal_def.svh,21|7): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/ALU_signal_def.svh line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ID_EX_reg.sv line 1, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/CPU.sv line 9, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		ALU_op op;
+		        |
+ncvlog: *E,SVEXTK (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/ALU_signal_def.svh,21|10): expecting a ',' or ';' after 'variable_identifier variable_dimension' (in a struct/union member declaration).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/ALU_signal_def.svh line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ID_EX_reg.sv line 1, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/CPU.sv line 9, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+ALU_sig alu_ctrl_s;
+                 |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU_control.sv,8|17): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU_control.sv line 8, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/CPU.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.ALU_control:sv
+		errors: 1, warnings: 0
+	input ALU_sig alu_ctrl,input [31:0]alu_in1,input [31:0]alu_in2,
+	            |
+ncvlog: *E,SVNOTY (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU.sv,35|13): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU.sv line 35, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/CPU.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+ALU_sig alu_ctrl_s;
+                 |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU.sv,39|17): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/ALU.sv line 39, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU/CPU.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.ALU:sv
+		errors: 2, warnings: 0
+	output logic [`AXI_ID_BITS-1:0] ARID_M0,
+	                         |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,12|26): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	input [`AXI_ID_BITS-1:0] RID_M0,
+	                  |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,20|19): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 20, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	output logic [`AXI_ID_BITS-1:0] ARID_M1,
+	                         |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,28|26): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 28, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	input [`AXI_ID_BITS-1:0] RID_M1,
+	                  |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,36|19): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 36, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	output logic [`AXI_ID_BITS-1:0] AWID_M1,
+	                         |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,45|26): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 45, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	input [`AXI_ID_BITS-1:0] BID_M1,
+	                  |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,59|19): `AXI_ID_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 59, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`W_out_convert(M1)
+                 |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,68|17): `AddrInfo: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`define macro: W_out_convert [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 59], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 68, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`W_out_convert(M1)
+                 |
+ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,68|17): expecting the keyword 'endmodule' [12.1(IEEE)].
+(`define macro: W_out_convert [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 59], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 68, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+wire [`ADDR_BITS-1:0]dm_addr;
+               |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,131|15): `ADDR_BITS: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 131, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.CPU_wrapper:sv
+		errors: 9, warnings: 0
+State read_state;
+               |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,56|15): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 56, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AddrInfo ar;
+          |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,58|10): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 58, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+Responce resp
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,60|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 61, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+assign resp=OKAY;
+     |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,61|5): expecting a semicolon (';') [12.3.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 61, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+         |
+ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,65|9): expecting a statement [9(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 65, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,65|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 65, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+                                  |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,65|34): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 65, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		read_state<=IDLE;
+		           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,67|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 67, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		read_state<=IDLE;
+		                |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,67|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 67, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAR_S.ready<=1'b1;// default high(view spec)
+		      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,68|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 68, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAR_S.ready<=1'b1;// default high(view spec)
+		             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,68|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 68, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSR_S.valid<=1'b0;
+		     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,69|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 69, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSR_S.valid<=1'b0;
+		            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,69|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 69, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		r.last<=1'b0;
+		 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,70|3): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 70, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		r.last<=1'b0;
+		       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,70|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 70, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		case(read_state):
+		                |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,73|18): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 73, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				r.last<=1'b0;
+				 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,75|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 75, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				r.last<=1'b0;
+				       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,75|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 75, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				len_cnt_r<=`AXI_LEN_BITS'd0;
+				          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,76|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 76, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSR_S.valid<=1'b0;
+				     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,77|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 77, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSR_S.valid<=1'b0;
+				            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,77|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 77, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					read_state<=TRANSMITTING;
+					           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,79|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 79, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					read_state<=TRANSMITTING;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,79|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 79, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					RID_S<=ARID_S;
+					      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,80|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 80, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					RID_S<=ARID_S;
+					             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,80|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 80, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					ar<=AR_S;
+					   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,81|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 81, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					ar<=AR_S;
+					        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,81|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 81, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAR_S.ready<=1'b0;
+					      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,82|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 82, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAR_S.ready<=1'b0;
+					             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,82|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 82, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				else HSAR_S.ready<=1'b1;// default high(view spec)
+				           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,84|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 84, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				else HSAR_S.ready<=1'b1;// default high(view spec)
+				                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,84|22): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 84, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSR_S.valid) HSR_S.valid<=1'b0;
+					                     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,88|26): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 88, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSR_S.valid) HSR_S.valid<=1'b0;
+					                            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,88|33): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 88, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+								r.last<=1'b1;
+								 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,93|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 93, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+								r.last<=1'b1;
+								       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,93|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 93, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+								read_state<=IDLE;
+								           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,94|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 94, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+								read_state<=IDLE;
+								                |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,94|24): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 94, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							r.data<=DO;
+							 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,96|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 96, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							r.data<=DO;
+							       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,96|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 96, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							r.data<=DO;
+							          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,96|17): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 96, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							len_cnt_r<=len_cnt_r+1;
+							          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,97|17): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 97, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							len_cnt_r<=len_cnt_r+1;
+							                    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,97|27): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 97, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSR_S.valid<=1'b1;
+							     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,98|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 98, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSR_S.valid<=1'b1;
+							            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,98|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 98, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+State write_state;
+                |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,108|16): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 108, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AddrInfo aw;
+          |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,110|10): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 110, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+         |
+ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,114|9): expecting a statement [9(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 114, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,114|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 114, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,posedge rst) begin
+                                  |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,114|34): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 114, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		write_state<=IDLE;
+		            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,116|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 116, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		write_state<=IDLE;
+		                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,116|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 116, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAW_S.ready<=1'b1;// default high(view spec)
+		      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,117|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 117, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAW_S.ready<=1'b1;// default high(view spec)
+		             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,117|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 117, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSW_S.ready<=1'b0;
+		     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,118|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 118, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSW_S.ready<=1'b0;
+		            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,118|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 118, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSB_S.valid<=1'b0;
+		     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,119|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 119, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSB_S.valid<=1'b0;
+		            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,119|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 119, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		case(write_state):
+		                 |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,122|19): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 122, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSB_S.valid<=1'b0;
+				     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,124|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 124, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSB_S.valid<=1'b0;
+				            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,124|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 124, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSW_S.ready<=1'b0;
+				     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,125|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 125, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSW_S.ready<=1'b0;
+				            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,125|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 125, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					write_state<=TRANSMITTING;
+					            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,127|17): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 127, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					write_state<=TRANSMITTING;
+					                         |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,127|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 127, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					BID_S<=AWID_S;
+					      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,128|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 128, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					BID_S<=AWID_S;
+					             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,128|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 128, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					aw<=AW_S;
+					   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,129|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 129, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					aw<=AW_S;
+					        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,129|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 129, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAW_S.ready<=1'b0;
+					      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,130|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 130, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAW_S.ready<=1'b0;
+					             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,130|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 130, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					len_cnt_w<=`AXI_LEN_BITS'd0;
+					          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,131|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 131, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				else HSAW_S.ready<=1'b1;// default high(view spec)
+				           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,133|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 133, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				else HSAW_S.ready<=1'b1;// default high(view spec)
+				                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,133|22): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 133, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW.ready<=1'b0;
+						   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,138|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 138, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW.ready<=1'b0;
+						          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,138|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 138, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						WEB<=`AXI_STRB_BITS'd0;
+						    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,139|10): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 139, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW_S.ready<=1'b1;
+						     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,142|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 142, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW_S.ready<=1'b1;
+						            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,142|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 142, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSB_S.valid<=1'b1;
+							     |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,144|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 144, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSB_S.valid<=1'b1;
+							            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,144|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 144, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							write_state<=IDLE;
+							            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,145|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 145, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							write_state<=IDLE;
+							                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,145|24): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 145, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						len_cnt_w<=len_cnt_w+1;
+						          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,147|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 147, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						len_cnt_w<=len_cnt_w+1;
+						                    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,147|26): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 147, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						WEB<=~WSTRB_S;
+						    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,148|10): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 148, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						WEB<=~WSTRB_S;
+						             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,148|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 148, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.SRAM_wrapper:sv
+		errors: 86, warnings: 0
+Pointer last_direction;
+                     |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,9|21): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 9, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+Pointer direction;
+                |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,10|16): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 10, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+         |
+ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,12|9): expecting a statement [9(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,12|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,12|38): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		direction<=DEFAULT;
+		          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,14|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		direction<=DEFAULT;
+		                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,14|20): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		last_direction<=DEFAULT;
+		               |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,15|17): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		last_direction<=DEFAULT;
+		                       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,15|25): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		case(direction):
+		               |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,18|17): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 18, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(hs1.valid) direction<=SEL1;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,21|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(hs1.valid) direction<=SEL1;
+					                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,21|34): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else if(hs0.valid) direction<=SEL0;
+					                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,22|34): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 22, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else if(hs0.valid) direction<=SEL0;
+					                                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,22|39): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 22, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else direction<=DEFAULT;
+					               |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,23|20): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else direction<=DEFAULT;
+					                       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,23|28): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					last_direction<=SEL0;
+					               |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,24|20): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 24, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					last_direction<=SEL0;
+					                    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,24|25): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 24, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(hs0.valid) direction<=SEL0;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,29|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 29, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(hs0.valid) direction<=SEL0;
+					                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,29|34): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 29, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else if(hs1.valid) direction<=SEL1;
+					                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,30|34): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 30, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else if(hs1.valid) direction<=SEL1;
+					                                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,30|39): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 30, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else direction<=DEFAULT;
+					               |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,31|20): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 31, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					else direction<=DEFAULT;
+					                       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,31|28): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 31, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					last_direction<=SEL1;
+					               |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,32|20): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 32, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					last_direction<=SEL1;
+					                    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,32|25): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 32, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				case(last_direction):
+				                    |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,36|24): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 36, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs1.valid) direction<=SEL1;
+						                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,38|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 38, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs1.valid) direction<=SEL1;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,38|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 38, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs0.valid) direction<=SEL0;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,39|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 39, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs0.valid) direction<=SEL0;
+						                                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,39|40): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 39, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs0.valid) direction<=SEL0;
+						                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,42|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 42, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs0.valid) direction<=SEL0;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,42|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 42, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs1.valid) direction<=SEL1;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,43|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 43, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs1.valid) direction<=SEL1;
+						                                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,43|40): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 43, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs0.valid) direction<=SEL0;
+						                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,46|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 46, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						if(hs0.valid) direction<=SEL0;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,46|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 46, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs1.valid) direction<=SEL1;
+						                             |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,47|35): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 47, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						else if(hs1.valid) direction<=SEL1;
+						                                  |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,47|40): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 47, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.Arbiter:sv
+		errors: 39, warnings: 0
+	input [`AXI_ADDR_BITS]addr,
+	                     |
+ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv,4|22): The single-bound form of a range is only allowed for array (i.e., unpacked) dimensions.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	output Pointer send_direction
+	             |
+ncvlog: *E,SVNOTY (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv,5|14): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv line 5, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_comb begin
+          |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv,7|10): expecting a semicolon (';') [12.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv line 7, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		16'd1:	send_direction<=SEL1;
+		 |
+ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv,10|3): expecting the keyword 'endmodule' [12.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Decoder.sv line 10, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 12, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.Decoder:sv
+		errors: 4, warnings: 0
+module Mux_2 #(parameter in_size,parameter out_size)(
+                                |
+ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,4|32): expecting an equal sign ('=') [3.10(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+module Mux_2 #(parameter in_size,parameter out_size)(
+                                                   |
+ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,4|51): expecting an equal sign ('=') [3.10(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	input logic[`AXI_POINTER_BITS] pointer,
+	                             |
+ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,5|30): The single-bound form of a range is only allowed for array (i.e., unpacked) dimensions.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 5, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+);
+|
+ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,9|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 9, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+Pointer p;
+        |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,10|8): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 10, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	case(p):
+	       |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,16|8): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 16, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	case(p):
+	       |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,21|8): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.Mux_2:sv
+		errors: 7, warnings: 0
+module Mux_3 #(parameter in_size,parameter out_size)(
+                                |
+ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,4|32): expecting an equal sign ('=') [3.10(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+module Mux_3 #(parameter in_size,parameter out_size)(
+                                                   |
+ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,4|51): expecting an equal sign ('=') [3.10(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	input logic[`AXI_POINTER_BITS] pointer,
+	                             |
+ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,5|30): The single-bound form of a range is only allowed for array (i.e., unpacked) dimensions.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 5, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+);
+|
+ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,10|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 10, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+Pointer p;
+        |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,11|8): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	case(p):
+	       |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,17|8): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 17, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	case(p):
+	       |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,23|8): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.Mux_3:sv
+		errors: 7, warnings: 0
+)
+|
+ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,30|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 30, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`EMPTY_R()
+         |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,32|9): expecting a semicolon (';') [12.1(IEEE)].
+(`define macro: EMPTY_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 90], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 32, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+State read_state;
+               |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,36|15): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 36, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AddrInfo ar;
+          |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,39|10): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 39, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+DataInfo r;
+         |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,42|9): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 42, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+         |
+ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,48|9): expecting a statement [9(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 48, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,48|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 48, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,48|38): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 48, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		read_state<=IDLE;
+		           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,50|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 50, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		read_state<=IDLE;
+		                |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,50|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 50, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		RID<=`AXI_IDS_BITS'dx;
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,51|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 51, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		AR_<={$bits(AddrInfo){1'bx}};
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,52|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 52, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		AR_<={$bits(AddrInfo){1'bx}};
+		                     |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,52|23): expecting a semicolon (';') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 52, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAR.ready<=1'b1;// default high(view spec)
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,53|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 53, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAR.ready<=1'b1;// default high(view spec)
+		           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,53|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 53, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSR.valid<=1'b0;
+		   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,54|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 54, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSR.valid<=1'b0;
+		          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,54|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 54, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		r.last<=1'b0;
+		 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,55|3): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 55, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		r.last<=1'b0;
+		       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,55|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 55, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		case(read_state):
+		                |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,58|18): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 58, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					read_state<=TRANSMITTING;
+					           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,61|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 61, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					read_state<=TRANSMITTING;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,61|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 61, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					RID<=ARID;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,62|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 62, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					RID<=ARID;
+					         |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,62|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 62, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					AR_<=AR;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,63|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 63, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					AR_<=AR;
+					       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,63|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 63, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAR.ready<=1'b0;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,64|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 64, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAR.ready<=1'b0;
+					           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,64|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 64, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				r.last<=1'b0;
+				 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,66|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 66, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				r.last<=1'b0;
+				       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,66|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 66, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSR.valid) HSR.valid<=1'b0;
+					                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,70|22): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 70, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSR.valid) HSR.valid<=1'b0;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,70|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 70, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							r.last<=1'b1;
+							 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,73|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 73, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							r.last<=1'b1;
+							       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,73|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 73, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							read_state<=IDLE;
+							           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,74|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 74, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							read_state<=IDLE;
+							                |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,74|23): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 74, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSAR.ready<=1'b1;// default high(view spec)
+							    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,75|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 75, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSAR.ready<=1'b1;// default high(view spec)
+							           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,75|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 75, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSR.valid<=1'b1;
+						   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,77|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 77, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSR.valid<=1'b1;
+						          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,77|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 77, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+State write_state;
+                |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,86|16): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 86, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AddrInfo aw;
+          |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,89|10): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 89, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+DataInfo w;
+         |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,92|9): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 92, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+         |
+ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,97|9): expecting a statement [9(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 97, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,97|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 97, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+always_ff(posedge ACLK,negedge ARESETn) begin
+                                      |
+ncvlog: *E,MISEXX (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,97|38): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 97, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		write_state<=IDLE;
+		            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,99|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 99, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		write_state<=IDLE;
+		                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,99|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 99, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		WID<=`AXI_IDS_BITS'dx;
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,100|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 100, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		AW_<=`AXI_ADDR_BITS'dx;
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,101|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 101, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAW.ready<=1'b1;// default high(view spec)
+		    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,102|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 102, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSAW.ready<=1'b1;// default high(view spec)
+		           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,102|13): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 102, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSW.ready<=1'b0;
+		   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,103|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 103, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSW.ready<=1'b0;
+		          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,103|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 103, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSB.valid<=1'b0;
+		   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,104|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 104, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		HSB.valid<=1'b0;
+		          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,104|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 104, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+		case(write_state):
+		                 |
+ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,107|19): illegal expression primary [4.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 107, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSB.valid<=1'b0;
+				   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,109|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 109, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSB.valid<=1'b0;
+				          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,109|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 109, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSW.ready<=1'b0;
+				   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,110|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 110, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+				HSW.ready<=1'b0;
+				          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,110|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 110, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					write_state<=TRANSMITTING;
+					            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,112|17): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 112, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					write_state<=TRANSMITTING;
+					                         |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,112|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 112, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					WID<=AWID;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,113|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 113, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					WID<=AWID;
+					         |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,113|14): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 113, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					AW_<=AW;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,114|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 114, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					AW_<=AW;
+					       |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,114|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 114, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAW.ready<=1'b0;
+					    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,115|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 115, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSAW.ready<=1'b0;
+					           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,115|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 115, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSB.valid<=1'b1;// tmp put there to decrease cycle?(test)
+					   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,120|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 120, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					HSB.valid<=1'b1;// tmp put there to decrease cycle?(test)
+					          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,120|15): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 120, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSW.ready) HSW.ready<=1'b0;
+					                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,121|22): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 121, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					if(HSW.ready) HSW.ready<=1'b0;
+					                        |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,121|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 121, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW.ready<=1'b1;
+						   |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,123|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 123, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						HSW.ready<=1'b1;
+						          |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,123|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 123, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSAW.ready<=1'b1;// default high(view spec)
+							    |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,125|11): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 125, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							HSAW.ready<=1'b1;// default high(view spec)
+							           |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,125|18): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 125, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							write_state<=IDLE;
+							            |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,126|19): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 126, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+							write_state<=IDLE;
+							                 |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,126|24): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 126, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.Default_Slave:sv
+		errors: 79, warnings: 0
+	input [`AXI_LEN_BITS-1:0] AWLEN_M1,
+	    |
+ncvlog: *E,EXPCORP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,26|5): Expecting a ',' or ')' [A.1.4(IEEE-2001)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 26, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	output [1:0] ARBURST_S1, 
+	                        |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,134|25): non-printable character (0xc2) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 134, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	output [1:0] ARBURST_S1, 
+	                         |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,134|26): non-printable character (0xa0) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 134, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`CREATE_W(M0)
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,158|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 78], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 158, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`CREATE_W(M0)
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,158|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 78], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 158, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`CREATE_W(M0)
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,158|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 78], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 158, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`CREATE_W(M0)
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,158|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 78], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 158, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`CREATE_W(M0)
+            |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,158|12): Mixing of ansi & non-ansi style port declaration is not legal.
+(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 78], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 158, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`W_out_convert(S0)
+                 |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,165|17): `AddrInfo: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`define macro: W_out_convert [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 59], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 165, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`W_out_convert(S0)
+                 |
+ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,165|17): expecting the keyword 'endmodule' [12.1(IEEE)].
+(`define macro: W_out_convert [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 59], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 165, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+`W_out_convert(S1)
+                 |
+ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,168|17): `AddrInfo: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+(`define macro: W_out_convert [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 59], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 168, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.AXI:sv
+		errors: 9, warnings: 2
+assign rst<=~ARESETn;
+     |
+ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,11|5): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 11, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+wire [`AXI_ADDR_BITS-1:0] AWADDR_M1; in interfac
+                                               |
+ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,16|47): Mixing of ansi & non-ansi style port declaration is not legal.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 17, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+wire [`AXI_LEN_BITS-1:0] AWLEN_M1;
+   |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,17|3): expecting a semicolon (';') [12.3.2(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 17, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+wire [1:0] ARBURST_S1; 
+                      |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,125|22): non-printable character (0xc2) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 125, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+wire [1:0] ARBURST_S1; 
+                       |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,125|23): non-printable character (0xa0) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 125, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AXI axi(
+  |
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,192|2): expecting a semicolon (';') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 192, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+AXI axi(
+      |
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,192|6): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 192, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWADDR_M1(AWADDR_M1), in interfac
+	                        |
+ncvlog: *E,PLMIXU (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,199|25): ordered and named port list mixed syntax [12.3.3][12.3.4(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 199, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWADDR_M1(AWADDR_M1), in interfac
+	                                 |
+ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,199|34): expecting a right parenthesis (')') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 199, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWLEN_M1(AWLEN_M1),
+	|
+ncvlog: *E,ILLHIN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,200|1): illegal location for a hierarchical name (interfac).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 200, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWSIZE_M1(AWSIZE_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,201|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 201, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWBURST_M1(AWBURST_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,202|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 202, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWVALID_M1(AWVALID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,203|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 203, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWREADY_M1(AWREADY_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,204|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 204, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WDATA_M1(WDATA_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,206|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 206, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WSTRB_M1(WSTRB_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,207|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 207, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WLAST_M1(WLAST_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,208|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 208, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WVALID_M1(WVALID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,209|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 209, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WREADY_M1(WREADY_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,210|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 210, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BID_M1(BID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,212|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 212, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BRESP_M1(BRESP_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,213|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 213, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BVALID_M1(BVALID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,214|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 214, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BREADY_M1(BREADY_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,215|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 215, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARID_M0(ARID_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,218|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 218, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARADDR_M0(ARADDR_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,219|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 219, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARLEN_M0(ARLEN_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,220|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 220, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARSIZE_M0(ARSIZE_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,221|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 221, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_M0(ARBURST_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,222|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 222, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARVALID_M0(ARVALID_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,223|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 223, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARREADY_M0(ARREADY_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,224|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 224, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RID_M0(RID_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,226|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 226, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RDATA_M0(RDATA_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,227|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 227, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RRESP_M0(RRESP_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,228|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 228, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RLAST_M0(RLAST_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,229|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 229, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RVALID_M0(RVALID_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,230|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 230, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RREADY_M0(RREADY_M0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,231|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 231, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARID_M1(ARID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,233|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 233, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARADDR_M1(ARADDR_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,234|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 234, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARLEN_M1(ARLEN_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,235|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 235, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARSIZE_M1(ARSIZE_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,236|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 236, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_M1(ARBURST_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,237|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 237, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARVALID_M1(ARVALID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,238|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 238, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARREADY_M1(ARREADY_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,239|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 239, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RID_M1(RID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,241|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 241, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RDATA_M1(RDATA_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,242|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 242, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RRESP_M1(RRESP_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,243|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 243, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RLAST_M1(RLAST_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,244|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 244, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RVALID_M1(RVALID_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,245|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 245, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RREADY_M1(RREADY_M1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,246|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 246, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWID_S0(AWID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,250|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 250, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWADDR_S0(AWADDR_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,251|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 251, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWLEN_S0(AWLEN_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,252|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 252, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWSIZE_S0(AWSIZE_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,253|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 253, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWBURST_S0(AWBURST_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,254|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 254, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWVALID_S0(AWVALID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,255|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 255, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWREADY_S0(AWREADY_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,256|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 256, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WDATA_S0(WDATA_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,258|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 258, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WSTRB_S0(WSTRB_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,259|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 259, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WLAST_S0(WLAST_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,260|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 260, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WVALID_S0(WVALID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,261|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 261, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WREADY_S0(WREADY_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,262|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 262, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BID_S0(BID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,264|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 264, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BRESP_S0(BRESP_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,265|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 265, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BVALID_S0(BVALID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,266|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 266, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BREADY_S0(BREADY_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,267|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 267, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWID_S1(AWID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,269|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 269, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWADDR_S1(AWADDR_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,270|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 270, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWLEN_S1(AWLEN_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,271|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 271, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWSIZE_S1(AWSIZE_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,272|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 272, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWBURST_S1(AWBURST_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,273|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 273, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWVALID_S1(AWVALID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,274|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 274, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.AWREADY_S1(AWREADY_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,275|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 275, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WDATA_S1(WDATA_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,277|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 277, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WSTRB_S1(WSTRB_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,278|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 278, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WLAST_S1(WLAST_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,279|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 279, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WVALID_S1(WVALID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,280|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 280, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.WREADY_S1(WREADY_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,281|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 281, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BID_S1(BID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,283|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 283, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BRESP_S1(BRESP_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,284|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 284, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BVALID_S1(BVALID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,285|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 285, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.BREADY_S1(BREADY_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,286|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 286, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARID_S0(ARID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,289|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 289, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARADDR_S0(ARADDR_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,290|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 290, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARLEN_S0(ARLEN_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,291|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 291, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARSIZE_S0(ARSIZE_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,292|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 292, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_S0(ARBURST_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,293|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 293, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARVALID_S0(ARVALID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,294|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 294, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARREADY_S0(ARREADY_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,295|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 295, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RID_S0(RID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,297|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 297, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RDATA_S0(RDATA_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,298|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 298, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RRESP_S0(RRESP_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,299|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 299, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RLAST_S0(RLAST_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,300|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 300, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RVALID_S0(RVALID_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,301|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 301, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RREADY_S0(RREADY_S0),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,302|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 302, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARID_S1(ARID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,304|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 304, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARADDR_S1(ARADDR_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,305|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 305, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARLEN_S1(ARLEN_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,306|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 306, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARSIZE_S1(ARSIZE_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,307|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 307, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_S1(ARBURST_S1), 
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,308|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 308, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_S1(ARBURST_S1), 
+	                        |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,308|25): non-printable character (0xc2) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 308, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARBURST_S1(ARBURST_S1), 
+	                         |
+ncvlog: *W,NONPRT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,308|26): non-printable character (0xa0) ignored.
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 308, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARVALID_S1(ARVALID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,309|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 309, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.ARREADY_S1(ARREADY_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,310|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 310, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RID_S1(RID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,312|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 312, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RDATA_S1(RDATA_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,313|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 313, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RRESP_S1(RRESP_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,314|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 314, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RLAST_S1(RLAST_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,315|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 315, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RVALID_S1(RVALID_S1),
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,316|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 316, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	.RREADY_S1(RREADY_S1)
+	|
+ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,317|1): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 317, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+);
+|
+ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv,318|0): expecting a semicolon (';') [12.1.2][7.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 318, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+	module worklib.top:sv
+		errors: 106, warnings: 4
+    $value$plusargs("prog_path=%s", prog_path);
+                  |
+ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,43|18): System function '$value$plusargs' invoked as a task. Return value will be ignored.
+      $fscanf(gf, "%h\n", GOLDEN[num]);
+            |
+ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,65|12): System function '$fscanf' invoked as a task. Return value will be ignored.
+	Total errors/warnings found outside modules and primitives:
+		errors: 6, warnings: 2
+irun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
