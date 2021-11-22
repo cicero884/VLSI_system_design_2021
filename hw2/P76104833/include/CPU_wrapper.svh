@@ -1,10 +1,9 @@
 `ifndef CPU_WRAPPER_SVH
 	`define CPU_WRAPPER_SVH
 
-	`define PC_BITS 14
 
 	typedef struct{
-		logic [`PC_BITS-1:0]addr;
+		logic [`CPU_ADDR_BITS-1:0]addr;
 		logic [31:0] data;
 	} Cache;
 

@@ -1,3 +1,6 @@
+`include "CPU_define.svh"
+
+
 `include "Adder.sv"
 `include "Mux_2in.sv"
 `include "Mux_3in.sv"
@@ -19,18 +22,13 @@
 `include "Register.sv"
 `include "ALU.sv"
 
-`define sig_Rs2 24:20
-`define sig_Rs1 19:15
-`define sig_Funct3 14:12
-`define sig_Rd 11:7
-`define sig_Opcode 6:0
 
 
 module CPU(
 	//input
 	input clk,input rst,input [31:0]im_data_out,input [31:0]dm_data_out,input sync_i,input sync_d,
 	//output
-	output [13:0]im_addr,output [3:0]dm_write_en,output [13:0]dm_addr,output [31:0]dm_data_in
+	output [`CPU_ADDR_BITS-1:0]im_addr,output [3:0]dm_write_en,output [`CPU_ADDR_BITS-1:0]dm_addr,output [31:0]dm_data_in
 );
 
 /* hazard control */

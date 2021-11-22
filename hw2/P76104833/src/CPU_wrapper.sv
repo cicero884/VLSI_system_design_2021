@@ -1,4 +1,5 @@
 `include "AXI_define.svh"
+`include "CPU_define.svh"
 `include "AXI_wrapper.svh"
 `include "CPU_wrapper.svh"
 
@@ -68,7 +69,7 @@ module CPU_wrapper(
 // Instruction
 // read handler
 State read_state_M0;
-wire [`PC_BITS-1:0]im_addr;
+wire [`CPU_ADDR_BITS-1:0]im_addr;
 wire [31:0]im_read;
 logic sync_i;
 // tmp mini cache...
@@ -90,7 +91,7 @@ always_ff(posedge clk,posedge rst)begin
 			IDLE:begin
 				if(c_i.addr!=im_addr) begin
 					read_state_M0<=ADDR_HANDSHAKE;
-					`SEND_ADDR(R,M0,im_addr)
+					`SEND_ADDR(R,M0,{16'd0,im_addr})
 					HSAR_M0.valid<=1'b1;
 					sync_i<=1'b1;
 				end
@@ -111,7 +112,7 @@ always_ff(posedge clk,posedge rst)begin
 						end
 						else begin
 							read_state_M0<=ADDR_HANDSHAKE;
-							`SEND_ADDR(R,M0,dm_addr)
+							`SEND_ADDR(R,M0,{16'd0,im_addr})
 						end
 						HSR_M0.ready<=1'b0;
 					end
@@ -126,7 +127,7 @@ always_ff(posedge clk,posedge rst)begin
 end
 
 // Data
-wire [`PC_BITS-1:0]dm_addr;
+wire [`ADDR_BITS-1:0]dm_addr;
 wire [31:0]dm_read;
 wire [31:0]dm_write;
 logic [1:0]sync_d;//1:r  0:d
@@ -150,7 +151,7 @@ always_ff(posedge clk,posedge rst)begin
 			IDLE:begin
 				if(c_d.addr!=dm_addr) begin
 					read_state_M1<=ADDR_HANDSHAKE;
-					`SEND_ADDR(R,M1,dm_addr)
+					`SEND_ADDR(R,M1,{16'd1,dm_addr})
 					sync_d[1]<=1'b1;
 				end
 			end
@@ -170,7 +171,7 @@ always_ff(posedge clk,posedge rst)begin
 						end
 						else begin
 							read_state_M1<=ADDR_HANDSHAKE;
-							`SEND_ADDR(R,M1,dm_addr)
+							`SEND_ADDR(R,M1,{16'd1,dm_addr})
 						end
 						HSR_M1.ready<=1'b0;
 					end
@@ -184,6 +185,8 @@ always_ff(posedge clk,posedge rst)begin
 	end
 end
 
+State write_state_M1;
+logic [`AXI_LEN_BITS-1:0]len_cnt_M1_w;
 // write handler
 always_ff(posedge clk,posedge rst) begin
 	if(rst) begin
@@ -191,9 +194,9 @@ always_ff(posedge clk,posedge rst) begin
 	else begin
 		case(data_write_state)
 			IDLE:begin
-				if(c_d.addr!=dm_addr) begin
+				if(WSTRB_M1!=0) begin
 					write_state_M1<=ADDR_HANDSHAKE;
-					`SEND_ADDR(W,M1,dm_addr)
+					`SEND_ADDR(W,M1,{16'd1,dm_addr})
 					sync_d[0]<=1'b1;
 				end
 			end
@@ -205,8 +208,14 @@ always_ff(posedge clk,posedge rst) begin
 				end
 			end
 			TRANSMITTING:begin
-				if(HSW.valid) begin
-					//TODO
+				if(HSW_M1.ready) begin
+					HSW.valid<=1'b0;
+					if(len_cnt_M1_w==`AXI_LEN_BITS'b0) write_state_M1<=BACK;
+					len_cnt_M1_w<=len_cnt_M1_w+1;
+				end
+				else begin
+					HSW_M1.valid<=1'b1;
+					W_M1.data<=dm_write;
 				end
 			end
 			BACK:begin
@@ -216,7 +225,7 @@ always_ff(posedge clk,posedge rst) begin
 					end
 					else begin
 						write_state_M1<=ADDR_HANDSHAKE;
-						`SEND_ADDR(W,M1,dm_addr)
+						`SEND_ADDR(W,M1,{16'd1,dm_addr})
 					end
 					HSB_M1.ready<=1'b0;
 				end
@@ -228,7 +237,7 @@ end
 // connect CPU
 CPU cpu(
 	//input
-	.clk(clk),.rst(rst),.im_data_out(im_read),.dm_data_out(dm_read),sync_i(sync_i),sync_d(sync_d)
+	.clk(clk),.rst(rst),.im_data_out(im_read),.dm_data_out(dm_read),.sync_i(sync_i),.sync_d((sync_d!=2'b00))
 	//output
 	.im_addr(im_addr),.dm_write_en(WSTRB_M1),.dm_addr(dm_addr),.dm_data_in(dm_write)
 );
