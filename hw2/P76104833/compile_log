@@ -14,26 +14,24 @@ ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 `define MAX 300000 // Max cycle number
                                       |
 ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-assign im_read<=c_i.data;
-               |
-ncvlog: *E,CNAMBB (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,78|15): continuous assignment must be blocking, not nonblocking [6.1][6.1.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 243, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-						if(c_i.pc==dm_addr) begin
-						                 |
-ncvlog: *E,UNDIDN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,110|23): 'dm_addr': undeclared identifier [12.5(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 243, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-		case(data_write_state)
-		                    |
-ncvlog: *E,UNDIDN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv,194|22): 'data_write_state': undeclared identifier [12.5(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/CPU_wrapper.sv line 243, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 1, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	module worklib.CPU_wrapper:sv
-		errors: 3, warnings: 0
-		case(write_state):
-		                 |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,122|19): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 122, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					ar<=AR_S;
+					       |
+ncvlog: *E,TYCMPAT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv ,82|12): assignment operator type check failed (expecting datatype compatible with '$unit::AddrInfo (packed structure)' but found 'AddrInfo instance' instead).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 249, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+					aw<=AW_S;
+					       |
+ncvlog: *E,TYCMPAT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,129|12): assignment operator type check failed (expecting datatype compatible with '$unit::AddrInfo (packed structure)' but found 'AddrInfo instance' instead).
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 249, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						WEB<=`AXI_STRB_BITS'd0;
+						  |
+ncvlog: *E,WANOTL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,139|8): A net is not a legal lvalue in this context [9.3.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 249, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+						WEB<=~WSTRB_S;
+						  |
+ncvlog: *E,WANOTL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,148|8): A net is not a legal lvalue in this context [9.3.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 249, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.SRAM_wrapper:sv
-		errors: 1, warnings: 0
+		errors: 4, warnings: 0
 always_ff(posedge ACLK,negedge ARESETn) begin
          |
 ncvlog: *E,NOTSTT (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,12|9): expecting a statement [9(IEEE)].
@@ -62,10 +60,6 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 		                       |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,15|25): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-		case(direction):
-		               |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,18|17): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 18, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 					if(hs1.valid) direction<=SEL1;
 					                        |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,21|29): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
@@ -130,10 +124,6 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 					                    |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,32|25): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 32, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-				case(last_direction):
-				                    |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,36|24): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 36, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 						if(hs1.valid) direction<=SEL1;
 						                        |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,38|30): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
@@ -183,7 +173,7 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,47|40): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 47, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.Arbiter:sv
-		errors: 37, warnings: 0
+		errors: 35, warnings: 0
 module Mux_2 #(parameter in_size,parameter out_size)(
                                 |
 ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,4|32): expecting an equal sign ('=') [3.10(IEEE)].
@@ -200,16 +190,8 @@ ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 |
 ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,9|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 9, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	case(p):
-	       |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,16|8): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 16, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	case(p):
-	       |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv,21|8): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_2.sv line 21, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.Mux_2:sv
-		errors: 6, warnings: 0
+		errors: 4, warnings: 0
 module Mux_3 #(parameter in_size,parameter out_size)(
                                 |
 ncvlog: *E,EXPEQL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,4|32): expecting an equal sign ('=') [3.10(IEEE)].
@@ -226,16 +208,8 @@ ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 |
 ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,10|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 10, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	case(p):
-	       |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,17|8): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 17, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	case(p):
-	       |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv,23|8): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux_3.sv line 23, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.Mux_3:sv
-		errors: 6, warnings: 0
+		errors: 4, warnings: 0
 )
 |
 ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,30|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
@@ -300,10 +274,6 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 		       |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,55|9): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 55, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-		case(read_state):
-		                |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,58|18): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 58, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 					read_state<=TRANSMITTING;
 					           |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,61|16): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
@@ -436,10 +406,6 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 		          |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,104|12): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 104, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-		case(write_state):
-		                 |
-ncvlog: *E,ILLPRI (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,107|19): illegal expression primary [4.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 107, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 				HSB.valid<=1'b0;
 				   |
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,109|7): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
@@ -529,7 +495,7 @@ ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/
 ncvlog: *E,EXPLPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,126|24): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
 (`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 126, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 15, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.Default_Slave:sv
-		errors: 73, warnings: 0
+		errors: 71, warnings: 0
 	input [`AXI_LEN_BITS-1:0] AWLEN_M1,
 	    |
 ncvlog: *E,EXPCORP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,26|5): Expecting a ',' or ')' [A.1.4(IEEE-2001)].

@@ -54,6 +54,7 @@ wire OE;
 
 // Read handler
 State read_state;
+State write_state;
 //save read AddrInfo in AR_S(in convert),cast on ar to use
 AddrInfo ar;
 
@@ -105,7 +106,6 @@ always_ff @(posedge clk,posedge rst) begin
 end
 
 // Write handler
-State write_state;
 //save write AddrInfo in AW_S,cast on ar to use
 AddrInfo aw;
 assign BRESP=resp;
