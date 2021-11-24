@@ -12,26 +12,26 @@
 		assign HS``TYPE``_``ROLE``.ready=``TYPE``READY_``ROLE``;
 
 	`define AddrInfo_in(RW,ROLE) \
-		AddrInfo A``RW``_``ROLE``(); \
+		AddrInfo A``RW``_``ROLE``; \
 		assign A``RW``_``ROLE``.addr	=A``RW``ADDR_``ROLE``; \
 		assign A``RW``_``ROLE``.len		=A``RW``LEN_``ROLE``; \
 		assign A``RW``_``ROLE``.size	=A``RW``SIZE_``ROLE``; \
-		assign A``RW``_``ROLE``.burst	=A``RW``BURST_``ROLE``;
+		assign A``RW``_``ROLE``.burst	=BurstType'(A``RW``BURST_``ROLE``);
 
 	`define AddrInfo_out(RW,ROLE) \
-		AddrInfo A``RW``_``ROLE``(); \
+		AddrInfo A``RW``_``ROLE``; \
 		assign A``RW``ADDR_``ROLE`` 	=A``RW``_``ROLE``.addr; \
 		assign A``RW``LEN_``ROLE``  	=A``RW``_``ROLE``.len; \
 		assign A``RW``SIZE_``ROLE`` 	=A``RW``_``ROLE``.size; \
-		assign A``RW``BURST_``ROLE`` 	=A``RW``_``ROLE``.burst;	
+		assign A``RW``BURST_``ROLE`` 	=BurstType'(A``RW``_``ROLE``.burst);	
 
 	`define Data_in(RW,ROLE) \
-		DataInfo ``RW``_``ROLE``(); \
+		DataInfo ``RW``_``ROLE``; \
 		assign ``RW``_``ROLE``.data	=``RW``DATA_``ROLE``; \
 		assign ``RW``_``ROLE``.last	=``RW``LAST_``ROLE``; 
 
 	`define Data_out(RW,ROLE) \
-		DataInfo ``RW``_``ROLE``(); \
+		DataInfo ``RW``_``ROLE``; \
 		assign ``RW``DATA_``ROLE``=``RW``_``ROLE``.data; \
 		assign ``RW``LAST_``ROLE``=``RW``_``ROLE``.last;
 
@@ -67,23 +67,23 @@
 	`define CREATE_R(NAME) \
 		wire [`AXI_IDM_BITS-1:0] ARID_``NAME``; \
 		AddrInfo AR_``NAME``; \
-		HandShake HSAR_``NAME``; \
+		HandShake HSAR_``NAME``(); \
 		wire [`AXI_IDM_BITS-1:0] RID_``NAME``; \
 		DataInfo R_``NAME``; \
 		wire [1:0] RRESP_``NAME``; \
-		HandShake HSR_``NAME``;
+		HandShake HSR_``NAME``();
 
 	// create W channel wires
 	`define CREATE_W(NAME) \
 		wire [`AXI_IDM_BITS-1:0] AWID_``NAME``; \
 		AddrInfo AW_``NAME``; \
-		HandShake HSAW_``NAME``; \
+		HandShake HSAW_``NAME``(); \
 		DataInfo W_``NAME``; \
 		wire [`AXI_STRB_BITS-1:0] WSTRB_``NAME``; \
-		HandShake HSW_``NAME``; \
+		HandShake HSW_``NAME``(); \
 		wire [`AXI_IDS_BITS-1:0] BID_``NAME``; \
 		wire [1:0] BRESP_``NAME``; \
-		HandShake HSB_``NAME``;
+		HandShake HSB_``NAME``();
 	
 	// for empty channels
 	`define EMPTY_R(NAME) \

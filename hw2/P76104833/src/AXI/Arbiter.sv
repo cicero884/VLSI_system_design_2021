@@ -4,12 +4,12 @@ module Arbiter(
 	input ACLK,input ARESETn,
 	HandShake.in hs0,
 	HandShake.in hs1,
-	output logic[AXI_POINTER_BITS-1:0] receive_direction
+	output logic[`AXI_POINTER_BITS-1:0] receive_direction
 );
 Pointer last_direction;
 Pointer direction;
 assign receive_direction=direction;
-always_ff(posedge ACLK,negedge ARESETn) begin
+always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		direction<=DEFAULT;
 		last_direction<=DEFAULT;

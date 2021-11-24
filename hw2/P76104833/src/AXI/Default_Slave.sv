@@ -10,7 +10,7 @@ module Default_Slave(
 
 	//READ DATA
 	output logic [`AXI_IDS_BITS-1:0] RID,
-	output [$bits(DataInfo-1):0] R,
+	output [$bits(DataInfo)-1:0] R,
 	output logic [1:0] RRESP,
 	HandShake.out HSR,
 
@@ -19,15 +19,15 @@ module Default_Slave(
 	input [$bits(AddrInfo)-1:0]AW,
 	HandShake.in HSAW,
 	//WRITE DATA
-	input [$bits(DataInfo-1):0] W,
+	input [$bits(DataInfo)-1:0] W,
 	input [`AXI_STRB_BITS-1:0] WSTRB,
 	HandShake.in HSW,
 
 	//WRITE RESPONSE
 	output logic [`AXI_IDS_BITS-1:0] BID,
 	output logic [1:0] BRESP_S,
-	HandShake.out HSB,
-)
+	HandShake.out HSB
+);
 
 `EMPTY_R()
 `EMPTY_W()
@@ -40,12 +40,12 @@ AddrInfo ar;
 assign ar=AR_;
 
 DataInfo r;
-assign r.data<=`AXI_DATA_BITS'dx;
+assign r.data=`AXI_DATA_BITS'dx;
 assign R=r;
 
 assign RRESP=DECERR;
 
-always_ff(posedge ACLK,negedge ARESETn) begin
+always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		read_state<=IDLE;
 		RID<=`AXI_IDS_BITS'dx;
@@ -94,11 +94,9 @@ assign w=W;
 
 assign BRESP=DECERR;
 
-always_ff(posedge ACLK,negedge ARESETn) begin
+always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		write_state<=IDLE;
-		WID<=`AXI_IDS_BITS'dx;
-		AW_<=`AXI_ADDR_BITS'dx;
 		HSAW.ready<=1'b1;// default high(view spec)
 		HSW.ready<=1'b0;
 		HSB.valid<=1'b0;
@@ -110,7 +108,7 @@ always_ff(posedge ACLK,negedge ARESETn) begin
 				HSW.ready<=1'b0;
 				if(HSAW.valid) begin
 					write_state<=TRANSMITTING;
-					WID<=AWID;
+					BID<=AWID;
 					AW_<=AW;
 					HSAW.ready<=1'b0;
 				end

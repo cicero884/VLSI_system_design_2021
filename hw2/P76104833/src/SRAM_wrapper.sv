@@ -42,9 +42,9 @@ module SRAM_wrapper(
 );
 // wires for SRAM
 wire [13:0]A;
-wire DI[31:0];
-wire DO[31:0];
-wire WEB[3:0];
+wire [31:0]DI;
+wire [31:0]DO;
+logic [3:0]WEB;
 wire CS;
 wire OE;
 
@@ -131,6 +131,7 @@ always_ff @(posedge clk,posedge rst) begin
 					len_cnt_w<=`AXI_LEN_BITS'd0;
 				end
 				else HSAW_S.ready<=1'b1;// default high(view spec)
+				WEB<=`AXI_STRB_BITS'd0;
 			end
 			TRANSMITTING:begin
 				if(HSB_S.ready) begin

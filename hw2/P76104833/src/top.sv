@@ -7,13 +7,13 @@ module top(
 	input rst
 );
 
-wire ARESETn,
-assign rst<=~ARESETn;
+wire ARESETn;
+assign ARESETn=~rst;
 
 //SLAVE INTERFACE FOR MASTERS
 //WRITE ADDRESS	=ID +`AddrInfo +`HandShake
 wire [`AXI_IDM_BITS-1:0] AWID_M1;
-wire [`AXI_ADDR_BITS-1:0] AWADDR_M1; in interfac
+wire [`AXI_ADDR_BITS-1:0] AWADDR_M1;
 wire [`AXI_LEN_BITS-1:0] AWLEN_M1;
 wire [`AXI_SIZE_BITS-1:0] AWSIZE_M1;
 wire [1:0] AWBURST_M1;
@@ -122,7 +122,7 @@ wire [`AXI_IDS_BITS-1:0] ARID_S1;
 wire [`AXI_ADDR_BITS-1:0] ARADDR_S1;
 wire [`AXI_LEN_BITS-1:0] ARLEN_S1;
 wire [`AXI_SIZE_BITS-1:0] ARSIZE_S1;
-wire [1:0] ARBURST_S1; 
+wire [1:0] ARBURST_S1;
 wire ARVALID_S1;
 wire ARREADY_S1;
 //READ DATA1	=ID +`DataInfo +`HandShake +RESP
@@ -188,7 +188,7 @@ CPU_wrapper cpu_wrapper(
 	.BRESP_M1(BRESP_M1),
 	.BVALID_M1(BVALID_M1),
 	.BREADY_M1(BREADY_M1)
-)
+);
 AXI axi(
 	.ACLK(clk),
 	.ARESETn(ARESETn),
@@ -196,7 +196,7 @@ AXI axi(
 	//SLAVE INTERFACE FOR MASTERS
 	//WRITE ADDRESS	=ID +`AddrInfo +`HandShake
 	.AWID_M1(AWID_M1),
-	.AWADDR_M1(AWADDR_M1), in interfac
+	.AWADDR_M1(AWADDR_M1),
 	.AWLEN_M1(AWLEN_M1),
 	.AWSIZE_M1(AWSIZE_M1),
 	.AWBURST_M1(AWBURST_M1),
@@ -305,7 +305,7 @@ AXI axi(
 	.ARADDR_S1(ARADDR_S1),
 	.ARLEN_S1(ARLEN_S1),
 	.ARSIZE_S1(ARSIZE_S1),
-	.ARBURST_S1(ARBURST_S1), 
+	.ARBURST_S1(ARBURST_S1),
 	.ARVALID_S1(ARVALID_S1),
 	.ARREADY_S1(ARREADY_S1),
 	//READ DATA1	=ID +`DataInfo +`HandShake +RESP
