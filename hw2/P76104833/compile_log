@@ -7,9 +7,9 @@ riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 2 main2.hex
 riscv64-unknown-elf-objcopy -O verilog main -i 4 -b 3 main3.hex
 make[1]: Leaving directory '/home/zzhong/VLSI_system_design_2021/hw2/P76104833/sim/prog0'
 irun: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-Recompiling... reason: file '../src/CPU/CPU.sv' is newer than expected.
-	expected: Wed Nov 24 13:04:44 2021
-	actual:   Thu Nov 25 07:02:12 2021
+Recompiling... reason: file '../src/AXI/AXI.sv' is newer than expected.
+	expected: Thu Nov 25 08:31:02 2021
+	actual:   Thu Nov 25 08:32:00 2021
 file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv
 `define CYCLE 10.0 // Cycle time
                                 |
@@ -17,7 +17,7 @@ ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 `define MAX 300000 // Max cycle number
                                       |
 ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-	module worklib.CPU:sv
+	module worklib.AXI:sv
 		errors: 0, warnings: 0
     $value$plusargs("prog_path=%s", prog_path);
                   |
@@ -29,49 +29,67 @@ ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 		errors: 0, warnings: 2
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
-Default_Slave sd(
-               |
-ncelab: *W,CUVWSP (../src/AXI/AXI.sv,180|15): 5 output ports were not connected:
-ncelab: (../src/AXI/Default_Slave.sv,12): RID
-ncelab: (../src/AXI/Default_Slave.sv,13): R
-ncelab: (../src/AXI/Default_Slave.sv,14): RRESP
-ncelab: (../src/AXI/Default_Slave.sv,27): BID
-ncelab: (../src/AXI/Default_Slave.sv,28): BRESP_S
-
-Default_Slave sd(
-               |
-ncelab: *W,CUVWSI (../src/AXI/AXI.sv,180|15): 8 input ports were not connected:
-ncelab: (../src/AXI/Default_Slave.sv,5): ACLK
-ncelab: (../src/AXI/Default_Slave.sv,5): ARESETn
-ncelab: (../src/AXI/Default_Slave.sv,7): ARID
-ncelab: (../src/AXI/Default_Slave.sv,8): AR
-ncelab: (../src/AXI/Default_Slave.sv,18): AWID
-ncelab: (../src/AXI/Default_Slave.sv,19): AW
-ncelab: (../src/AXI/Default_Slave.sv,22): W
-ncelab: (../src/AXI/Default_Slave.sv,23): WSTRB
-
-Default_Slave sd(
-               |
-ncelab: *W,CUVWSN (../src/AXI/AXI.sv,180|15): 5 null-IO ports were not connected:
-ncelab: (../src/AXI/Default_Slave.sv,9): HSAR
-ncelab: (../src/AXI/Default_Slave.sv,15): HSR
-ncelab: (../src/AXI/Default_Slave.sv,20): HSAW
-ncelab: (../src/AXI/Default_Slave.sv,24): HSW
-ncelab: (../src/AXI/Default_Slave.sv,29): HSB
-
-	HandShake.in HSAR,
-	                |
-ncelab: *E,CUIMBC (../src/AXI/Default_Slave.sv,9|17): An interface port declaration must be connected (top_tb.TOP.axi.sd).
-	HandShake.out HSR,
-	                |
-ncelab: *E,CUIMBC (../src/AXI/Default_Slave.sv,15|17): An interface port declaration must be connected (top_tb.TOP.axi.sd).
-	HandShake.in HSAW,
-	                |
-ncelab: *E,CUIMBC (../src/AXI/Default_Slave.sv,20|17): An interface port declaration must be connected (top_tb.TOP.axi.sd).
-	HandShake.in HSW,
-	               |
-ncelab: *E,CUIMBC (../src/AXI/Default_Slave.sv,24|16): An interface port declaration must be connected (top_tb.TOP.axi.sd).
-	HandShake.out HSB
-	                |
-ncelab: *E,CUIMBC (../src/AXI/Default_Slave.sv,29|17): An interface port declaration must be connected (top_tb.TOP.axi.sd).
+	Top level design units:
+		$unit_0x08c41c6e
+		top_tb
+Mux_3 #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0)))) mux_AR_M0(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,229|32): Hierarchical name ('HSAR_M0.valid') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0)))) mux_AR_M0(
+                                                              |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,229|62): Hierarchical name ('HSAR_M0.ready') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`R_out(M0))),.out_size($bits(`R_in(M0)))) mux_R_M0(
+                                                            |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,243|60): Hierarchical name ('HSR_M0.valid') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1)))) mux_AR_M1(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,284|32): Hierarchical name ('HSAR_M1.valid') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1)))) mux_AR_M1(
+                                                              |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,284|62): Hierarchical name ('HSAR_M1.ready') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`R_out(M1))),.out_size($bits(`R_in(M1)))) mux_R_M1(
+                                                            |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,298|60): Hierarchical name ('HSR_M1.valid') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1)))) mux_W_M1(
+                               |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,311|31): Hierarchical name ('HSAW_M1.valid') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1)))) mux_W_M1(
+                                                            |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,311|60): Hierarchical name ('HSAW_M1.ready') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1)))) mux_W_M1(
+                                                            |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,311|60): Hierarchical name ('HSW_M1.ready') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1)))) mux_B_M1(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,325|32): Hierarchical name ('HSB_M1.ready') not allowed within a constant expression [4(IEEE)].
+Mux_3 #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1)))) mux_B_M1(
+                                                            |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,325|60): Hierarchical name ('HSB_M1.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(S0))),.out_size($bits(`AR_in(S0)))) mux_AR_S0(
+                                 |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,339|33): Hierarchical name ('HSAR_S0.ready') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(S0))),.out_size($bits(`AR_in(S0)))) mux_AR_S0(
+                                                              |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,339|62): Hierarchical name ('HSAR_S0.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`R_in(1_0))),.out_size($bits(`R_out(S0)))) mux_R_S0(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,349|32): Hierarchical name ('HSR_1_0.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(S1))),.out_size($bits(`AR_in(S1)))) mux_AR_S1(
+                                 |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,373|33): Hierarchical name ('HSAR_S1.ready') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(S1))),.out_size($bits(`AR_in(S1)))) mux_AR_S1(
+                                                              |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,373|62): Hierarchical name ('HSAR_S1.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`R_in(1_0))),.out_size($bits(`R_out(S1)))) mux_R_S1(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,383|32): Hierarchical name ('HSR_1_0.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(SD))),.out_size($bits(`AR_in(SD)))) mux_AR_SD(
+                                 |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,407|33): Hierarchical name ('HSAR_SD.ready') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`AR_out(SD))),.out_size($bits(`AR_in(SD)))) mux_AR_SD(
+                                                              |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,407|62): Hierarchical name ('HSAR_SD.valid') not allowed within a constant expression [4(IEEE)].
+Mux_2 #(.in_size($bits(`R_in(1_0))),.out_size($bits(`R_out(SD)))) mux_R_SD(
+                                |
+ncelab: *E,NOTDOT (../src/AXI/AXI.sv,417|32): Hierarchical name ('HSR_1_0.valid') not allowed within a constant expression [4(IEEE)].
 irun: *E,ELBERR: Error during elaboration (status 1), exiting.

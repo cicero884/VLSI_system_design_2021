@@ -25,7 +25,7 @@ module Default_Slave(
 
 	//WRITE RESPONSE
 	output logic [`AXI_IDS_BITS-1:0] BID,
-	output logic [1:0] BRESP_S,
+	output logic [1:0] BRESP,
 	HandShake.out HSB
 );
 
@@ -48,8 +48,6 @@ assign RRESP=DECERR;
 always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		read_state<=IDLE;
-		RID<=`AXI_IDS_BITS'dx;
-		AR_<={$bits(AddrInfo){1'bx}};
 		HSAR.ready<=1'b1;// default high(view spec)
 		HSR.valid<=1'b0;
 		r.last<=1'b0;

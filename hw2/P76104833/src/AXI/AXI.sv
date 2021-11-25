@@ -178,6 +178,31 @@ module AXI(
 `CREATE_R(SD)
 `CREATE_W(SD)
 Default_Slave sd(
+	.ACLK(ACLK),.ARESETn(ARESETn),
+	//READ ADDRESS
+	.ARID(ARID_SD),
+	.AR(AR_SD),
+	.HSAR(HSAR_SD),
+
+	//READ DATA
+	.RID(RID_SD),
+	.R(R_SD),
+	.RRESP(RRESP_SD),
+	.HSR(HSR_SD),
+
+	//WRITE ADDRESS
+	.AWID(AWID_SD),
+	.AW(AW_SD),
+	.HSAW(HSAW_SD),
+	//WRITE DATA
+	.W(W_SD),
+	.WSTRB(WSTRB_SD),
+	.HSW(HSW_SD),
+
+	//WRITE RESPONSE
+	.BID(BID_SD),
+	.BRESP(BRESP_SD),
+	.HSB(HSB_SD)
 );
 
 // middle wires
