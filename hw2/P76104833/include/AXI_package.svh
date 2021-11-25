@@ -2,12 +2,12 @@
 	`define AXI_PACKAGE_SVH
 
 	`define HandShake_in(TYPE,ROLE) \
-		HandShake HS``TYPE``_``ROLE``(); \
+		HandShake HS``TYPE``_``ROLE``; \
 		assign HS``TYPE``_``ROLE``.valid=``TYPE``VALID_``ROLE``; \
 		assign ``TYPE``READY_``ROLE``	=HS``TYPE``_``ROLE``.ready;
 
 	`define HandShake_out(TYPE,ROLE) \
-		HandShake HS``TYPE``_``ROLE``(); \
+		HandShake HS``TYPE``_``ROLE``; \
 		assign ``TYPE``VALID_``ROLE``	=HS``TYPE``_``ROLE``.valid; \
 		assign HS``TYPE``_``ROLE``.ready=``TYPE``READY_``ROLE``;
 
@@ -67,23 +67,23 @@
 	`define CREATE_R(NAME) \
 		wire [`AXI_IDM_BITS-1:0] ARID_``NAME``; \
 		AddrInfo AR_``NAME``; \
-		HandShake HSAR_``NAME``(); \
+		HandShake HSAR_``NAME``; \
 		wire [`AXI_IDM_BITS-1:0] RID_``NAME``; \
 		DataInfo R_``NAME``; \
 		wire [1:0] RRESP_``NAME``; \
-		HandShake HSR_``NAME``();
+		HandShake HSR_``NAME``;
 
 	// create W channel wires
 	`define CREATE_W(NAME) \
 		wire [`AXI_IDM_BITS-1:0] AWID_``NAME``; \
 		AddrInfo AW_``NAME``; \
-		HandShake HSAW_``NAME``(); \
+		HandShake HSAW_``NAME``; \
 		DataInfo W_``NAME``; \
 		wire [`AXI_STRB_BITS-1:0] WSTRB_``NAME``; \
-		HandShake HSW_``NAME``(); \
+		HandShake HSW_``NAME``; \
 		wire [`AXI_IDS_BITS-1:0] BID_``NAME``; \
 		wire [1:0] BRESP_``NAME``; \
-		HandShake HSB_``NAME``();
+		HandShake HSB_``NAME``;
 	
 	// for empty channels
 	`define EMPTY_R(NAME) \
