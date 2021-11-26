@@ -66,8 +66,8 @@ logic [`AXI_LEN_BITS-1:0]len_cnt_r;
 always_ff @(posedge clk,posedge rst) begin
 	if(!rst) begin
 		read_state<=IDLE;
-		HSAR_S.ready<=1'b1;// default high(view spec)
-		HSR_S.valid<=1'b0;
+		ARREADY_S<=1'b1;// default high(view spec)
+		RVALID_S<=1'b0;
 		r.last<=1'b0;
 	end
 	else begin
@@ -75,18 +75,18 @@ always_ff @(posedge clk,posedge rst) begin
 			IDLE:begin
 				r.last<=1'b0;
 				len_cnt_r<=`AXI_LEN_BITS'd0;
-				HSR_S.valid<=1'b0;
-				if(HSAR.valid) begin
+				RVALID_S<=1'b0;
+				if(ARVALID_S) begin
 					read_state<=TRANSMITTING;
 					RID_S<=ARID_S;
 					ar<=AR_S;
-					HSAR_S.ready<=1'b0;
+					ARREADY_S<=1'b0;
 				end
-				else HSAR_S.ready<=1'b1;// default high(view spec)
+				else ARREADY_S<=1'b1;// default high(view spec)
 			end
 			TRANSMITTING: begin
-				if(HSR_S.ready) begin
-					if(HSR_S.valid) HSR_S.valid<=1'b0;
+				if(RREADY_S) begin
+					if(RVALID_S) Rvalid_S<=1'b0;
 					else begin
 						if(write_state==IDLE) begin
 							//assume INCR type
@@ -96,7 +96,7 @@ always_ff @(posedge clk,posedge rst) begin
 							end
 							r.data<=DO;
 							len_cnt_r<=len_cnt_r+1;
-							HSR_S.valid<=1'b1;
+							RVALID_S<=1'b1;
 						end
 					end
 				end
@@ -114,35 +114,35 @@ logic [`AXI_LEN_BITS-1:0]len_cnt_w;
 always_ff @(posedge clk,posedge rst) begin
 	if(!rst) begin
 		write_state<=IDLE;
-		HSAW_S.ready<=1'b1;// default high(view spec)
-		HSW_S.ready<=1'b0;
-		HSB_S.valid<=1'b0;
+		AWREADY_S<=1'b1;// default high(view spec)
+		WREADY_S<=1'b0;
+		BVALID_S<=1'b0;
 	end
 	else begin
 		case(write_state)
 			IDLE:begin
-				HSB_S.valid<=1'b0;
-				HSW_S.ready<=1'b0;
-				if(HSAW_S.valid&&read_state!=TRANSMITTING) begin
+				BVALID_S<=1'b0;
+				WREADY_S<=1'b0;
+				if(AWVALID_S&&read_state!=TRANSMITTING) begin
 					write_state<=TRANSMITTING;
 					BID_S<=AWID_S;
 					aw<=AW_S;
-					HSAW_S.ready<=1'b0;
+					AWREADY_S<=1'b0;
 					len_cnt_w<=`AXI_LEN_BITS'd0;
 				end
-				else HSAW_S.ready<=1'b1;// default high(view spec)
+				else AWREADY_S<=1'b1;// default high(view spec)
 				WEB<=`AXI_STRB_BITS'd0;
 			end
 			TRANSMITTING:begin
-				if(HSB_S.ready) begin
-					if(HSW_S.ready) begin
-						HSW.ready<=1'b0;
+				if(BREADY_S) begin
+					if(WREADY_S) begin
+						WREADY_S<=1'b0;
 						WEB<=`AXI_STRB_BITS'd0;
 					end
-					else if(HSW_S.valid) begin
-						HSW_S.ready<=1'b1;
+					else if(WVALID_S) begin
+						WREADY_S<=1'b1;
 						if(W_S.last) begin
-							HSB_S.valid<=1'b1;
+							BVALID_S<=1'b1;
 							write_state<=IDLE;
 						end
 						len_cnt_w<=len_cnt_w+1;

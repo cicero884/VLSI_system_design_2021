@@ -6,27 +6,27 @@ module Default_Slave(
 	//READ ADDRESS
 	input [`AXI_IDS_BITS-1:0] ARID,
 	input [$bits(AddrInfo)-1:0]AR,
-	HandShake.in HSAR,
+	output ARREADY,input ARVALID,
 
 	//READ DATA
 	output logic [`AXI_IDS_BITS-1:0] RID,
 	output [$bits(DataInfo)-1:0] R,
 	output logic [1:0] RRESP,
-	HandShake.out HSR,
+	input RREADY,output RVALID,
 
 	//WRITE ADDRESS
 	input [`AXI_IDS_BITS-1:0] AWID,
 	input [$bits(AddrInfo)-1:0]AW,
-	HandShake.in HSAW,
+	output AWREADY,input AWVALID,
 	//WRITE DATA
 	input [$bits(DataInfo)-1:0] W,
 	input [`AXI_STRB_BITS-1:0] WSTRB,
-	HandShake.in HSW,
+	output WREADY,input WVALID,
 
 	//WRITE RESPONSE
 	output logic [`AXI_IDS_BITS-1:0] BID,
 	output logic [1:0] BRESP,
-	HandShake.out HSB
+	input BREADY,output BVALID,
 );
 
 `EMPTY_R()
@@ -48,31 +48,31 @@ assign RRESP=DECERR;
 always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		read_state<=IDLE;
-		HSAR.ready<=1'b1;// default high(view spec)
-		HSR.valid<=1'b0;
+		ARREADY<=1'b1;// default high(view spec)
+		RVALID<=1'b0;
 		r.last<=1'b0;
 	end
 	else begin
 		case(read_state)
 			IDLE:begin
-				if(HSAR.valid) begin
+				if(ARVALID) begin
 					read_state<=TRANSMITTING;
 					RID<=ARID;
 					AR_<=AR;
-					HSAR.ready<=1'b0;
+					ARREADY<=1'b0;
 				end
 				r.last<=1'b0;
 			end
 			TRANSMITTING: begin
-				if(HSR.ready) begin
-					if(HSR.valid) HSR.valid<=1'b0;
+				if(RREADY) begin
+					if(RVALID) RVALID<=1'b0;
 					else begin
 						if(ar.len==0) begin
 							r.last<=1'b1;
 							read_state<=IDLE;
-							HSAR.ready<=1'b1;// default high(view spec)
+							ARREADY<=1'b1;// default high(view spec)
 						end
-						HSR.valid<=1'b1;
+						RVALID<=1'b1;
 					end
 				end
 			end
@@ -95,30 +95,30 @@ assign BRESP=DECERR;
 always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
 		write_state<=IDLE;
-		HSAW.ready<=1'b1;// default high(view spec)
-		HSW.ready<=1'b0;
-		HSB.valid<=1'b0;
+		AWREADY<=1'b1;// default high(view spec)
+		WREADY<=1'b0;
+		BVALID<=1'b0;
 	end
 	else begin
 		case(write_state)
 			IDLE:begin
-				HSB.valid<=1'b0;
-				HSW.ready<=1'b0;
-				if(HSAW.valid) begin
+				BVALID<=1'b0;
+				WREADY<=1'b0;
+				if(AWVALID) begin
 					write_state<=TRANSMITTING;
 					BID<=AWID;
 					AW_<=AW;
-					HSAW.ready<=1'b0;
+					AWREADY<=1'b0;
 				end
 			end
 			TRANSMITTING:begin
-				if(HSB.ready) begin
-					HSB.valid<=1'b1;// tmp put there to decrease cycle?(test)
-					if(HSW.ready) HSW.ready<=1'b0;
-					else if(HSW.valid) begin
-						HSW.ready<=1'b1;
+				if(BREADY) begin
+					BVALID<=1'b1;// tmp put there to decrease cycle?(test)
+					if(WREADY) WREADY<=1'b0;
+					else if(WVALID) begin
+						WREADY<=1'b1;
 						if(w.last) begin
-							HSAW.ready<=1'b1;// default high(view spec)
+							AWREADY<=1'b1;// default high(view spec)
 							write_state<=IDLE;
 						end
 					end

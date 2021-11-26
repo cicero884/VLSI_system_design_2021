@@ -84,8 +84,8 @@ logic [`AXI_LEN_BITS-1:0]len_cnt_M0_r;
 always_ff @(posedge clk,posedge rst)begin 
 	if(rst) begin
 		read_state_M0<=IDLE;
-		HSAR_M0.valid<=1'b0;
-		HSR_M0.ready<=1'b0;
+		ARVALID_M0<=1'b0;
+		RREADY_M0<=1'b0;
 	end
 	else begin
 		case(read_state_M0)
@@ -93,19 +93,19 @@ always_ff @(posedge clk,posedge rst)begin
 				if(c_i.addr!=im_addr) begin
 					read_state_M0<=ADDR_HANDSHAKE;
 					`SEND_ADDR(R,M0,{16'd0,im_addr})
-					HSAR_M0.valid<=1'b1;
+					ARVALID_M0<=1'b1;
 					sync_i<=1'b1;
 				end
 			end
 			ADDR_HANDSHAKE:begin
-				if(HSAR_M0.ready) begin
+				if(ARREADY_M0) begin
 					read_state_M0<=TRANSMITTING;
-					HSAR_M0.valid<=1'b0;
-					HSR_M0.ready<=1'b1;
+					ARVALID_M0<=1'b0;
+					RREADY_M0<=1'b1;
 				end
 			end
 			TRANSMITTING:begin
-				if(HSR.valid&&RRESP_M0==OKAY) begin
+				if(RVALID_M0&&RRESP_M0==OKAY) begin
 					if(R_M0.last) begin
 						if(c_i.pc==im_addr) begin
 							read_state_M0<=IDLE;
@@ -115,7 +115,7 @@ always_ff @(posedge clk,posedge rst)begin
 							read_state_M0<=ADDR_HANDSHAKE;
 							`SEND_ADDR(R,M0,{16'd0,im_addr})
 						end
-						HSR_M0.ready<=1'b0;
+						RREADY_M0<=1'b0;
 					end
 						//TODO
 					c_i.data<=R_M0.data;
@@ -142,8 +142,8 @@ logic [`AXI_LEN_BITS-1:0]len_cnt_M1_r;
 always_ff @(posedge clk,posedge rst)begin 
 	if(rst) begin
 		read_state_M1<=IDLE;
-		HSAR_M1.valid<=1'b0;
-		HSR_M1.ready<=1'b0;
+		ARVALID_M1<=1'b0;
+		RREADY_M1<=1'b0;
 	end
 	else begin
 		case(read_state_M1)
@@ -155,14 +155,14 @@ always_ff @(posedge clk,posedge rst)begin
 				end
 			end
 			ADDR_HANDSHAKE:begin
-				if(HSAR_M1.ready) begin
+				if(ARREADY_M1) begin
 					read_state_M1<=TRANSMITTING;
-					HSAR_M1.valid<=1'b0;
-					HSR_M1.ready<=1'b1;
+					ARVALID_M1<=1'b0;
+					RREADY_M1<=1'b1;
 				end
 			end
 			TRANSMITTING:begin
-				if(HSR.valid&&RRESP_M1==OKAY) begin
+				if(RVALID_M1&&RRESP_M1==OKAY) begin
 					if(R_M1.last) begin
 						if(c_d.pc==dm_addr) begin
 							read_state_M1<=IDLE;
@@ -172,7 +172,7 @@ always_ff @(posedge clk,posedge rst)begin
 							read_state_M1<=ADDR_HANDSHAKE;
 							`SEND_ADDR(R,M1,{16'd1,dm_addr})
 						end
-						HSR_M1.ready<=1'b0;
+						RREADY_M1<=1'b0;
 					end
 						//TODO cache
 					c_d.data<=R_M1.data;
@@ -200,25 +200,25 @@ always_ff @(posedge clk,posedge rst) begin
 				end
 			end
 			ADDR_HANDSHAKE:begin
-				if(HSAW_M1.ready) begin
+				if(AWREADY_M1) begin
 					write_state_M1<=TRANSMITTING;
-					HSAW_M1.valid<=1'b0;
-					HSB_M1.ready<=1'b1;
+					AWVALID_M1<=1'b0;
+					BREADY_M1<=1'b1;
 				end
 			end
 			TRANSMITTING:begin
-				if(HSW_M1.ready) begin
-					HSW.valid<=1'b0;
+				if(WREADY_M1) begin
+					WVALID_M1<=1'b0;
 					if(len_cnt_M1_w==`AXI_LEN_BITS'b0) write_state_M1<=BACK;
 					len_cnt_M1_w<=len_cnt_M1_w+1;
 				end
 				else begin
-					HSW_M1.valid<=1'b1;
+					WVALID_M1<=1'b1;
 					W_M1.data<=dm_write;
 				end
 			end
 			BACK:begin
-				if(HSB_M1.valid&&BRESP_M1==OKAY) begin
+				if(BVALID_M1&&BRESP_M1==OKAY) begin
 					if(c_d.pc==dm_addr) begin
 						write_state_M1<=BACK;
 					end
@@ -226,7 +226,7 @@ always_ff @(posedge clk,posedge rst) begin
 						write_state_M1<=ADDR_HANDSHAKE;
 						`SEND_ADDR(W,M1,{16'd1,dm_addr})
 					end
-					HSB_M1.ready<=1'b0;
+					BREADY_M1<=1'b0;
 				end
 			end
 		endcase

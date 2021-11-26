@@ -1,15 +1,15 @@
 `ifndef AXI_PACKAGE_SVH
 	`define AXI_PACKAGE_SVH
 
-	`define HandShake_in(TYPE,ROLE) \
-		HandShake HS``TYPE``_``ROLE``; \
-		assign HS``TYPE``_``ROLE``.valid=``TYPE``VALID_``ROLE``; \
-		assign ``TYPE``READY_``ROLE``	=HS``TYPE``_``ROLE``.ready;
+////`define HandShake_in(TYPE,ROLE) \
+////	HandShake HS``TYPE``_``ROLE``; \
+////	assign HS``TYPE``_``ROLE``.valid=``TYPE``VALID_``ROLE``; \
+////	assign ``TYPE``READY_``ROLE``	=HS``TYPE``_``ROLE``.ready;
 
-	`define HandShake_out(TYPE,ROLE) \
-		HandShake HS``TYPE``_``ROLE``; \
-		assign ``TYPE``VALID_``ROLE``	=HS``TYPE``_``ROLE``.valid; \
-		assign HS``TYPE``_``ROLE``.ready=``TYPE``READY_``ROLE``;
+////`define HandShake_out(TYPE,ROLE) \
+////	HandShake HS``TYPE``_``ROLE``; \
+////	assign ``TYPE``VALID_``ROLE``	=HS``TYPE``_``ROLE``.valid; \
+////	assign HS``TYPE``_``ROLE``.ready=``TYPE``READY_``ROLE``;
 
 	`define AddrInfo_in(RW,ROLE) \
 		AddrInfo A``RW``_``ROLE``; \
@@ -67,46 +67,51 @@
 	`define CREATE_R(NAME) \
 		wire [`AXI_IDM_BITS-1:0] ARID_``NAME``; \
 		AddrInfo AR_``NAME``; \
-		HandShake HSAR_``NAME``; \
+		wire ARVALID_``NAME``; \
+		wire ARREADY_``NAME``; \
 		wire [`AXI_IDM_BITS-1:0] RID_``NAME``; \
 		DataInfo R_``NAME``; \
 		wire [1:0] RRESP_``NAME``; \
-		HandShake HSR_``NAME``;
+		wire RVALID_``NAME``; \
+		wire RREADY_``NAME``;
 
 	// create W channel wires
 	`define CREATE_W(NAME) \
 		wire [`AXI_IDM_BITS-1:0] AWID_``NAME``; \
 		AddrInfo AW_``NAME``; \
-		HandShake HSAW_``NAME``; \
+		wire AWVALID_``NAME``; \
+		wire AWREADY_``NAME``; \
 		DataInfo W_``NAME``; \
 		wire [`AXI_STRB_BITS-1:0] WSTRB_``NAME``; \
-		HandShake HSW_``NAME``; \
+		wire WVALID_``NAME``; \
+		wire WREADY_``NAME``; \
 		wire [`AXI_IDS_BITS-1:0] BID_``NAME``; \
 		wire [1:0] BRESP_``NAME``; \
-		HandShake HSB_``NAME``;
+		wire BVALID_``NAME``; \
+		wire BREADY_``NAME``;
 	
 	// for empty channels
 	`define EMPTY_R(NAME) \
-		assign HSAR_``NAME``.valid=1'b0;
+		assign ARVALID_``NAME``=1'b0;
 
 	`define EMPTY_W(NAME) \
-		assign HSAW_``NAME``.valid=1'b0; \
-		assign HSW_``NAME``.valid=1'b0;
+		assign AWVALID_``NAME``=1'b0; \
+		assign WVALID_``NAME``=1'b0;
 
 	// package channels
 	//READ ADDRESS0	=ID +`AddrInfo +`HandShake
-	`define AR_in(NAME)	{ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid}
-	`define AR_out(NAME) {HSAR_``NAME``.ready}
+	`define AR_in(NAME)	{ARID_``NAME``,AR_``NAME``,ARVALID_``NAME``}
+	`define AR_out(NAME) {ARREADY_``NAME``}
 	//READ DATA0	=ID +`DataInfo +RESP +`HandShake
-	`define R_in(NAME) {RID_``NAME``,R_``NAME``,RRESP_``NAME``,HSR_``NAME``.valid}
-	`define R_out(NAME) {HSR``NAME``.ready}
+	`define R_in(NAME) {RID_``NAME``,R_``NAME``,RRESP_``NAME``,RVALID_``NAME``}
+	`define R_out(NAME) {RREADY_``NAME``}
 	//WRITE ADDRESS	=ID +`AddrInfo +`HandShake
 	//WRITE DATA	=   +`DataInfo +WSTRB +`HandShake
-	`define W_in(NAME) {AWID_``NAME``,AR_``NAME``,W_``NAME``,HSAW_``NAME``.valid,W_``NAME``,HSW``NAME``.valid}
-	`define W_out(NAME) {HSAW_``NAME``.ready,HSW_``NAME``.ready}
+	`define W_in(NAME) {AWID_``NAME``,AR_``NAME``,W_``NAME``,AWVALID_``NAME``,W_``NAME``,WVALID_``NAME``}
+	`define W_out(NAME) {AWREADY_``NAME``,WREADY_``NAME``}
 	//WRITE RESPONSE=ID +RESP +`Handshake
-	`define B_in(NAME) {BID_``NAME``,BRESP_``NAME``,HSB_``NAME``.valid}
-	`define B_out(NAME) {HSB_``NAME``.ready}
+	`define B_in(NAME) {BID_``NAME``,BRESP_``NAME``,BVALID_``NAME``}
+	`define B_out(NAME) {BREADY_``NAME``}
 
 ////// package R_R(Read Request)(ID,AddrInfo,HSAR.valid,HSR.ready)
 ////`define R_R_channel(NAME) {ARID_``NAME``,AR_``NAME``,HSAR_``NAME``.valid,HSR_``NAME``.ready}

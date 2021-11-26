@@ -20,10 +20,10 @@
 	} BurstType;
 
 	// valid,ready(handshake)
-	typedef struct packed{
-		logic ready;
-		logic valid;
-	} HandShake;
+////typedef struct packed{
+////	logic ready;
+////	logic valid;
+////} HandShake;
 	//modport out(input  ready,output valid);//sender
 	//modport in (output ready,input  valid);//receiver
 
