@@ -37,30 +37,20 @@
 
 	// combine wire to interface/struct
 	`define R_in_convert(ROLE) \
-		`HandShake_in(AR,ROLE) \
 		`AddrInfo_in(R,ROLE) \
-		`HandShake_out(R,ROLE) \
 		`Data_out(R,ROLE)
 
 	`define R_out_convert(ROLE) \
-		`HandShake_out(AR,ROLE) \
 		`AddrInfo_out(R,ROLE) \
-		`HandShake_in(R,ROLE) \
 		`Data_in(R,ROLE)
 
 	`define W_in_convert(ROLE) \
-		`HandShake_in(AW,ROLE) \
 		`AddrInfo_in(W,ROLE) \
-		`HandShake_in(W,ROLE) \
-		`Data_in(W,ROLE) \
-		`HandShake_out(B,ROLE)
+		`Data_in(W,ROLE)
 		
 	`define W_out_convert(ROLE) \
-		`HandShake_out(AW,ROLE) \
 		`AddrInfo_out(W,ROLE) \
-		`HandShake_out(W,ROLE) \
-		`Data_out(W,ROLE) \
-		`HandShake_in(B,ROLE)
+		`Data_out(W,ROLE)
 
 	// create wires
 	// create R channel wires
