@@ -68,12 +68,12 @@ always_ff @(posedge clk,posedge rst) begin
 		read_state<=IDLE;
 		ARREADY_S<=1'b1;// default high(view spec)
 		RVALID_S<=1'b0;
-		r.last<=1'b0;
+		R_S.last<=1'b0;
 	end
 	else begin
 		case(read_state)
 			IDLE:begin
-				r.last<=1'b0;
+				R_S.last<=1'b0;
 				len_cnt_r<=`AXI_LEN_BITS'd0;
 				RVALID_S<=1'b0;
 				if(ARVALID_S) begin
@@ -86,15 +86,15 @@ always_ff @(posedge clk,posedge rst) begin
 			end
 			TRANSMITTING: begin
 				if(RREADY_S) begin
-					if(RVALID_S) Rvalid_S<=1'b0;
+					if(RVALID_S) RVALID_S<=1'b0;
 					else begin
 						if(write_state==IDLE) begin
 							//assume INCR type
 							if(len_cnt_r==ar.len) begin
-								r.last<=1'b1;
+								R_S.last<=1'b1;
 								read_state<=IDLE;
 							end
-							r.data<=DO;
+							R_S.data<=DO;
 							len_cnt_r<=len_cnt_r+1;
 							RVALID_S<=1'b1;
 						end
@@ -106,7 +106,7 @@ always_ff @(posedge clk,posedge rst) begin
 end
 
 // Write handler
-//save write AddrInfo in AW_S,cast on ar to use
+//save write AddrInfo in AW_S,cast on aw to use
 AddrInfo aw;
 assign BRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_w;

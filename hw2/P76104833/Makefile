@@ -51,6 +51,7 @@ rtl0: | $(bld_dir)
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
 	+access+r \
+	+nc64bit \
 	+prog_path=$(root_dir)/$(sim_dir)/prog0
 
 rtl1: | $(bld_dir)

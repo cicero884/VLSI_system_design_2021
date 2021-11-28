@@ -6,27 +6,27 @@ module Default_Slave(
 	//READ ADDRESS
 	input [`AXI_IDS_BITS-1:0] ARID,
 	input [$bits(AddrInfo)-1:0]AR,
-	output ARREADY,input ARVALID,
+	output logic ARREADY,input ARVALID,
 
 	//READ DATA
 	output logic [`AXI_IDS_BITS-1:0] RID,
 	output [$bits(DataInfo)-1:0] R,
 	output logic [1:0] RRESP,
-	input RREADY,output RVALID,
+	input RREADY,output logic RVALID,
 
 	//WRITE ADDRESS
 	input [`AXI_IDS_BITS-1:0] AWID,
 	input [$bits(AddrInfo)-1:0]AW,
-	output AWREADY,input AWVALID,
+	output logic AWREADY,input AWVALID,
 	//WRITE DATA
 	input [$bits(DataInfo)-1:0] W,
 	input [`AXI_STRB_BITS-1:0] WSTRB,
-	output WREADY,input WVALID,
+	output logic WREADY,input WVALID,
 
 	//WRITE RESPONSE
 	output logic [`AXI_IDS_BITS-1:0] BID,
 	output logic [1:0] BRESP,
-	input BREADY,output BVALID,
+	input BREADY,output logic BVALID
 );
 
 `EMPTY_R()

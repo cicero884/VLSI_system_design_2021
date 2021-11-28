@@ -62,10 +62,10 @@ module CPU_wrapper(
 	output logic BREADY_M1
 );
 
-`R_out_convert(M0)
+//`R_out_convert(M0)
 //`W_out_convert(M0)
-`R_out_convert(M1)
-`W_out_convert(M1)
+//`R_out_convert(M1)
+//`W_out_convert(M1)
 
 // Instruction
 // read handler
@@ -106,8 +106,8 @@ always_ff @(posedge clk,posedge rst)begin
 			end
 			TRANSMITTING:begin
 				if(RVALID_M0&&RRESP_M0==OKAY) begin
-					if(R_M0.last) begin
-						if(c_i.pc==im_addr) begin
+					if(RLAST_M0) begin
+						if(c_i.addr==im_addr) begin
 							read_state_M0<=IDLE;
 							sync_i<=1'b1;
 						end
@@ -118,7 +118,7 @@ always_ff @(posedge clk,posedge rst)begin
 						RREADY_M0<=1'b0;
 					end
 						//TODO
-					c_i.data<=R_M0.data;
+					c_i.data<=RDATA_M0;
 					c_i.addr<=im_addr+len_cnt_M0_r;
 					len_cnt_M0_r<=len_cnt_M0_r+1;
 				end
@@ -163,8 +163,8 @@ always_ff @(posedge clk,posedge rst)begin
 			end
 			TRANSMITTING:begin
 				if(RVALID_M1&&RRESP_M1==OKAY) begin
-					if(R_M1.last) begin
-						if(c_d.pc==dm_addr) begin
+					if(RLAST_M1) begin
+						if(c_d.addr==dm_addr) begin
 							read_state_M1<=IDLE;
 							sync_d[1]<=1'b1;
 						end
@@ -175,7 +175,7 @@ always_ff @(posedge clk,posedge rst)begin
 						RREADY_M1<=1'b0;
 					end
 						//TODO cache
-					c_d.data<=R_M1.data;
+					c_d.data<=RDATA_M1;
 					c_d.addr<=dm_addr+len_cnt_M1_r;
 					len_cnt_M1_r<=len_cnt_M1_r+1;
 				end
@@ -214,12 +214,12 @@ always_ff @(posedge clk,posedge rst) begin
 				end
 				else begin
 					WVALID_M1<=1'b1;
-					W_M1.data<=dm_write;
+					WDATA_M1<=dm_write;
 				end
 			end
 			BACK:begin
 				if(BVALID_M1&&BRESP_M1==OKAY) begin
-					if(c_d.pc==dm_addr) begin
+					if(c_d.addr==dm_addr) begin
 						write_state_M1<=BACK;
 					end
 					else begin

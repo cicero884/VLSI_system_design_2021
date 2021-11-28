@@ -318,7 +318,7 @@ AXI axi(
 );
 
 
-SRAM_wrapper S0(
+SRAM_wrapper IM1(
 	.clk(clk),
 	.rst(rst),
 	//READ ADDRESS
@@ -358,7 +358,7 @@ SRAM_wrapper S0(
 	.BREADY_S(BREADY_S0)
 );
 
-SRAM_wrapper S1(
+SRAM_wrapper DM1(
 	.clk(clk),
 	.rst(rst),
 	//READ ADDRESS
