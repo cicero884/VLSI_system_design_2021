@@ -64,7 +64,7 @@ assign RRESP=resp;
 logic [`AXI_LEN_BITS-1:0]len_cnt_r;
 
 always_ff @(posedge clk,posedge rst) begin
-	if(!rst) begin
+	if(rst) begin
 		read_state<=IDLE;
 		ARREADY_S<=1'b1;// default high(view spec)
 		RVALID_S<=1'b0;

@@ -86,6 +86,7 @@ always_ff @(posedge clk,posedge rst)begin
 		read_state_M0<=IDLE;
 		ARVALID_M0<=1'b0;
 		RREADY_M0<=1'b0;
+		c_i.addr<=`CPU_ADDR_BITS'h3fff;
 	end
 	else begin
 		case(read_state_M0)

@@ -1,0 +1,86 @@
+wvResizeWindow -win $_nWave1 59 29 1860 1011
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/home/zzhong/VLSI_system_design_2021/hw2/P76104833/build/top.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/top_tb"
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/axi"
+wvSetPosition -win $_nWave1 {("G1" 5)}
+wvSetPosition -win $_nWave1 {("G1" 5)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/top_tb/TOP/axi/AR_M0} \
+{/top_tb/TOP/axi/AR_M1} \
+{/top_tb/TOP/axi/AR_S0} \
+{/top_tb/TOP/axi/AR_S1} \
+{/top_tb/TOP/axi/AR_SD} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 )} 
+wvSetPosition -win $_nWave1 {("G1" 5)}
+wvSelectGroup -win $_nWave1 {G1}
+wvSelectSignal -win $_nWave1 {( "G1" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 2 )} 
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
+wvSelectGroup -win $_nWave1 {G2}
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/cpu_wrapper"
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 5)}
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 5)}
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/dm_addr\[13:0\]"
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G2" 1)}
+wvSetPosition -win $_nWave1 {("G2" 1)}
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/dm_read\[31:0\]" \
+           "/top_tb/TOP/cpu_wrapper/sync_i"
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvSetPosition -win $_nWave1 {("G3" 2)}
+wvSetPosition -win $_nWave1 {("G3" 2)}
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G2" 1)}
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G3" 2)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/sync_d\[1:0\]"
+wvSetPosition -win $_nWave1 {("G3" 2)}
+wvSetPosition -win $_nWave1 {("G3" 3)}
+wvSetCursor -win $_nWave1 1843650.793651 -snap {("G4" 0)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 1909235.209235 -snap {("G4" 0)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSelectGroup -win $_nWave1 {G4}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/top_tb"
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP"
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/cpu_wrapper"
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/cpu_wrapper"
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/cpu_wrapper/cpu"
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/cpu/pc_now\[31:0\]"
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvGetSignalSetScope -win $_nWave1 "/top_tb/TOP/cpu_wrapper"
+wvSetPosition -win $_nWave1 {("G5" 0)}
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvSetPosition -win $_nWave1 {("G5" 0)}
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/im_addr\[13:0\]"
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvSetPosition -win $_nWave1 {("G4" 2)}
+wvSetPosition -win $_nWave1 {("G5" 0)}
+wvSetPosition -win $_nWave1 {("G4" 1)}
+wvSetPosition -win $_nWave1 {("G5" 0)}
+wvSetPosition -win $_nWave1 {("G4" 2)}
+wvAddSignal -win $_nWave1 "/top_tb/TOP/cpu_wrapper/c_i"
+wvSetPosition -win $_nWave1 {("G4" 2)}
+wvSetPosition -win $_nWave1 {("G4" 3)}
+wvExit
