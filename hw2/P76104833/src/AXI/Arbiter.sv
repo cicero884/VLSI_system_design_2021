@@ -1,14 +1,19 @@
 `include "AXI_define.svh"
-
-module Arbiter(
+//TODO rewrite round robin
+module #(parameter channel=2) Arbiter(
 	input ACLK,input ARESETn,
-	output hs0_receiver,input hs0_sender,
-	output hs1_receiver,input hs1_sender,
+	output hs0_end,input hs0_begin,
+	output hs1_end,input hs1_begin,
 	output logic[`AXI_POINTER_BITS-1:0] receive_direction
 );
 Pointer last_direction;
 Pointer direction;
 assign receive_direction=direction;
+
+reg kept_signal;
+always_ff @(posedge ACLK,negedge ARESETn) begin
+	
+end
 always_latch begin
 	if(!ARESETn) begin
 		direction<=DEFAULT;
@@ -17,17 +22,17 @@ always_latch begin
 	else begin
 		case(direction)
 			SEL0: begin
-				if(hs0_receiver) begin
-					if(hs1_sender) direction<=SEL1;
-					else if(hs0_sender) direction<=SEL0;
+				if(hs0_end&ACLK) begin
+					if(hs1_begin) direction<=SEL1;
+					else if(hs0_begin) direction<=SEL0;
 					else direction<=DEFAULT;
 					last_direction<=SEL0;
 				end
 			end
 			SEL1: begin
-				if(hs1_receiver) begin
-					if(hs0_sender) direction<=SEL0;
-					else if(hs1_sender) direction<=SEL1;
+				if(hs1_end&ACLK) begin
+					if(hs0_begin) direction<=SEL0;
+					else if(hs1_begin) direction<=SEL1;
 					else direction<=DEFAULT;
 					last_direction<=SEL1;
 				end
@@ -35,16 +40,16 @@ always_latch begin
 			default: begin
 				case(last_direction)
 					SEL0: begin
-						if(hs1_sender) direction<=SEL1;
-						else if(hs0_sender) direction<=SEL0;
+						if(hs1_begin) direction<=SEL1;
+						else if(hs0_begin) direction<=SEL0;
 					end
 					SEL1: begin
-						if(hs0_sender) direction<=SEL0;
-						else if(hs1_sender) direction<=SEL1;
+						if(hs0_begin) direction<=SEL0;
+						else if(hs1_begin) direction<=SEL1;
 					end
 					default: begin
-						if(hs0_sender) direction<=SEL0;
-						else if(hs1_sender) direction<=SEL1;
+						if(hs0_begin) direction<=SEL0;
+						else if(hs1_begin) direction<=SEL1;
 					end
 				endcase
 			end
@@ -60,17 +65,17 @@ always_ff @(posedge ACLK,negedge ARESETn) begin
 	else begin
 		case(direction)
 			SEL0: begin
-				if(hs0_receiver) begin
-					if(hs1_sender) direction<=SEL1;
-					else if(hs0_sender) direction<=SEL0;
+				if(hs0_end) begin
+					if(hs1_begin) direction<=SEL1;
+					else if(hs0_begin) direction<=SEL0;
 					else direction<=DEFAULT;
 					last_direction<=SEL0;
 				end
 			end
 			SEL1: begin
-				if(hs1_receiver) begin
-					if(hs0_sender) direction<=SEL0;
-					else if(hs1_sender) direction<=SEL1;
+				if(hs1_end) begin
+					if(hs0_begin) direction<=SEL0;
+					else if(hs1_begin) direction<=SEL1;
 					else direction<=DEFAULT;
 					last_direction<=SEL1;
 				end
@@ -78,16 +83,16 @@ always_ff @(posedge ACLK,negedge ARESETn) begin
 			default: begin
 				case(last_direction)
 					SEL0: begin
-						if(hs1_sender) direction<=SEL1;
-						else if(hs0_sender) direction<=SEL0;
+						if(hs1_begin) direction<=SEL1;
+						else if(hs0_begin) direction<=SEL0;
 					end
 					SEL1: begin
-						if(hs0_sender) direction<=SEL0;
-						else if(hs1_sender) direction<=SEL1;
+						if(hs0_begin) direction<=SEL0;
+						else if(hs1_begin) direction<=SEL1;
 					end
 					default: begin
-						if(hs0_sender) direction<=SEL0;
-						else if(hs1_sender) direction<=SEL1;
+						if(hs0_begin) direction<=SEL0;
+						else if(hs1_begin) direction<=SEL1;
 					end
 				endcase
 			end

@@ -222,7 +222,6 @@ Default_Slave sd(
 `CREATE_W(1_d,`AXI_IDM_BITS)
 
 
-//judge
 // M0
 Pointer Pointer_AR_M0;
 Decoder Decoder_AR_M0(
@@ -240,8 +239,8 @@ Mux_3 #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0)))) mux_AR_M0(
 Pointer Pointer_R_M0;
 Arbiter Arbiter_R_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(RREADY_0_0),.hs0_sender(RVALID_0_0),
-	.hs1_receiver(RREADY_0_1),.hs1_sender(RREADY_0_1),
+	.hs0_end(RREADY_0_0),.hs0_begin(RVALID_0_0),
+	.hs1_end(RREADY_0_1),.hs1_begin(RREADY_0_1),
 	.receive_direction({Pointer_R_M0})
 );
 Mux_3 #(.in_size($bits(`R_out(M0))),.out_size($bits(`R_in(M0)))) mux_R_M0(
@@ -268,8 +267,8 @@ Mux_3 #(.in_size($bits(`W_in(M0))),.out_size($bits(`W_out(M0)))) mux_W_M0(
 Pointer Pointer_B_M0;
 Arbiter Arbiter_B_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(BREADY_0_0),.hs0_sender(BVALID_0_0),
-.hs1_receiver(BREADY_0_1),.hs1_sender(BREADY_0_1),
+	.hs0_end(BREADY_0_0),.hs0_begin(BVALID_0_0),
+.hs1_end(BREADY_0_1),.hs1_begin(BREADY_0_1),
 	.receive_direction(Pointer_B_M0)
 );
 Mux_3 #(.in_size($bits(`B_out(M0))),.out_size($bits(`B_in(M0)))) mux_B_M0(
@@ -297,8 +296,8 @@ Mux_3 #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1)))) mux_AR_M1(
 Pointer Pointer_R_M1;
 Arbiter Arbiter_R_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(RREADY_1_0),.hs0_sender(RVALID_1_0),
-	.hs1_receiver(RREADY_1_1),.hs1_sender(RREADY_1_1),
+	.hs0_end(RREADY_1_0),.hs0_begin(RVALID_1_0),
+	.hs1_end(RREADY_1_1),.hs1_begin(RREADY_1_1),
 	.receive_direction({Pointer_R_M1})
 );
 Mux_3 #(.in_size($bits(`R_out(M1))),.out_size($bits(`R_in(M1)))) mux_R_M1(
@@ -325,8 +324,8 @@ Mux_3 #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1)))) mux_W_M1(
 Pointer Pointer_B_M1;
 Arbiter Arbiter_B_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(BREADY_1_0),.hs0_sender(BVALID_1_0),
-	.hs1_receiver(BREADY_1_1),.hs1_sender(BREADY_1_1),
+	.hs0_end(BREADY_1_0),.hs0_begin(BVALID_1_0),
+	.hs1_end(BREADY_1_1),.hs1_begin(BREADY_1_1),
 	.receive_direction({Pointer_B_M1})
 );
 Mux_3 #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1)))) mux_B_M1(
@@ -336,12 +335,12 @@ Mux_3 #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1)))) mux_B_M1(
 	.out1_out(`B_out(1_1)),.out1_in(`B_in(1_1)),
 	.out2_out(`B_out(1_d)),.out2_in(`B_in(1_d))
 );
-//S0
+// S0
 Pointer Pointer_AR_S0;
 Arbiter Arbiter_AR_S0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(ARREADY_0_0),.hs0_sender(ARVALID_0_0),
-	.hs1_receiver(ARREADY_1_0),.hs1_sender(ARREADY_1_0),
+	.hs0_end(ARREADY_0_0),.hs0_begin(ARVALID_0_0),
+	.hs1_end(ARREADY_1_0),.hs1_begin(ARREADY_1_0),
 	.receive_direction({Pointer_AR_S0})
 );
 Mux_2 #(.in_size($bits(`AR_out(S0))),.out_size($bits(`AR_in(0_0)))) mux_AR_S0(
@@ -371,12 +370,12 @@ assign Pointer_B_S0=Pointer'(SEL1);
 assign `B_in(1_0)={BID_S0[`AXI_IDM_BITS-1:0],BRESP_S0,BVALID_S0};
 assign `B_out(S0)=`B_out(1_0);
 
-//S1
+// S1
 Pointer Pointer_AR_S1;
 Arbiter Arbiter_AR_S1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(ARREADY_0_1),.hs0_sender(ARVALID_0_1),
-	.hs1_receiver(ARREADY_1_1),.hs1_sender(ARREADY_1_1),
+	.hs0_end(ARREADY_0_1),.hs0_begin(ARVALID_0_1),
+	.hs1_end(ARREADY_1_1),.hs1_begin(ARREADY_1_1),
 	.receive_direction({Pointer_AR_S1})
 );
 Mux_2 #(.in_size($bits(`AR_out(S1))),.out_size($bits(`AR_in(0_1)))) mux_AR_S1(
@@ -406,12 +405,12 @@ assign Pointer_B_S1=Pointer'(SEL1);
 assign `B_in(1_1)={BID_S1[`AXI_IDM_BITS-1:0],BRESP_S1,BVALID_S1};
 assign `B_out(S1)=`B_out(1_1);
 
-//SD
+// SD
 Pointer Pointer_AR_SD;
 Arbiter Arbiter_AR_SD(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_receiver(ARREADY_0_d),.hs0_sender(ARVALID_0_d),
-	.hs1_receiver(ARREADY_1_d),.hs1_sender(ARREADY_1_d),
+	.hs0_end(ARREADY_0_d),.hs0_begin(ARVALID_0_d),
+	.hs1_end(ARREADY_1_d),.hs1_begin(ARREADY_1_d),
 	.receive_direction({Pointer_AR_SD})
 );
 Mux_2 #(.in_size($bits(`AR_out(SD))),.out_size($bits(`AR_in(0_d)))) mux_AR_SD(
