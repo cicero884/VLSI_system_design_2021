@@ -11,6 +11,9 @@
 
 	`define AXI_POINTER_BITS (`AXI_IDS_BITS-`AXI_IDM_BITS)
 
+	// slave number(you need to add 1 for default slave!)
+	`define AXI_SLAVE_CNT 3
+	
 	// define burst type
 	typedef enum bit[1:0] {
 		FIXED	=2'b00,
@@ -18,14 +21,6 @@
 		WRAP	=2'b10,
 		Reserved=2'b11
 	} BurstType;
-
-	// valid,ready(handshake)
-////typedef struct packed{
-////	logic ready;
-////	logic valid;
-////} HandShake;
-	//modport out(input  ready,output valid);//sender
-	//modport in (output ready,input  valid);//receiver
 
 	// define interface addr
 	typedef struct packed{

@@ -1,19 +1,50 @@
-`include "AXI_define.svh"
-//TODO rewrite round robin
-module #(parameter channel=2) Arbiter(
+module Arbiter #(parameter channel=2)(
 	input ACLK,input ARESETn,
-	output hs0_end,input hs0_begin,
-	output hs1_end,input hs1_begin,
-	output logic[`AXI_POINTER_BITS-1:0] receive_direction
+	input begin_sig[channel-1:0],input end_sig[channel-1:0],
+	output logic[channel-1:0] direction
 );
+
+// round robin main logic:
+// direction = begin_sig & ~(begin_sig - priority_circle)
+// concate front to consider search again from begining
+wire begin_sig_2;
+assign begin_sig_2={begin_sig,begin_sig};
+wire direction_2;
+assign direction_2=begin_sig_2&~(begin_sig_2-priorty_circle);
+
+// start check from which
+reg [channel-1:0]priorty_circle;
+reg transmitting;
+// end until next clock
+reg transmitting_ending;
+
+always_ff @(posedge ACLK,negedge ARESETn) begin
+	if(!ARESETn) transmitting_ending<=0;
+	else transmitting_ending<=(end_sig&direction);
+end
+
+always_latch begin
+	if(!ARESETn) begin
+		priorty_circle={channel-1{1'b0},1'b1};
+		transmitting=1'b0;
+	end
+	else begin
+		if(transmitting) begin
+			if(transmitting_ending) transmitting=1'b0;
+		end
+		if(!transmitting) begin
+			if(begin_sig) begin
+				direction=direction_2[2*channel-1:channel] | direction_2[channel-1:0];
+				transmitting=1'b1;
+			end
+			else direction={channel{1'b0}};
+		end
+	end
+end
+/*
 Pointer last_direction;
 Pointer direction;
 assign receive_direction=direction;
-
-reg kept_signal;
-always_ff @(posedge ACLK,negedge ARESETn) begin
-	
-end
 always_latch begin
 	if(!ARESETn) begin
 		direction<=DEFAULT;
@@ -56,6 +87,7 @@ always_latch begin
 		endcase
 	end
 end
+*/
 	/*
 always_ff @(posedge ACLK,negedge ARESETn) begin
 	if(!ARESETn) begin
