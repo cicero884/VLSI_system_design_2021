@@ -84,16 +84,16 @@
 
 	// package channels
 	//READ ADDRESS0	=ID +`AddrInfo +`HandShake
-	`define AR_in(NAME)	{ARID_``NAME``,AR_``NAME``,ARVALID_``NAME``}
+	`define AR_in(NAME)	{ARID_``NAME``,ARADDR_``NAME``,ARLEN_``NAME``,ARSIZE_``NAME``,ARBUST_``NAME``,ARVALID_``NAME``}
 	`define AR_out(NAME) {ARREADY_``NAME``}
 
 	//READ DATA0	=ID +`DataInfo +RESP +`HandShake
-	`define R_in(NAME) {RID_``NAME``,R_``NAME``,RRESP_``NAME``,RVALID_``NAME``}
+	`define R_in(NAME) {RID_``NAME``,RDATA_``NAME``,RRESP_``NAME``,RLAST_``NAME``,RVALID_``NAME``}
 	`define R_out(NAME) {RREADY_``NAME``}
 
 	//WRITE ADDRESS	=ID +`AddrInfo +`HandShake
 	//WRITE DATA	=   +`DataInfo +WSTRB +`HandShake
-	`define W_in(NAME) {AWID_``NAME``,AW_``NAME``,AWVALID_``NAME``,W_``NAME``,WSTRB_``NAME``,WVALID_``NAME``}
+	`define W_in(NAME) {AWID_``NAME``,AWADDR_``NAME``,AWLEN_``NAME``,AWSIZE_``NAME``,AWBURST_``NAME``,AWVALID_``NAME``,WDATA_``NAME``,WSTRB_``NAME``,WLAST_``NAME``,WVALID_``NAME``}
 	`define W_out(NAME) {AWREADY_``NAME``,WREADY_``NAME``}
 
 	//WRITE RESPONSE=ID +RESP +`Handshake

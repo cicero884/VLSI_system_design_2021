@@ -22,20 +22,4 @@
 		Reserved=2'b11
 	} BurstType;
 
-	// define interface addr
-	typedef struct packed{
-		BurstType burst;
-		logic [`AXI_ADDR_BITS	-1:0] addr;
-		logic [`AXI_LEN_BITS	-1:0] len;
-		logic [`AXI_SIZE_BITS	-1:0] size;
-	} AddrInfo;
-
-	// define interface data
-	typedef struct packed{
-		logic [`AXI_DATA_BITS	-1:0] data;
-		logic last;
-	} DataInfo;
-
-	// direction macro
-	typedef enum logic[`AXI_POINTER_BITS-1:0]{SEL0,SEL1,DEFAULT} Pointer;
 `endif
