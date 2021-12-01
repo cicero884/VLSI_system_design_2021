@@ -148,24 +148,20 @@ module AXI(
 
 //---------- you should put your dumb design here ----------//
 
-//verilog "generate" sucks,
-//you cant concate it on variable name
-//copy paste =_=....I really really dont like the feeling
-//maybe someone can decrease those code in the future
-//I hope I caould modify that...
-
-// concate wire to ()struct or interface
+// concate wire to struct
+// M0
 `R_in_convert(M0)
 //`W_in_convert(M0)
 `CREATE_W(M0,`AXI_IDM_BITS)
 `EMPTY_W(M0)
-
+// M1
 `R_in_convert(M1)
 `W_in_convert(M1)
 
+// S0
 `R_out_convert(S0)
 `W_out_convert(S0)
-
+// S1
 `R_out_convert(S1)
 `W_out_convert(S1)
 
