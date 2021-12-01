@@ -147,7 +147,7 @@ module AXI(
 );
 
 //---------- you should put your dumb design here ----------//
-
+/*
 // concate wire to struct
 // M0
 `R_in_convert(M0)
@@ -164,7 +164,7 @@ module AXI(
 // S1
 `R_out_convert(S1)
 `W_out_convert(S1)
-
+*/
 
 // Default Master
 /*
@@ -173,6 +173,7 @@ module AXI(
 */
 
 // Default Slave
+// TODO SD NAME conflit deal 
 `CREATE_R(SD,`AXI_IDS_BITS)
 `CREATE_W(SD,`AXI_IDS_BITS)
 Default_Slave sd(
