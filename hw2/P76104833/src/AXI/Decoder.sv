@@ -1,15 +1,14 @@
 `include "AXI_define.svh"
+`define RANGE(START,END) ((addr>=START)&&(addr<END))
 
 module Decoder(
 	input [`AXI_ADDR_BITS-1:0]addr,
-	output Pointer send_direction
+	output logic[`AXI_SLAVE_CNT-1:0] direction
 );
 always_comb begin
-	case(addr[`AXI_ADDR_BITS-1:`AXI_ADDR_BITS-16])
-		16'd0:	send_direction<=SEL0;
-		16'd1:	send_direction<=SEL1;
-		default:send_direction<=DEFAULT;
-	endcase
+	if(		`RANGE(32'h00000000,32'h00010000)) direction={`AXI_SLAVE_CNT'd1}<<0;
+	else if(`RANGE(32'h00010000,32'h00020000)) direction={`AXI_SLAVE_CNT'd1}<<1;
+	else direction={`AXI_SLAVE_CNT'd1}<<2;
 end
 
 endmodule

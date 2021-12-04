@@ -205,140 +205,92 @@ Default_Slave sd(
 );
 
 // middle wires
-`CREATE_R(0_[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-//`CREATE_W(0_[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-`CREATE_R(1_[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-`CREATE_W(1_[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
+`CREATE_R(M0_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
 
-/*
-`CREATE_R(0_0,`AXI_IDM_BITS)
-//`CREATE_W(0_0,`AXI_IDM_BITS)
-`CREATE_R(0_1,`AXI_IDM_BITS)
-//`CREATE_W(0_1,`AXI_IDM_BITS)
-`CREATE_R(0_d,`AXI_IDM_BITS)
-//`CREATE_W(0_d,`AXI_IDM_BITS)
-`CREATE_R(1_0,`AXI_IDM_BITS)
-`CREATE_W(1_0,`AXI_IDM_BITS)
-`CREATE_R(1_1,`AXI_IDM_BITS)
-`CREATE_W(1_1,`AXI_IDM_BITS)
-`CREATE_R(1_d,`AXI_IDM_BITS)
-`CREATE_W(1_d,`AXI_IDM_BITS)
-*/
+`CREATE_R(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
+`CREATE_W(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
 
+`CREATE_R(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
+`CREATE_W(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
+// FIXME array may not be able to compress this way
+// maybe need to package by my self?
+// currect: {a[3], b[3]}
+// maybe need '{{a[0],b[0]},{a[1],b[1]}.....}
+
+// middle component(from diagram left to right)
 // M0
-Pointer Pointer_AR_M0;
+wire [`AXI_SLAVE_CNT-1:0] direction_AR_M0;
 Decoder Decoder_AR_M0(
-	.addr(AR_M0.addr),
-	.send_direction(Pointer_AR_M0)
+	.addr(ARADDR_M0),
+	.direction(direction_AR_M0)
 );
-Mux_3 #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0)))) mux_AR_M0(
-	.pointer(Pointer_AR_M0),
-	.in_in(`AR_in(M0)),.in_out(`AR_out(M0)),
-	.out0_out(`AR_in(0_0)),.out0_in(`AR_out(0_0)),
-	.out1_out(`AR_in(0_1)),.out1_in(`AR_out(0_1)),
-	.out2_out(`AR_in(0_d)),.out2_in(`AR_out(0_d))
+Mux #(.in_size($bits(AR_in(M0))),.out_size($bits(`AR_out(M0))),.channel(`AXI_SLAVE_CNT)) mux_AR_M0(
+	.one_in(`AR_in(M0)),			.one_out(`AR_out(M0)),
+	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
+	.sel(direction_AR_M0)
 );
 
-Pointer Pointer_R_M0;
-Arbiter Arbiter_R_M0(
+wire [`AXI_SLAVE_CNT-1:0] direction_R_M0;
+Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_end(RREADY_0_0),.hs0_begin(RVALID_0_0),
-	.hs1_end(RREADY_0_1),.hs1_begin(RREADY_0_1),
-	.receive_direction({Pointer_R_M0})
+	.begin_sig(ARVALID_M0_S),.end_sig(ARREADY_M0_S),
+	.direction(direction_R_M0)
 );
-Mux_3 #(.in_size($bits(`R_out(M0))),.out_size($bits(`R_in(M0)))) mux_R_M0(
-	.pointer(Pointer_R_M0),
-	.in_in(`R_out(M0)),.in_out(`R_in(M0)),
-	.out0_out(`R_out(0_0)),.out0_in(`R_in(0_0)),
-	.out1_out(`R_out(0_1)),.out1_in(`R_in(0_1)),
-	.out2_out(`R_out(0_d)),.out2_in(`R_in(0_d))
+Mux #(.in_size($bits(R_in(M0))),.out_size($bits(`R_out(M0))),.channel(`AXI_SLAVE_CNT)) mux_R_M0(
+	.one_in(`R_out(M0)),			.one_out(`R_in(M0)),
+	.multi_out(`R_out_mul(M0_S)),	.multi_in(`R_in_mul(M0_S)),
+	.sel(direction_R_M0)
 );
-/*
-Pointer Pointer_W_M0;
-Decoder Decoder_W_M0(
-	.addr(W_M0.addr),
-	.send_direction(Pointer_W_M0)
-);
-Mux_3 #(.in_size($bits(`W_in(M0))),.out_size($bits(`W_out(M0)))) mux_W_M0(
-	.pointer(Pointer_W_M0),
-	.in_in(`W_in(M0)),.in_out(`W_out(M0)),
-	.out0_out(`W_in(0_0)),.out0_in(`W_out(0_0)),
-	.out1_out(`W_in(0_1)),.out1_in(`W_out(0_1)),
-	.out2_out(`W_in(0_d)),.out2_in(`W_out(0_d))
-);
-
-Pointer Pointer_B_M0;
-Arbiter Arbiter_B_M0(
-	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_end(BREADY_0_0),.hs0_begin(BVALID_0_0),
-.hs1_end(BREADY_0_1),.hs1_begin(BREADY_0_1),
-	.receive_direction(Pointer_B_M0)
-);
-Mux_3 #(.in_size($bits(`B_out(M0))),.out_size($bits(`B_in(M0)))) mux_B_M0(
-	.pointer(Pointer_B_M0),
-	.in_in(`B_out(M0)),.in_out(`B_in(M0)),
-	.out0_out(`B_out(0_0)),.out0_in(`B_in(0_0)),
-	.out1_out(`B_out(0_1)),.out1_in(`B_in(0_1)),
-	.out2_out(`B_out(0_d)),.out2_in(`B_in(0_d))
-);
-*/
 // M1
-Pointer Pointer_AR_M1;
+wire [`AXI_SLAVE_CNT-1:0] direction_AR_M1;
 Decoder Decoder_AR_M1(
-	.addr(AR_M1.addr),
-	.send_direction(Pointer_AR_M1)
+	.addr(ARADDR_M1),
+	.direction(direction_AR_M1)
 );
-Mux_3 #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1)))) mux_AR_M1(
-	.pointer(Pointer_AR_M1),
-	.in_in(`AR_in(M1)),.in_out(`AR_out(M1)),
-	.out0_out(`AR_in(1_0)),.out0_in(`AR_out(1_0)),
-	.out1_out(`AR_in(1_1)),.out1_in(`AR_out(1_1)),
-	.out2_out(`AR_in(1_d)),.out2_in(`AR_out(1_d))
+Mux #(.in_size($bits(AR_in(M1))),.out_size($bits(`AR_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_AR_M1(
+	.one_in(`AR_in(M1)),			.one_out(`AR_out(M1)),
+	.multi_out(`AR_in_mul(M1_S)),	.multi_in(`AR_out_mul(M1_S)),
+	.sel(direction_AR_M1)
 );
 
-Pointer Pointer_R_M1;
-Arbiter Arbiter_R_M1(
+wire [`AXI_SLAVE_CNT-1:0] direction_R_M1;
+Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_end(RREADY_1_0),.hs0_begin(RVALID_1_0),
-	.hs1_end(RREADY_1_1),.hs1_begin(RREADY_1_1),
-	.receive_direction({Pointer_R_M1})
+	.begin_sig(ARVALID_M1_S),.end_sig(ARREADY_M1_S),
+	.direction(direction_R_M1)
 );
-Mux_3 #(.in_size($bits(`R_out(M1))),.out_size($bits(`R_in(M1)))) mux_R_M1(
-	.pointer(Pointer_R_M1),
-	.in_in(`R_out(M1)),.in_out(`R_in(M1)),
-	.out0_out(`R_out(1_0)),.out0_in(`R_in(1_0)),
-	.out1_out(`R_out(1_1)),.out1_in(`R_in(1_1)),
-	.out2_out(`R_out(1_d)),.out2_in(`R_in(1_d))
+Mux #(.in_size($bits(R_in(M1))),.out_size($bits(`R_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_R_M1(
+	.one_in(`R_out(M1)),			.one_out(`R_in(M1)),
+	.multi_out(`R_out_mul(M1_S)),	.multi_in(`R_in_mul(M1_S)),
+	.sel(direction_R_M1)
 );
 
-Pointer Pointer_W_M1;
+wire [`AXI_SLAVE_CNT-1:0] direction_W_M1;
 Decoder Decoder_W_M1(
-	.addr(AW_M1.addr),
-	.send_direction(Pointer_W_M1)
+	.addr(AWADDR_M1),
+	.direction(direction_W_M1)
 );
-Mux_3 #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1)))) mux_W_M1(
-	.pointer(Pointer_W_M1),
-	.in_in(`W_in(M1)),.in_out(`W_out(M1)),
-	.out0_out(`W_in(1_0)),.out0_in(`W_out(1_0)),
-	.out1_out(`W_in(1_1)),.out1_in(`W_out(1_1)),
-	.out2_out(`W_in(1_d)),.out2_in(`W_out(1_d))
+Mux #(.in_size($bits(W_in(M1))),.out_size($bits(`W_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_W_M1(
+	.one_in(`W_in(M1)),				.one_out(`W_out(M1)),
+	.multi_out(`W_in_mul(M1_S)),	.multi_in(`W_out_mul(M1_S)),
+	.sel(direction_W_M1)
 );
 
-Pointer Pointer_B_M1;
-Arbiter Arbiter_B_M1(
+wire [`AXI_SLAVE_CNT-1:0] direction_B_M1;
+Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_B_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.hs0_end(BREADY_1_0),.hs0_begin(BVALID_1_0),
-	.hs1_end(BREADY_1_1),.hs1_begin(BREADY_1_1),
-	.receive_direction({Pointer_B_M1})
+	.begin_sig(BVALID_M1_S),.end_sig(BVALID_M1_S),
+	.direction(direction_B_M1)
 );
-Mux_3 #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1)))) mux_B_M1(
-	.pointer(Pointer_B_M1),
-	.in_in(`B_out(M1)),.in_out(`B_in(M1)),
-	.out0_out(`B_out(1_0)),.out0_in(`B_in(1_0)),
-	.out1_out(`B_out(1_1)),.out1_in(`B_in(1_1)),
-	.out2_out(`B_out(1_d)),.out2_in(`B_in(1_d))
+Mux #(.in_size($bits(B_out(M1))),.(out_size($bits(M1))),.channel(`AXI_SLAVE_CNT)) mux_B_M1(
+	.one_in(`B_out(M1)),			.one_out(`B_in(M1)),
+	multi_out(`B_out_mul(M1_S)),	.multi_in(`B_in_mul(M1_S)),
+	.direction(direction_B_M1)
 );
-// S0
+
+// SLAVE
+genvar i;
+
 Pointer Pointer_AR_S0;
 Arbiter Arbiter_AR_S0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
