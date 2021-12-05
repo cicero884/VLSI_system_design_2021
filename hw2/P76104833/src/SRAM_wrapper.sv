@@ -2,7 +2,15 @@
 `include "AXI_package.svh"
 `include "AXI_wrapper.svh"
 
+`define GET_ADDR(RW) \
+	A``RW``ADDR<=A``RW``ADDR_S; \
+	A``RW``LEN<=A``RW``LEN_S; \
+	A``RW``SIZE<=A``RW``SIZE_S; \
+	A``RW``BURST<=A``RW``BURST_S;
+
+
 // TODO: change state machine into pipeline?
+// TODO: or other way to write
 module SRAM_wrapper(
 	input clk,input rst,
 	//READ ADDRESS
@@ -77,10 +85,7 @@ always_ff @(posedge clk,posedge rst) begin
 				if(ARVALID_S) begin
 					read_state<=TRANSMITTING;
 					RID_S<=ARID_S;
-					ARADDR<=ARADDR_S;
-					ARLEN<=ARLEN_S;
-					ARSIZE<=ARSIZE_S;
-					ARBURST<=ARBURST_S;
+					`GET_ADDR(R)
 					ARREADY_S<=1'b0;
 				end
 				else ARREADY_S<=1'b1;// default high(view spec)
@@ -101,7 +106,17 @@ always_ff @(posedge clk,posedge rst) begin
 						if(ARLEN==0) begin
 							RLAST_S<=1'b1;
 							read_state<=IDLE;
+						////if(ARVALID_S) begin
+						////	RID_S<=ARID_S;
+						////	`GET_ADDR(R)
+						////	ARREADY_S<=1'b0;
+						////end
+						////else begin
+						////	ARREADY_S<=1'b1;// default high(view spec)
+						////	read_state<=IDLE;
+						////end
 						end
+					////else ARREADY_S<=1'b0;
 					end
 				end
 			end
@@ -134,16 +149,14 @@ always_ff @(posedge clk,posedge rst) begin
 				if(AWVALID_S&&read_state!=TRANSMITTING) begin
 					write_state<=TRANSMITTING;
 					BID_S<=AWID_S;
-					AWADDR<=AWADDR_S;
-					AWLEN<=AWLEN_S;
-					AWSIZE<=AWSIZE_S;
-					AWBURST<=AWBURST_S;
+					`GET_ADDR(W)
 					AWREADY_S<=1'b0;
 				end
 				else AWREADY_S<=1'b1;// default high(view spec)
 				WEB<=`AXI_STRB_BITS'd0;
 			end
 			TRANSMITTING:begin
+				BVALID_S<=1'b0;
 				if(WREADY_S) begin
 					WREADY_S<=1'b0;
 					WEB<=`AXI_STRB_BITS'd0;
@@ -160,7 +173,18 @@ always_ff @(posedge clk,posedge rst) begin
 				BVALID_S<=1'b1;
 				WEB<=`AXI_STRB_BITS'd0;
 				WREADY_S<=1'b0;
-				if(BREADY_S) write_state<=IDLE;
+				if(BREADY_S) begin
+				////if(AWVALID_S&&read_state!=TRANSMITTING) begin
+				////	write_state<=TRANSMITTING;
+				////	BID_S<=AWID_S;
+				////	`GET_ADDR(W)
+				////	AWREADY_S<=1'b0;
+				////end
+				////else begin
+					AWREADY_S<=1'b1;// default high(view spec)
+					write_state<=IDLE;
+				////end
+				end
 			endcase
 		end
 	end
