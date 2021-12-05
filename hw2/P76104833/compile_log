@@ -14,152 +14,20 @@ ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 `define MAX 300000 // Max cycle number
                                       |
 ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-	module worklib.Mux:sv
-		errors: 0, warnings: 0
-AddrInfo ar;
-          |
-ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,39|10): Mixing of ansi & non-ansi style port declaration is not legal.
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 39, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-DataInfo r;
-         |
-ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,42|9): Mixing of ansi & non-ansi style port declaration is not legal.
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 42, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-AddrInfo aw;
-          |
-ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,87|10): Mixing of ansi & non-ansi style port declaration is not legal.
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 87, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-DataInfo w;
-         |
-ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,90|9): Mixing of ansi & non-ansi style port declaration is not legal.
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv line 90, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 14, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	module worklib.Default_Slave:sv
-		errors: 4, warnings: 0
-`CREATE_R(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,154|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 154, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,154|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 154, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,154|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 154, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,154|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 154, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,155|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 155, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,155|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 155, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,155|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 155, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(SD,`AXI_IDS_BITS)
-                          |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,155|26): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 155, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M0_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,185|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 185, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M0_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,185|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 185, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M0_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,185|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 185, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M0_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,185|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 185, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,188|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 188, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,188|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 188, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,188|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 188, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,188|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 188, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,189|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 189, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,189|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 189, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,189|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 189, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(M1_S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                            |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,189|44): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 189, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,191|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 191, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,191|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 191, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,191|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 191, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_R(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,191|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_R [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 50], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 191, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,192|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 192, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,192|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 192, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,192|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 192, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`CREATE_W(S[`AXI_SLAVE_CNT],`AXI_IDM_BITS)
-                                         |
-ncvlog: *E,EXPNDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,192|41): expecting a <list_of_variables> or <list_of_assignments> [3.2.1(IEEE)].
-(`define macro: CREATE_W [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 65], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 192, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
 	                          |
-ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,203|27): expecting a right parenthesis (')') [12.3.4(IEEE)].
-(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 203, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|27): expecting a right parenthesis (')') [12.3.4(IEEE)].
+(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
 	                          |
-ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,203|27): expecting a right parenthesis (')') [12.1.2][7.1(IEEE)].
-(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 203, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|27): expecting a right parenthesis (')') [12.1.2][7.1(IEEE)].
+(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
 	                           |
-ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,203|28): expecting the keyword 'endmodule' [12.1(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 203, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
+ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|28): expecting the keyword 'endmodule' [12.1(IEEE)].
+(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.AXI:sv
-		errors: 31, warnings: 0
+		errors: 3, warnings: 0
     $value$plusargs("prog_path=%s", prog_path);
                   |
 ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,43|18): System function '$value$plusargs' invoked as a task. Return value will be ignored.

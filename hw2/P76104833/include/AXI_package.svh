@@ -49,10 +49,10 @@
 	// create wires
 	`define CREATE_R(NAME,ID_BITS) \
 		wire [ID_BITS-1:0] ARID_``NAME``; \
-		wire [`AXI_ADDR_BITS-1:0] ARADDR_M0, \
-		wire [`AXI_LEN_BITS-1:0] ARLEN_M0, \
-		wire [`AXI_SIZE_BITS-1:0] ARSIZE_M0, \
-		wire [1:0] ARBURST_M0, \
+		wire [`AXI_ADDR_BITS-1:0] ARADDR_``NAME``; \
+		wire [`AXI_LEN_BITS-1:0] ARLEN_``NAME``; \
+		wire [`AXI_SIZE_BITS-1:0] ARSIZE_``NAME``; \
+		wire [1:0] ARBURST_``NAME``; \
 		wire ARVALID_``NAME``; \
 		wire ARREADY_``NAME``; \
 		wire [ID_BITS-1:0] RID_``NAME``; \
@@ -64,10 +64,10 @@
 
 	`define CREATE_W(NAME,ID_BITS) \
 		wire [ID_BITS-1:0] AWID_``NAME``; \
-		wire [`AXI_ADDR_BITS-1:0] AWADDR_M0, \
-		wire [`AXI_LEN_BITS-1:0] AWLEN_M0, \
-		wire [`AXI_SIZE_BITS-1:0] AWSIZE_M0, \
-		wire [1:0] AWBURST_M0, \
+		wire [`AXI_ADDR_BITS-1:0] AWADDR_``NAME``; \
+		wire [`AXI_LEN_BITS-1:0] AWLEN_``NAME``; \
+		wire [`AXI_SIZE_BITS-1:0] AWSIZE_``NAME``; \
+		wire [1:0] AWBURST_``NAME``; \
 		wire AWVALID_``NAME``; \
 		wire AWREADY_``NAME``; \
 		wire [`AXI_DATA_BITS-1:0] WDATA_``NAME``; \
@@ -111,14 +111,14 @@
 	// package as array
 	// TODO, FIXME :need be add by hand if increase `AXI_SLAVE_CNT :L
 	// vary ugly...
-	`define AR_in_mul(NAME) 	'{`AR_in(NAME[0]),`AR_in(NAME[1]),`AR_in(NAME[2])};
-	`define AR_out_mul(NAME) 	'{`AR_out(NAME[0]),`AR_out(NAME[1]),`AR_out(NAME[2])};
-	`define R_in_mul(NAME) 		'{`R_in(NAME[0]),`R_in(NAME[1]),`R_in(NAME[2])};
-	`define R_out_mul(NAME) 	'{`R_out(NAME[0]),`R_out(NAME[1]),`R_out(NAME[2])};
-	`define W_in_mul(NAME) 		'{`W_in(NAME[0]),`W_in(NAME[1]),`W_in(NAME[2])};
-	`define W_out_mul(NAME) 	'{`W_out(NAME[0]),`W_out(NAME[1]),`W_out(NAME[2])};
-	`define B_in_mul(NAME) 		'{`B_in(NAME[0]),`B_in(NAME[1]),`B_in(NAME[2])};
-	`define B_out_mul(NAME) 	'{`B_out(NAME[0]),`B_out(NAME[1]),`B_out(NAME[2])};
+	`define AR_in_mul(NAME) '{`AR_in(NAME[0]),`AR_in(NAME[1]),`AR_in(NAME[2])};
+	`define AR_out_mul(NAME) '{`AR_out(NAME[0]),`AR_out(NAME[1]),`AR_out(NAME[2])};
+	`define R_in_mul(NAME) '{`R_in(NAME[0]),`R_in(NAME[1]),`R_in(NAME[2])};
+	`define R_out_mul(NAME) '{`R_out(NAME[0]),`R_out(NAME[1]),`R_out(NAME[2])};
+	`define W_in_mul(NAME) '{`W_in(NAME[0]),`W_in(NAME[1]),`W_in(NAME[2])};
+	`define W_out_mul(NAME) '{`W_out(NAME[0]),`W_out(NAME[1]),`W_out(NAME[2])};
+	`define B_in_mul(NAME) '{`B_in(NAME[0]),`B_in(NAME[1]),`B_in(NAME[2])};
+	`define B_out_mul(NAME) '{`B_out(NAME[0]),`B_out(NAME[1]),`B_out(NAME[2])};
 
 	// connect all wires
 	`define CONNECT_R(NAME1,NAME2) \

@@ -10,13 +10,13 @@ module Default_Slave(
 	input [`AXI_SIZE_BITS-1:0] ARSIZE_S,
 	input [1:0] ARBURST_S,
 	input ARVALID_S,
-	output ARREADY_S,
+	output logic ARREADY_S,
 	//READ DATA0	=ID +`DataInfo +`HandShake +RESP
-	output [`AXI_IDS_BITS-1:0] RID_S,
-	output [`AXI_DATA_BITS-1:0] RDATA_S,
-	output [1:0] RRESP_S,
-	output RLAST_S,
-	output RVALID_S,
+	output logic [`AXI_IDS_BITS-1:0] RID_S,
+	output logic [`AXI_DATA_BITS-1:0] RDATA_S,
+	output logic [1:0] RRESP_S,
+	output logic RLAST_S,
+	output logic RVALID_S,
 	input RREADY_S,
 
 	//WRITE ADDRESS=ID +`AddrInfo +`HandShake
@@ -26,18 +26,18 @@ module Default_Slave(
 	input [`AXI_SIZE_BITS-1:0] AWSIZE_S,
 	input [1:0] AWBURST_S,
 	input AWVALID_S,
-	output AWREADY_S,
+	output logic AWREADY_S,
 	//WRITE DATA0	=   +`DataInfo +`HandShake +STRB
 	input [`AXI_DATA_BITS-1:0] WDATA_S,
 	input [`AXI_STRB_BITS-1:0] WSTRB_S,
 	input WLAST_S,
 	input WVALID_S,
-	output WREADY_S,
+	output logic WREADY_S,
 	//WRITE RESPONSE0=ID +RESP +`Handshake
-	output [`AXI_IDS_BITS-1:0] BID_S,
-	output [1:0] BRESP_S,
-	output BVALID_S,
-	input BREADY_S,
+	output logic [`AXI_IDS_BITS-1:0] BID_S,
+	output logic [1:0] BRESP_S,
+	output logic BVALID_S,
+	input BREADY_S
 );
 // wires for SRAM
 wire [13:0]A;
@@ -61,8 +61,8 @@ assign resp=DECERR;
 assign RRESP_S=resp;
 assign RDATA_S=DO;
 
-always_ff @(posedge clk,posedge rst) begin
-	if(rst) begin
+always_ff @(posedge ACLK,negedge ARESETn) begin
+	if(!ARESETn) begin
 		read_state<=IDLE;
 		ARREADY_S<=1'b1;// default high(view spec)
 		RVALID_S<=1'b0;
@@ -123,8 +123,8 @@ logic [`AXI_LEN_BITS-1:0] AWLEN;
 logic [`AXI_SIZE_BITS-1:0] AWSIZE;
 logic [1:0] AWBURST;
 
-always_ff @(posedge clk,posedge rst) begin
-	if(!rst) begin
+always_ff @(posedge ACLK,negedge ARESETn) begin
+	if(!ARESETn) begin
 		write_state<=IDLE;
 		AWREADY_S<=1'b1;// default high(view spec)
 		WREADY_S<=1'b0;
