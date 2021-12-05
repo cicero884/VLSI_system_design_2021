@@ -48,68 +48,77 @@ logic [3:0]WEB;
 wire CS;
 wire OE;
 
-// basic convert
-`R_in_convert(S)
-`W_in_convert(S)
-
 // Read handler
 State read_state;
 State write_state;
-//save read AddrInfo in AR_S(in convert),cast on ar to use
-AddrInfo ar;
+
+logic [`AXI_ADDR_BITS-1:0] ARADDR;
+logic [`AXI_LEN_BITS-1:0] ARLEN;
+logic [`AXI_SIZE_BITS-1:0] ARSIZE;
+logic [1:0] ARBURST;
 
 Responce resp;
 assign resp=OKAY;
 assign RRESP=resp;
-logic [`AXI_LEN_BITS-1:0]len_cnt_r;
 
 always_ff @(posedge clk,posedge rst) begin
 	if(rst) begin
 		read_state<=IDLE;
 		ARREADY_S<=1'b1;// default high(view spec)
 		RVALID_S<=1'b0;
-		R_S.last<=1'b0;
+		RLAST_S<=1'b0;
 	end
 	else begin
 		case(read_state)
 			IDLE:begin
-				R_S.last<=1'b0;
-				len_cnt_r<=`AXI_LEN_BITS'd0;
+				RLAST_S<=1'b0;
 				RVALID_S<=1'b0;
 				if(ARVALID_S) begin
 					read_state<=TRANSMITTING;
 					RID_S<=ARID_S;
-					ar<=AR_S;
+					ARADDR<=ARADDR_S;
+					ARLEN<=ARLEN_S;
+					ARSIZE<=ARSIZE_S;
+					ARBURST<=ARBURST_S;
 					ARREADY_S<=1'b0;
 				end
 				else ARREADY_S<=1'b1;// default high(view spec)
 			end
 			TRANSMITTING: begin
 				if(RREADY_S) begin
-					if(RVALID_S) RVALID_S<=1'b0;
-					else begin
-						if(write_state==IDLE) begin
-							//assume INCR type
-							if(len_cnt_r==ar.len) begin
-								R_S.last<=1'b1;
-								read_state<=IDLE;
-							end
-							R_S.data<=DO;
-							len_cnt_r<=len_cnt_r+1;
-							RVALID_S<=1'b1;
+					if(write_state!=TRANSMITTING) begin
+						//assume INCR type
+						if(ARLEN==0) begin
+							RLAST_S<=1'b1;
+							read_state<=IDLE;
 						end
+						RDATA_S<=DO;
+						ARLEN<=ARLEN-1;
+						ARADDR<=ARADDR+4;
+						RVALID_S<=1'b1;
 					end
+					else RVALID_S<=1'b0;
 				end
 			end
 		endcase
 	end
 end
+always_latch begin
+	if(rst) begin
+	end
+	else begin
+		case(read_state)
+end
 
 // Write handler
 //save write AddrInfo in AW_S,cast on aw to use
-AddrInfo aw;
+//AddrInfo aw;
 assign BRESP=resp;
-logic [`AXI_LEN_BITS-1:0]len_cnt_w;
+//logic [`AXI_LEN_BITS-1:0]len_cnt_w;
+logic [`AXI_ADDR_BITS-1:0] AWADDR;
+logic [`AXI_LEN_BITS-1:0] AWLEN;
+logic [`AXI_SIZE_BITS-1:0] AWSIZE;
+logic [1:0] AWBURST;
 
 always_ff @(posedge clk,posedge rst) begin
 	if(!rst) begin
@@ -126,29 +135,33 @@ always_ff @(posedge clk,posedge rst) begin
 				if(AWVALID_S&&read_state!=TRANSMITTING) begin
 					write_state<=TRANSMITTING;
 					BID_S<=AWID_S;
-					aw<=AW_S;
+					AWADDR<=AWADDR_S;
+					AWLEN<=AWLEN_S;
+					AWSIZE<=AWSIZE_S;
+					AWBURST<=AWBURST_S;
 					AWREADY_S<=1'b0;
-					len_cnt_w<=`AXI_LEN_BITS'd0;
 				end
 				else AWREADY_S<=1'b1;// default high(view spec)
 				WEB<=`AXI_STRB_BITS'd0;
 			end
 			TRANSMITTING:begin
-				if(BREADY_S) begin
-					if(WREADY_S) begin
-						WREADY_S<=1'b0;
-						WEB<=`AXI_STRB_BITS'd0;
-					end
-					else if(WVALID_S) begin
-						WREADY_S<=1'b1;
-						if(W_S.last) begin
-							BVALID_S<=1'b1;
-							write_state<=IDLE;
-						end
-						len_cnt_w<=len_cnt_w+1;
-						WEB<=~WSTRB_S;
-					end
+				if(WREADY_S) begin
+					WREADY_S<=1'b0;
+					WEB<=`AXI_STRB_BITS'd0;
 				end
+				else if(WVALID_S) begin
+					WREADY_S<=1'b1;
+					if(AWLEN==0) write_state<=BACK;
+					AWLEN<=AWLEN+1;
+					AWADDR<=AWADDR+4;
+					WEB<=~WSTRB_S;
+				end
+			end
+			BACK:begin
+				BVALID_S<=1'b1;
+				if(BREADY_S) begin
+					if(AWVALID_S&&read_state!=TRANSMITTING)
+					write_state<=IDLE;
 			end
 		endcase
 	end
