@@ -3,32 +3,189 @@
 
 module Default_Slave(
 	input ACLK,input ARESETn,
-	//READ ADDRESS
-	input [`AXI_IDS_BITS-1:0] ARID,
-	input [$bits(AddrInfo)-1:0]AR,
-	output logic ARREADY,input ARVALID,
+	//READ ADDRESS0	=ID +`AddrInfo +`HandShake
+	input [`AXI_IDS_BITS-1:0] ARID_S,
+	input [`AXI_ADDR_BITS-1:0] ARADDR_S,
+	input [`AXI_LEN_BITS-1:0] ARLEN_S,
+	input [`AXI_SIZE_BITS-1:0] ARSIZE_S,
+	input [1:0] ARBURST_S,
+	input ARVALID_S,
+	output ARREADY_S,
+	//READ DATA0	=ID +`DataInfo +`HandShake +RESP
+	output [`AXI_IDS_BITS-1:0] RID_S,
+	output [`AXI_DATA_BITS-1:0] RDATA_S,
+	output [1:0] RRESP_S,
+	output RLAST_S,
+	output RVALID_S,
+	input RREADY_S,
 
-	//READ DATA
-	output logic [`AXI_IDS_BITS-1:0] RID,
-	output [$bits(DataInfo)-1:0] R,
-	output logic [1:0] RRESP,
-	input RREADY,output logic RVALID,
-
-	//WRITE ADDRESS
-	input [`AXI_IDS_BITS-1:0] AWID,
-	input [$bits(AddrInfo)-1:0]AW,
-	output logic AWREADY,input AWVALID,
-	//WRITE DATA
-	input [$bits(DataInfo)-1:0] W,
-	input [`AXI_STRB_BITS-1:0] WSTRB,
-	output logic WREADY,input WVALID,
-
-	//WRITE RESPONSE
-	output logic [`AXI_IDS_BITS-1:0] BID,
-	output logic [1:0] BRESP,
-	input BREADY,output logic BVALID
+	//WRITE ADDRESS=ID +`AddrInfo +`HandShake
+	input [`AXI_IDS_BITS-1:0] AWID_S,
+	input [`AXI_ADDR_BITS-1:0] AWADDR_S,
+	input [`AXI_LEN_BITS-1:0] AWLEN_S,
+	input [`AXI_SIZE_BITS-1:0] AWSIZE_S,
+	input [1:0] AWBURST_S,
+	input AWVALID_S,
+	output AWREADY_S,
+	//WRITE DATA0	=   +`DataInfo +`HandShake +STRB
+	input [`AXI_DATA_BITS-1:0] WDATA_S,
+	input [`AXI_STRB_BITS-1:0] WSTRB_S,
+	input WLAST_S,
+	input WVALID_S,
+	output WREADY_S,
+	//WRITE RESPONSE0=ID +RESP +`Handshake
+	output [`AXI_IDS_BITS-1:0] BID_S,
+	output [1:0] BRESP_S,
+	output BVALID_S,
+	input BREADY_S,
 );
+// wires for SRAM
+wire [13:0]A;
+wire [31:0]DI;
+wire [31:0]DO;
+logic [3:0]WEB;
+wire CS;
+wire OE;
 
+// Read handler
+State read_state;
+State write_state;
+
+logic [`AXI_ADDR_BITS-1:0] ARADDR;
+logic [`AXI_LEN_BITS-1:0] ARLEN;
+logic [`AXI_SIZE_BITS-1:0] ARSIZE;
+logic [1:0] ARBURST;
+
+Responce resp;
+assign resp=DECERR;
+assign RRESP_S=resp;
+assign RDATA_S=DO;
+
+always_ff @(posedge clk,posedge rst) begin
+	if(rst) begin
+		read_state<=IDLE;
+		ARREADY_S<=1'b1;// default high(view spec)
+		RVALID_S<=1'b0;
+		RLAST_S<=1'b0;
+	end
+	else begin
+		case(read_state)
+			IDLE:begin
+				// set AR
+				if(ARVALID_S) begin
+					read_state<=TRANSMITTING;
+					RID_S<=ARID_S;
+					`GET_ADDR(R)
+					ARREADY_S<=1'b0;
+				end
+				else ARREADY_S<=1'b1;// default high(view spec)
+				// clean R
+				RLAST_S<=1'b0;
+				RVALID_S<=1'b0;
+			end
+			TRANSMITTING: begin
+				// set R
+				// assume INCR
+				if(write_state==TRANSMITTING) RVALID_S<=1'b0;
+				else begin
+					RVALID_S<=1'b1;
+					if(RREADY_S) begin
+						ARLEN<=ARLEN-1;
+						ARADDR<=ARADDR+4;
+						// R end
+						if(ARLEN==0) begin
+							RLAST_S<=1'b1;
+							read_state<=IDLE;
+							////if(ARVALID_S) begin
+							////	RID_S<=ARID_S;
+							////	`GET_ADDR(R)
+							////	ARREADY_S<=1'b0;
+							////end
+							////else begin
+							////	ARREADY_S<=1'b1;// default high(view spec)
+							////	read_state<=IDLE;
+							////end
+						end
+						////else ARREADY_S<=1'b0;
+					end
+				end
+			end
+		endcase
+	end
+end
+
+// Write handler
+//save write AddrInfo in AW_S,cast on aw to use
+//AddrInfo aw;
+assign BRESP_S=resp;
+logic [`AXI_ADDR_BITS-1:0] AWADDR;
+logic [`AXI_LEN_BITS-1:0] AWLEN;
+logic [`AXI_SIZE_BITS-1:0] AWSIZE;
+logic [1:0] AWBURST;
+
+always_ff @(posedge clk,posedge rst) begin
+	if(!rst) begin
+		write_state<=IDLE;
+		AWREADY_S<=1'b1;// default high(view spec)
+		WREADY_S<=1'b0;
+		WEB<=`AXI_STRB_BITS'd0;
+		BVALID_S<=1'b0;
+	end
+	else begin
+		case(write_state)
+			IDLE:begin
+				BVALID_S<=1'b0;
+				WREADY_S<=1'b0;
+				if(AWVALID_S&&read_state!=TRANSMITTING) begin
+					write_state<=TRANSMITTING;
+					BID_S<=AWID_S;
+					`GET_ADDR(W)
+					AWREADY_S<=1'b0;
+				end
+				else AWREADY_S<=1'b1;// default high(view spec)
+				WEB<=`AXI_STRB_BITS'd0;
+			end
+			TRANSMITTING:begin
+				BVALID_S<=1'b0;
+				if(WREADY_S) begin
+					WREADY_S<=1'b0;
+					WEB<=`AXI_STRB_BITS'd0;
+				end
+				else if(WVALID_S) begin
+					WREADY_S<=1'b1;
+					if(AWLEN==0) write_state<=BACK;
+					AWLEN<=AWLEN+1;
+					AWADDR<=AWADDR+4;
+					WEB<=~WSTRB_S;
+				end
+			end
+			BACK:begin
+				BVALID_S<=1'b1;
+				WEB<=`AXI_STRB_BITS'd0;
+				WREADY_S<=1'b0;
+				if(BREADY_S) begin
+					////if(AWVALID_S&&read_state!=TRANSMITTING) begin
+					////	write_state<=TRANSMITTING;
+					////	BID_S<=AWID_S;
+					////	`GET_ADDR(W)
+					////	AWREADY_S<=1'b0;
+					////end
+					////else begin
+					AWREADY_S<=1'b1;// default high(view spec)
+					write_state<=IDLE;
+					////end
+				end
+			end
+		endcase
+	end
+end
+
+assign A=(write_state==TRANSMITTING)? AWADDR[15:2]:ARADDR[15:2];
+assign DI=WDATA_S;
+assign CS=(write_state==TRANSMITTING | read_state==TRANSMITTING);
+assign OE=(read_state==TRANSMITTING);
+
+/*
 `EMPTY_R()
 `EMPTY_W()
 
@@ -127,4 +284,5 @@ always_ff @(posedge ACLK,negedge ARESETn) begin
 		endcase
 	end
 end
+*/
 endmodule
