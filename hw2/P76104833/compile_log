@@ -14,40 +14,8 @@ ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 `define MAX 300000 // Max cycle number
                                       |
 ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-`R_in_convert(S)
-            |
-ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,52|12): `R_in_convert: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 52, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`R_in_convert(S)
-             |
-ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,52|13): expecting the keyword 'endmodule' [12.1(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 52, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-`W_in_convert(S)
-            |
-ncvlog: *E,NOTDIR (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv,53|12): `W_in_convert: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/SRAM_wrapper.sv line 53, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 2, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	module worklib.SRAM_wrapper:sv
-		errors: 3, warnings: 0
-		priorty_circle={channel-1{1'b0},1'b1};
-		                               |
-ncvlog: *E,EXPRCC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,28|33): expecting a right brace ('}') [4.1.14(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 28, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-		priorty_circle={channel-1{1'b0},1'b1};
-		                                    |
-ncvlog: *E,EXPSMC (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv,28|38): expecting a semicolon (';') [9.2.2(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Arbiter.sv line 28, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 11, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	module worklib.Arbiter:sv
-		errors: 2, warnings: 0
-	output logic [in_size-1:0] multi_out[channel],	input [out_size] multi_in[channel],
-	                                              	               |
-ncvlog: *E,SVPKSN (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux.sv,4|63): The single-bound form of a range is only allowed for array (i.e., unpacked) dimensions.
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux.sv line 4, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-);
-|
-ncvlog: *E,NULLLP (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux.sv,6|0): empty/illegal list of ports [12.3.4(IEEE-2001)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Mux.sv line 6, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 13, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
 	module worklib.Mux:sv
-		errors: 2, warnings: 0
+		errors: 0, warnings: 0
 AddrInfo ar;
           |
 ncvlog: *E,ILLPDL (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/Default_Slave.sv,39|10): Mixing of ansi & non-ansi style port declaration is not legal.
@@ -198,8 +166,6 @@ ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
       $fscanf(gf, "%h\n", GOLDEN[num]);
             |
 ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,65|12): System function '$fscanf' invoked as a task. Return value will be ignored.
-	module worklib.top_tb:sv
-		errors: 0, warnings: 2
 	Total errors/warnings found outside modules and primitives:
 		errors: 0, warnings: 2
 irun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).

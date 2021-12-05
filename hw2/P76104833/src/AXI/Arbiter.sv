@@ -1,31 +1,41 @@
 module Arbiter #(parameter channel=2)(
 	input ACLK,input ARESETn,
-	input begin_sig[channel-1:0],input end_sig[channel-1:0],
+	input [channel-1:0]begin_sig,input [channel-1:0]end_sig,
 	output logic[channel-1:0] direction
 );
+
+
+// priority_circle=start check begin_sig from who
+reg [channel-1:0]priority_circle;
 
 // round robin main logic:
 // direction = begin_sig & ~(begin_sig - priority_circle)
 // concate front to consider search again from begining
-wire begin_sig_2;
+wire [channel*2-1:0]begin_sig_2;
 assign begin_sig_2={begin_sig,begin_sig};
-wire direction_2;
-assign direction_2=begin_sig_2&~(begin_sig_2-priorty_circle);
+wire [channel*2-1:0]direction_2;
+assign direction_2=begin_sig_2&~(begin_sig_2-priority_circle);
 
-// start check from which
-reg [channel-1:0]priorty_circle;
 reg transmitting;
 // end until next clock
 reg transmitting_ending;
 
 always_ff @(posedge ACLK,negedge ARESETn) begin
-	if(!ARESETn) transmitting_ending<=0;
-	else transmitting_ending<=(end_sig&direction);
+	if(!ARESETn) begin
+		transmitting_ending<=1'b0;
+		priority_circle<={{channel-1{1'b0}},1'b1};
+	end
+	else begin
+		if(end_sig&direction) begin
+			transmitting_ending<=1'b1;
+			priority_circle<={direction[channel-2:0],direction[channel-1]};
+		end
+		else transmitting_ending<=1'b0;
+	end
 end
 
 always_latch begin
 	if(!ARESETn) begin
-		priorty_circle={channel-1{1'b0},1'b1};
 		transmitting=1'b0;
 	end
 	else begin
@@ -41,96 +51,4 @@ always_latch begin
 		end
 	end
 end
-/*
-Pointer last_direction;
-Pointer direction;
-assign receive_direction=direction;
-always_latch begin
-	if(!ARESETn) begin
-		direction<=DEFAULT;
-		last_direction<=DEFAULT;
-	end
-	else begin
-		case(direction)
-			SEL0: begin
-				if(hs0_end&ACLK) begin
-					if(hs1_begin) direction<=SEL1;
-					else if(hs0_begin) direction<=SEL0;
-					else direction<=DEFAULT;
-					last_direction<=SEL0;
-				end
-			end
-			SEL1: begin
-				if(hs1_end&ACLK) begin
-					if(hs0_begin) direction<=SEL0;
-					else if(hs1_begin) direction<=SEL1;
-					else direction<=DEFAULT;
-					last_direction<=SEL1;
-				end
-			end
-			default: begin
-				case(last_direction)
-					SEL0: begin
-						if(hs1_begin) direction<=SEL1;
-						else if(hs0_begin) direction<=SEL0;
-					end
-					SEL1: begin
-						if(hs0_begin) direction<=SEL0;
-						else if(hs1_begin) direction<=SEL1;
-					end
-					default: begin
-						if(hs0_begin) direction<=SEL0;
-						else if(hs1_begin) direction<=SEL1;
-					end
-				endcase
-			end
-		endcase
-	end
-end
-*/
-	/*
-always_ff @(posedge ACLK,negedge ARESETn) begin
-	if(!ARESETn) begin
-		direction<=DEFAULT;
-		last_direction<=DEFAULT;
-	end
-	else begin
-		case(direction)
-			SEL0: begin
-				if(hs0_end) begin
-					if(hs1_begin) direction<=SEL1;
-					else if(hs0_begin) direction<=SEL0;
-					else direction<=DEFAULT;
-					last_direction<=SEL0;
-				end
-			end
-			SEL1: begin
-				if(hs1_end) begin
-					if(hs0_begin) direction<=SEL0;
-					else if(hs1_begin) direction<=SEL1;
-					else direction<=DEFAULT;
-					last_direction<=SEL1;
-				end
-			end
-			default: begin
-				case(last_direction)
-					SEL0: begin
-						if(hs1_begin) direction<=SEL1;
-						else if(hs0_begin) direction<=SEL0;
-					end
-					SEL1: begin
-						if(hs0_begin) direction<=SEL0;
-						else if(hs1_begin) direction<=SEL1;
-					end
-					default: begin
-						if(hs0_begin) direction<=SEL0;
-						else if(hs1_begin) direction<=SEL1;
-					end
-				endcase
-			end
-		endcase
-	end
-end
-*/
 endmodule
-
