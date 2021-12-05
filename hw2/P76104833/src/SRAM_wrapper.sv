@@ -160,16 +160,13 @@ always_ff @(posedge clk,posedge rst) begin
 				BVALID_S<=1'b1;
 				WEB<=`AXI_STRB_BITS'd0;
 				WREADY_S<=1'b0;
-				if(BREADY_S) begin
-					if(AWVALID_S&&read_state!=TRANSMITTING)
-						write_state<=IDLE;
-				end
+				if(BREADY_S) write_state<=IDLE;
 			endcase
 		end
 	end
 
 	assign A=(write_state==TRANSMITTING)? AWADDR[15:2]:ARADDR[15:2];
-	assign DI=W_S.data;
+	assign DI=WDATA_S;
 	assign CS=(write_state==TRANSMITTING | read_state==TRANSMITTING);
 	assign OE=(read_state==TRANSMITTING);
 
