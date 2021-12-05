@@ -119,6 +119,7 @@
 	`define W_out_mul(NAME) 	'{`W_out(NAME[0]),`W_out(NAME[1]),`W_out(NAME[2])};
 	`define B_in_mul(NAME) 		'{`B_in(NAME[0]),`B_in(NAME[1]),`B_in(NAME[2])};
 	`define B_out_mul(NAME) 	'{`B_out(NAME[0]),`B_out(NAME[1]),`B_out(NAME[2])};
+
 	// connect all wires
 	`define CONNECT_R(NAME1,NAME2) \
 		assign AR_in(NAME1)=AR_in(NAME2); \
