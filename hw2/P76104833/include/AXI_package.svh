@@ -46,7 +46,7 @@
 
 	// package channels
 	// READ ADDRESS0	=ID +`AddrInfo +`HandShake
-	`define AR_in(NAME)	{ARID_``NAME``[`AXI_IDM_BITS-1:0],ARADDR_``NAME``,ARLEN_``NAME``,ARSIZE_``NAME``,ARBUST_``NAME``,ARVALID_``NAME``}
+	`define AR_in(NAME)	{ARID_``NAME``[`AXI_IDM_BITS-1:0],ARADDR_``NAME``,ARLEN_``NAME``,ARSIZE_``NAME``,ARBURST_``NAME``,ARVALID_``NAME``}
 	`define AR_out(NAME) {ARREADY_``NAME``}
 
 	// READ DATA0	=ID +`DataInfo +RESP +`HandShake
@@ -63,28 +63,20 @@
 	`define B_out(NAME) {BREADY_``NAME``}
 
 	// package as array
-	// TODO, FIXME :need be add by hand if increase `AXI_SLAVE_CNT :L
-	// vary ugly...
-	`define AR_in_mul(NAME) '{`AR_in(NAME[0]),`AR_in(NAME[1]),`AR_in(NAME[2])};
-	`define AR_out_mul(NAME) '{`AR_out(NAME[0]),`AR_out(NAME[1]),`AR_out(NAME[2])};
-	`define R_in_mul(NAME) '{`R_in(NAME[0]),`R_in(NAME[1]),`R_in(NAME[2])};
-	`define R_out_mul(NAME) '{`R_out(NAME[0]),`R_out(NAME[1]),`R_out(NAME[2])};
-	`define W_in_mul(NAME) '{`W_in(NAME[0]),`W_in(NAME[1]),`W_in(NAME[2])};
-	`define W_out_mul(NAME) '{`W_out(NAME[0]),`W_out(NAME[1]),`W_out(NAME[2])};
-	`define B_in_mul(NAME) '{`B_in(NAME[0]),`B_in(NAME[1]),`B_in(NAME[2])};
-	`define B_out_mul(NAME) '{`B_out(NAME[0]),`B_out(NAME[1]),`B_out(NAME[2])};
+	// TODO:need be add by hand if increase `AXI_SLAVE_CNT :L
+	`define TO_MULTI_3(TYPE,NAME) {`TYPE(NAME[2]),`TYPE(NAME[1]),`TYPE(NAME[0])}
 
 	// connect all wires
 	`define CONNECT_R(NAME1,NAME2) \
-		assign AR_in(NAME1)=AR_in(NAME2); \
-		assign AR_out(NAME2)=AR_out(NAME1); \
-		assign R_in(NAME2)=R_in(NAME1); \
-		assign R_out(NAME1)=R_out(NAME2);
+		assign `AR_in(NAME1)=`AR_in(NAME2); \
+		assign `AR_out(NAME2)=`AR_out(NAME1); \
+		assign `R_in(NAME2)=`R_in(NAME1); \
+		assign `R_out(NAME1)=`R_out(NAME2);
 
 	`define CONNECT_W(NAME1,NAME2) \
-		assign AW_in(NAME1)=AW_in(NAME2); \
-		assign AW_out(NAME2)=AW_out(NAME1); \
-		assign B_in(NAME2)=B_in(NAME1); \
-		assign B_out(NAME1)=B_out(NAME2);
+		assign `W_in(NAME1)=`W_in(NAME2); \
+		assign `W_out(NAME2)=`W_out(NAME1); \
+		assign `B_in(NAME2)=`B_in(NAME1); \
+		assign `B_out(NAME1)=`B_out(NAME2);
 
 `endif

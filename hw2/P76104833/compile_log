@@ -14,26 +14,187 @@ ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_
 `define MAX 300000 // Max cycle number
                                       |
 ncvlog: *W,MACNDF (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,3|38): The text macro 'MAX' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
-	                          |
-ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|27): expecting a right parenthesis (')') [12.3.4(IEEE)].
-(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
-	                          |
-ncvlog: *E,EXPRPA (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|27): expecting a right parenthesis (')') [12.1.2][7.1(IEEE)].
-(`define macro: AR_in_mul [/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./include/AXI_package.svh line 114], `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
-	                           |
-ncvlog: *E,EXPENM (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv,215|28): expecting the keyword 'endmodule' [12.1(IEEE)].
-(`include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/AXI/AXI.sv line 215, `include file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./src/top.sv line 3, file: /home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv line 10)
-	module worklib.AXI:sv
-		errors: 3, warnings: 0
     $value$plusargs("prog_path=%s", prog_path);
                   |
 ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,43|18): System function '$value$plusargs' invoked as a task. Return value will be ignored.
       $fscanf(gf, "%h\n", GOLDEN[num]);
             |
 ncvlog: *W,NOSYST (/home/zzhong/VLSI_system_design_2021/hw2/P76104833/./sim/top_tb.sv,65|12): System function '$fscanf' invoked as a task. Return value will be ignored.
+	module worklib.top_tb:sv
+		errors: 0, warnings: 2
 	Total errors/warnings found outside modules and primitives:
 		errors: 0, warnings: 2
-irun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x08c41c6e
+		top_tb
+ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.ALU:sv <0x3866bece>
+			streams:   2, words:  5114
+		worklib.ALU_control:sv <0x60680d10>
+			streams:   2, words:  3106
+		worklib.AXI:sv <0x24785192>
+			streams:  50, words: 37476
+		worklib.Adder:sv <0x6778ffd0>
+			streams:   1, words:   184
+		worklib.Arbiter:sv <0x634daaad>
+			streams:   6, words:  2474
+		worklib.Arbiter:sv <0x668784ea>
+			streams:   6, words:  2277
+		worklib.Branch_control:sv <0x068843c4>
+			streams:   1, words:  1210
+		worklib.CPU:sv <0x66863ab1>
+			streams:  10, words:  1370
+		worklib.CPU_wrapper:sv <0x0f330d1d>
+			streams:  33, words: 17275
+		worklib.Control_unit:sv <0x72e9fd0a>
+			streams:   1, words:  5106
+		worklib.DM_control:sv <0x05ebc929>
+			streams:   2, words:  3390
+		worklib.Decoder:sv <0x4c30f59b>
+			streams:   1, words:   594
+		worklib.Default_Slave:sv <0x50917aa7>
+			streams:  22, words:  9382
+		worklib.EX_MEM_reg:sv <0x156e01ed>
+			streams:   4, words:  4485
+		worklib.Forward_control:sv <0x41815468>
+			streams:   3, words:  1678
+		worklib.Hazard_control:sv <0x13318ea3>
+			streams:   1, words:  2082
+		worklib.ID_EX_reg:sv <0x55cc9f95>
+			streams:   4, words:  6908
+		worklib.IF_ID_reg:sv <0x482e7d5e>
+			streams:   4, words:  1297
+		worklib.Immidiate_generator:sv <0x19b10b8b>
+			streams:   1, words:  3328
+		worklib.MEM_WB_reg:sv <0x1b654ae8>
+			streams:   4, words:  2345
+		worklib.Mux:sv <0x03e0e020>
+			streams:   1, words:  2625
+		worklib.Mux:sv <0x0dcc245d>
+			streams:   1, words:  2047
+		worklib.Mux:sv <0x34b6a78a>
+			streams:   1, words:  3955
+		worklib.Mux:sv <0x41769544>
+			streams:   1, words:  3018
+		worklib.Mux:sv <0x639d73f7>
+			streams:   1, words:  3718
+		worklib.Mux:sv <0x6463460c>
+			streams:   1, words:  2166
+		worklib.Mux_2in:sv <0x17693bf1>
+			streams:   1, words:   234
+		worklib.Mux_2in:sv <0x1e27ed2d>
+			streams:   1, words:   234
+		worklib.Mux_2in:sv <0x74208c53>
+			streams:   1, words:   234
+		worklib.Mux_3in:sv <0x04ac371d>
+			streams:   1, words:   355
+		worklib.Mux_3in:sv <0x7fd3f0fb>
+			streams:   1, words:   355
+		worklib.PC_reg:sv <0x65251651>
+			streams:   3, words:   738
+		worklib.Register:sv <0x240ac39f>
+			streams:   5, words:  8303
+		worklib.SRAM:sv <0x29b381fa>
+			streams:  61, words: 19862
+		worklib.SRAM:sv <0x5402d400>
+			streams:  61, words: 20478
+		worklib.SRAM_wrapper:sv <0x0e5fdfea>
+			streams:  22, words:  9951
+		worklib.top:sv <0x380774f9>
+			streams:   0, words:     0
+		worklib.top_tb:sv <0x035eba3c>
+			streams:   5, words: 30588
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 57      28
+		Registers:              266     178
+		Scalar wires:           288       -
+		Expanded wires:        1168      41
+		Vectored wires:         226       -
+		Always blocks:           61      32
+		Initial blocks:           2       2
+		Cont. assignments:      193     148
+		Pseudo assignments:      22      20
+		Compilation units:        1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.top_tb:sv
+Loading snapshot worklib.top_tb:sv .................... Done
+ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+*Verdi* Loading libsscore_ius152.so
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+FSDB Dumper for IUS, Release Verdi_O-2018.09, Linux x86_64/64bit, 08/30/2018
+(C) 1996 - 2018 by Synopsys, Inc.
+*Verdi* : Create FSDB file 'top.fsdb'
+*Verdi* : Begin traversing the scope (top_tb.TOP), layer (0).
+*Verdi* : Enable +struct and +mda dumping.
+*Verdi* : End of traversing.
+DM[   0] = xxxxxxxx, expect = fffffff0
+DM[   1] = xxxxxxxx, expect = fffffff8
+DM[   2] = xxxxxxxx, expect = 00000008
+DM[   3] = xxxxxxxx, expect = 00000001
+DM[   4] = xxxxxxxx, expect = 00000001
+DM[   5] = xxxxxxxx, expect = 78787878
+DM[   6] = xxxxxxxx, expect = 000091a2
+DM[   7] = xxxxxxxx, expect = 00000003
+DM[   8] = xxxxxxxx, expect = fefcfefd
+DM[   9] = xxxxxxxx, expect = 10305070
+DM[  10] = xxxxxxxx, expect = cccccccc
+DM[  11] = xxxxxxxx, expect = ffffffcc
+DM[  12] = xxxxxxxx, expect = ffffcccc
+DM[  13] = xxxxxxxx, expect = 000000cc
+DM[  14] = xxxxxxxx, expect = 0000cccc
+DM[  15] = xxxxxxxx, expect = 00000d9d
+DM[  16] = xxxxxxxx, expect = 00000004
+DM[  17] = xxxxxxxx, expect = 00000003
+DM[  18] = xxxxxxxx, expect = 000001a6
+DM[  19] = xxxxxxxx, expect = 00000ec6
+DM[  20] = xxxxxxxx, expect = 2468b7a8
+DM[  21] = xxxxxxxx, expect = 5dbf9f00
+DM[  22] = xxxxxxxx, expect = 00012b38
+DM[  23] = xxxxxxxx, expect = fa2817b7
+DM[  24] = xxxxxxxx, expect = ff000000
+DM[  25] = xxxxxxxx, expect = 12345678
+DM[  26] = xxxxxxxx, expect = 0000f000
+DM[  27] = xxxxxxxx, expect = 00000f00
+DM[  28] = xxxxxxxx, expect = 000000f0
+DM[  29] = xxxxxxxx, expect = 0000000f
+DM[  30] = xxxxxxxx, expect = 56780000
+DM[  31] = xxxxxxxx, expect = 78000000
+DM[  32] = xxxxxxxx, expect = 00005678
+DM[  33] = xxxxxxxx, expect = 00000078
+DM[  34] = xxxxxxxx, expect = 12345678
+DM[  35] = xxxxxxxx, expect = ce780000
+DM[  36] = xxxxxxxx, expect = fffff000
+DM[  37] = xxxxxxxx, expect = fffff000
+DM[  38] = xxxxxxxx, expect = fffff000
+DM[  39] = xxxxxxxx, expect = fffff000
+DM[  40] = xxxxxxxx, expect = fffff000
+DM[  41] = xxxxxxxx, expect = fffff000
+DM[  42] = xxxxxxxx, expect = 1357a064
+DM[  43] = xxxxxxxx, expect = 13578000
+DM[  44] = xxxxxxxx, expect = fffff004
+SIM_END(16383) = xxxxxxxx, expect = ffffffff
+
+
+
+
+        ****************************               
+        **                        **       |__||  
+        **  OOPS!!                **      / X,X  | 
+        **                        **    /_____   | 
+        **  Simulation Failed!!   **   /^ ^ ^ \  |
+        **                        **  |^ ^ ^ ^ |w| 
+        ****************************   \m___m__|_|
+         Totally has          45 errors                     
+
+
+Simulation complete via $finish(1) at time 1 MS + 0
+../sim/top_tb.sv:117     $finish;
+ncsim> exit

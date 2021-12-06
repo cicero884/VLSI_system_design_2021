@@ -1,7 +1,8 @@
-// sel is one-hot encoding!
+// sel is one-hot encoding
+// multi=>{arr[2],arr[1],arr[0]}
 module Mux #(parameter in_size=0,parameter out_size=0,parameter channel=2)(
 	input [in_size-1:0] one_in,						output logic [out_size-1:0] one_out,
-	output logic [in_size-1:0] multi_out[channel],	input [out_size-1:0] multi_in[channel],
+	output logic [channel-1:0][in_size-1:0] multi_out,	input [channel-1:0][out_size-1:0] multi_in,
 	input [channel-1:0] sel
 );
 

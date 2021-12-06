@@ -210,21 +210,21 @@ Decoder Decoder_AR_M0(
 	.addr(ARADDR_M0),
 	.direction(direction_AR_M0)
 );
-Mux #(.in_size($bits(AR_in(M0))),.out_size($bits(`AR_out(M0))),.channel(`AXI_SLAVE_CNT)) mux_AR_M0(
+Mux #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0))),.channel(`AXI_SLAVE_CNT)) mux_AR_M0(
 	.one_in(`AR_in(M0)),			.one_out(`AR_out(M0)),
-	.multi_out(`AR_in_mul(M0_S)),	.multi_in(`AR_out_mul(M0_S)),
+	.multi_out(`TO_MULTI_3(AR_in,M0_S)),	.multi_in(`TO_MULTI_3(AR_out,M0_S)),
 	.sel(direction_AR_M0)
 );
 
 wire [`AXI_SLAVE_CNT-1:0] direction_R_M0;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig(ARVALID_M0_S),.end_sig(ARREADY_M0_S),
+	.begin_sig({>>{ARVALID_M0_S}}),.end_sig({>>{ARREADY_M0_S}}),
 	.direction(direction_R_M0)
 );
-Mux #(.in_size($bits(R_in(M0))),.out_size($bits(`R_out(M0))),.channel(`AXI_SLAVE_CNT)) mux_R_M0(
+Mux #(.in_size($bits(`R_out(M0))),.out_size($bits(`R_in(M0))),.channel(`AXI_SLAVE_CNT)) mux_R_M0(
 	.one_in(`R_out(M0)),			.one_out(`R_in(M0)),
-	.multi_out(`R_out_mul(M0_S)),	.multi_in(`R_in_mul(M0_S)),
+	.multi_out(`TO_MULTI_3(R_out,M0_S)),	.multi_in(`TO_MULTI_3(R_in,M0_S)),
 	.sel(direction_R_M0)
 );
 // M1
@@ -233,21 +233,21 @@ Decoder Decoder_AR_M1(
 	.addr(ARADDR_M1),
 	.direction(direction_AR_M1)
 );
-Mux #(.in_size($bits(AR_in(M1))),.out_size($bits(`AR_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_AR_M1(
+Mux #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_AR_M1(
 	.one_in(`AR_in(M1)),			.one_out(`AR_out(M1)),
-	.multi_out(`AR_in_mul(M1_S)),	.multi_in(`AR_out_mul(M1_S)),
+	.multi_out(`TO_MULTI_3(AR_in,M1_S)),	.multi_in(`TO_MULTI_3(AR_out,M1_S)),
 	.sel(direction_AR_M1)
 );
 
 wire [`AXI_SLAVE_CNT-1:0] direction_R_M1;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig(ARVALID_M1_S),.end_sig(ARREADY_M1_S),
+	.begin_sig({>>{ARVALID_M1_S}}),.end_sig({>>{ARREADY_M1_S}}),
 	.direction(direction_R_M1)
 );
-Mux #(.in_size($bits(R_in(M1))),.out_size($bits(`R_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_R_M1(
+Mux #(.in_size($bits(`R_out(M1))),.out_size($bits(`R_in(M1))),.channel(`AXI_SLAVE_CNT)) mux_R_M1(
 	.one_in(`R_out(M1)),			.one_out(`R_in(M1)),
-	.multi_out(`R_out_mul(M1_S)),	.multi_in(`R_in_mul(M1_S)),
+	.multi_out(`TO_MULTI_3(R_out,M1_S)),	.multi_in(`TO_MULTI_3(R_in,M1_S)),
 	.sel(direction_R_M1)
 );
 
@@ -256,21 +256,21 @@ Decoder Decoder_W_M1(
 	.addr(AWADDR_M1),
 	.direction(direction_W_M1)
 );
-Mux #(.in_size($bits(W_in(M1))),.out_size($bits(`W_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_W_M1(
+Mux #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1))),.channel(`AXI_SLAVE_CNT)) mux_W_M1(
 	.one_in(`W_in(M1)),				.one_out(`W_out(M1)),
-	.multi_out(`W_in_mul(M1_S)),	.multi_in(`W_out_mul(M1_S)),
+	.multi_out(`TO_MULTI_3(W_in,M1_S)),	.multi_in(`TO_MULTI_3(W_out,M1_S)),
 	.sel(direction_W_M1)
 );
 
 wire [`AXI_SLAVE_CNT-1:0] direction_B_M1;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_B_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig(BVALID_M1_S),.end_sig(BVALID_M1_S),
+	.begin_sig({>>{BVALID_M1_S}}),.end_sig({>>{BVALID_M1_S}}),
 	.direction(direction_B_M1)
 );
-Mux #(.in_size($bits(B_out(M1))),.(out_size($bits(M1))),.channel(`AXI_SLAVE_CNT)) mux_B_M1(
+Mux #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1))),.channel(`AXI_SLAVE_CNT)) mux_B_M1(
 	.one_in(`B_out(M1)),			.one_out(`B_in(M1)),
-	multi_out(`B_out_mul(M1_S)),	.multi_in(`B_in_mul(M1_S)),
+	.multi_out(`TO_MULTI_3(B_out,M1_S)),	.multi_in(`TO_MULTI_3(B_in,M1_S)),
 	.sel(direction_B_M1)
 );
 
@@ -285,15 +285,15 @@ wire [1:0]direction_B_S[`AXI_SLAVE_CNT];
 assign ARID_S0[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AR_S[0]};
 assign ARID_S1[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AR_S[1]};
 assign ARID_SD[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AR_S[2]};
-assign direction_R_S[0]=RID_S0[6:`AXI_IDM_BITS];
-assign direction_R_S[1]=RID_S1[6:`AXI_IDM_BITS];
-assign direction_R_S[2]=RID_SD[6:`AXI_IDM_BITS];
-assign AWID_S0[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AW_S[0]};
-assign AWID_S1[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AW_S[1]};
-assign AWID_SD[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AW_S[2]};
-assign direction_W_S[0]=BID_S0[6:`AXI_IDM_BITS];
-assign direction_W_S[1]=BID_S1[6:`AXI_IDM_BITS];
-assign direction_W_S[2]=BID_SD[6:`AXI_IDM_BITS];
+assign direction_R_S[0]=RID_S0[5:`AXI_IDM_BITS];
+assign direction_R_S[1]=RID_S1[5:`AXI_IDM_BITS];
+assign direction_R_S[2]=RID_SD[5:`AXI_IDM_BITS];
+assign AWID_S0[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_W_S[0]};
+assign AWID_S1[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_W_S[1]};
+assign AWID_SD[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_W_S[2]};
+assign direction_W_S[0]=BID_S0[5:`AXI_IDM_BITS];
+assign direction_W_S[1]=BID_S1[5:`AXI_IDM_BITS];
+assign direction_W_S[2]=BID_SD[5:`AXI_IDM_BITS];
 `CONNECT_R(S0,S[0])
 `CONNECT_R(S1,S[1])
 `CONNECT_R(SD,S[2])
@@ -310,13 +310,13 @@ for(i=0;i<`AXI_SLAVE_CNT;i++) begin: slave
 	);
 	Mux #(.in_size($bits(`AR_out(S[i]))),.out_size($bits(`AR_in(S[i])))) mux_AR_S(
 		.one_in(`AR_out(S[i])),.one_out(`AR_in(S[i])),
-		.multi_out('{`AR_out(M0_S[i]),`AR_out(M1_S[i])}),.multi_in('{`AR_in(M0_S[i]),`AR_in(M1_S[i])}),
+		.multi_out({`AR_out(M1_S[i]),`AR_out(M0_S[i])}),.multi_in({`AR_in(M1_S[i]),`AR_in(M0_S[i])}),
 		.sel(direction_AR_S[i])
 	);
 
 	Mux #(.in_size($bits(`R_in(S[i]))),.out_size($bits(`R_out(S[i])))) mux_R_S(
 		.one_in(`R_in(S[i])),.one_out(`R_out(S[i])),
-		.multi_out('{`R_in(M0_S[i]),`R_in(M1_S[i])}),.multi_in('{`R_out(M0_S[i]),`R_out(M1_S[i])}),
+		.multi_out({`R_in(M1_S[i]),`R_in(M0_S[i])}),.multi_in({`R_out(M1_S[i]),`R_out(M0_S[i])}),
 		.sel(direction_R_S[i])
 	);
 
