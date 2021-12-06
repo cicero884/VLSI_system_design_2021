@@ -1,51 +1,5 @@
 `ifndef AXI_PACKAGE_SVH
 	`define AXI_PACKAGE_SVH
-
-	// convert struct
-////`define AddrInfo_in(RW,ROLE,NAME) \
-////	assign A``RW``_``NAME``.addr	=A``RW``ADDR_``ROLE``; \
-////	assign A``RW``_``NAME``.len		=A``RW``LEN_``ROLE``; \
-////	assign A``RW``_``NAME``.size	=A``RW``SIZE_``ROLE``; \
-////	assign A``RW``_``NAME``.burst	=BurstType'(A``RW``BURST_``ROLE``);
-
-////`define AddrInfo_out(RW,ROLE,NAME) \
-////	assign A``RW``ADDR_``ROLE`` 	=A``RW``_``NAME``.addr; \
-////	assign A``RW``LEN_``ROLE``  	=A``RW``_``NAME``.len; \
-////	assign A``RW``SIZE_``ROLE`` 	=A``RW``_``NAME``.size; \
-////	assign A``RW``BURST_``ROLE`` 	=BurstType'(A``RW``_``NAME``.burst);	
-
-////`define Data_in(RW,ROLE,NAME) \
-////	assign ``RW``_``NAME``.data	=``RW``DATA_``ROLE``; \
-////	assign ``RW``_``NAME``.last	=``RW``LAST_``ROLE``; 
-
-////`define Data_out(RW,ROLE,NAME) \
-////	assign ``RW``DATA_``ROLE``=``RW``_``NAME``.data; \
-////	assign ``RW``LAST_``ROLE``=``RW``_``NAME``.last;
-
-////// convert all wire
-////`define R_in_convert(ROLE,NAME) \
-////	assign ARID_``NAME``=ARID_``ROLE``; \
-////	`AddrInfo_in(R,ROLE,NAME) \
-////	assign ARVALID_``NAME``=ARVALID_``ROLE``; \
-////	assign ARREADY_``ROLE``=ARREADY_``NAME``; \
-////	assign RID_
-////	`Data_out(R,ROLE,NAME) \
-////	assign RVALID_``NAME``=RVALID_``ROLE``; \
-////	assign RREADY_``ROLE``=RREADY_``NAME``; \
-////	assign 
-
-////`define R_out_convert(ROLE,NAME) \
-////	`AddrInfo_out(R,ROLE,NAME) \
-////	`Data_in(R,ROLE,NAME)
-
-////`define W_in_convert(ROLE,NAME) \
-////	`AddrInfo_in(W,ROLE,NAME) \
-////	`Data_in(W,ROLE,NAME)
-////	
-////`define W_out_convert(ROLE,NAME) \
-////	`AddrInfo_out(W,ROLE,NAME) \
-////	`Data_out(W,ROLE,NAME)
-
 	// create wires
 	`define CREATE_R(NAME,ID_BITS) \
 		wire [ID_BITS-1:0] ARID_``NAME``; \
