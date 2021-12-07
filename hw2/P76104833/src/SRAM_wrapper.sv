@@ -126,7 +126,6 @@ end
 
 // Write handler
 //save write AddrInfo in AW_S,cast on aw to use
-//AddrInfo aw;
 assign BRESP_S=resp;
 logic [`AXI_ADDR_BITS-1:0] AWADDR;
 logic [`AXI_LEN_BITS-1:0] AWLEN;

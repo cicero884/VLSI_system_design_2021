@@ -106,7 +106,7 @@ always_ff @(posedge clk,posedge rst)begin
 				end
 			end
 			TRANSMITTING:begin
-				if(RVALID_M0&&RRESP_M0==OKAY) begin
+				if(RVALID_M0&&Responce'(RRESP_M0)==OKAY) begin
 					if(RLAST_M0) begin
 						if(c_i.addr==im_addr) begin
 							read_state_M0<=IDLE;
