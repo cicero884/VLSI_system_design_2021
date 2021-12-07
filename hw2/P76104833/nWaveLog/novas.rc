@@ -201,8 +201,8 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
 nWaveRestoreRCDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/signal.rc\""
+nWaveOpenFsdbDirHistory = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\"" "\"/home/zzhong/VLSI_system_design_2021/hw2/P76104833/build/top.fsdb\""
 [Form]
 version = Verdi_O-2018.09
 [General]
@@ -325,10 +325,10 @@ ColorPrint = FALSE
 QwInfoMsgDlg = 575,416,750,250
 saveSigDlg = 684,262,551,386
 QwUserAskDlg = 788,528,324,128
-openFileDlg = 659,296,602,483
 restoreSigDlg = 684,318,551,438
 QwWarnMsgDlg = 650,539,600,250
-qWaveSignalDialog = 738,411,800,479
+qWaveSignalDialog = 3688,934,800,479
+openFileDlg = 3659,879,602,483
 [Session Cache]
 1 = string (session file name)
 2 = string (session file name)
@@ -539,8 +539,8 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-getSignalForm = 738 329 800 479 164 381 390 89
-viewPort = 0 0 1920 993 241 207
+getSignalForm = 3688 934 800 479 164 381 390 89
+viewPort = 3000 560 1920 1039 241 207
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -809,8 +809,9 @@ curveWindow_Drag&Drop_Mode = TRUE
 hspiceIncOpenMode = TRUE
 pcSelectMode = TRUE
 hierarchyDelimiter = /
-RecentFile1 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/signal.rc\""
-RecentFile2 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
+RecentFile1 = "\"/home/zzhong/VLSI_system_design_2021/hw2/P76104833/build/top.fsdb\""
+RecentFile2 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/signal.rc\""
+RecentFile3 = "\"/home/zzhong/practice/verilog/VLSI_system_design/hw1/P76104833/build/top.fsdb\""
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto

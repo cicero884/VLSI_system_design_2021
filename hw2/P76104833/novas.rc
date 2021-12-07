@@ -327,8 +327,8 @@ saveSigDlg = 684,262,551,386
 QwUserAskDlg = 788,528,324,128
 restoreSigDlg = 684,318,551,438
 QwWarnMsgDlg = 650,539,600,250
-openFileDlg = 3659,879,602,483
 qWaveSignalDialog = 3688,934,800,479
+openFileDlg = 3659,879,602,483
 [Session Cache]
 1 = string (session file name)
 2 = string (session file name)

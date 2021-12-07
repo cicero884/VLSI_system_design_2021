@@ -219,7 +219,7 @@ Mux #(.in_size($bits(`AR_in(M0))),.out_size($bits(`AR_out(M0))),.channel(`AXI_SL
 wire [`AXI_SLAVE_CNT-1:0] direction_R_M0;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M0(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig({>>{ARVALID_M0_S}}),.end_sig({>>{ARREADY_M0_S}}),
+	.begin_sig({<<{RVALID_M0_S}}),.end_sig({<<{RLAST_M0_S}}),
 	.direction(direction_R_M0)
 );
 Mux #(.in_size($bits(`R_out(M0))),.out_size($bits(`R_in(M0))),.channel(`AXI_SLAVE_CNT)) mux_R_M0(
@@ -242,7 +242,7 @@ Mux #(.in_size($bits(`AR_in(M1))),.out_size($bits(`AR_out(M1))),.channel(`AXI_SL
 wire [`AXI_SLAVE_CNT-1:0] direction_R_M1;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_R_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig({>>{ARVALID_M1_S}}),.end_sig({>>{ARREADY_M1_S}}),
+	.begin_sig({<<{RVALID_M1_S}}),.end_sig({<<{RLAST_M1_S}}),
 	.direction(direction_R_M1)
 );
 Mux #(.in_size($bits(`R_out(M1))),.out_size($bits(`R_in(M1))),.channel(`AXI_SLAVE_CNT)) mux_R_M1(
@@ -265,7 +265,7 @@ Mux #(.in_size($bits(`W_in(M1))),.out_size($bits(`W_out(M1))),.channel(`AXI_SLAV
 wire [`AXI_SLAVE_CNT-1:0] direction_B_M1;
 Arbiter #(.channel(`AXI_SLAVE_CNT)) Arbiter_B_M1(
 	.ACLK(ACLK),.ARESETn(ARESETn),
-	.begin_sig({>>{BVALID_M1_S}}),.end_sig({>>{BVALID_M1_S}}),
+	.begin_sig({<<{BVALID_M1_S}}),.end_sig({<<{BVALID_M1_S}}),
 	.direction(direction_B_M1)
 );
 Mux #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1))),.channel(`AXI_SLAVE_CNT)) mux_B_M1(
@@ -276,10 +276,10 @@ Mux #(.in_size($bits(`B_out(M1))),.out_size($bits(`B_in(M1))),.channel(`AXI_SLAV
 
 // SLAVE
 genvar i;
-wire [1:0]direction_AR_S[`AXI_SLAVE_CNT];
-wire [1:0]direction_R_S[`AXI_SLAVE_CNT];
-wire [1:0]direction_W_S[`AXI_SLAVE_CNT];
-wire [1:0]direction_B_S[`AXI_SLAVE_CNT];
+logic [1:0]direction_AR_S[`AXI_SLAVE_CNT];
+logic [1:0]direction_R_S[`AXI_SLAVE_CNT];
+logic [1:0]direction_W_S[`AXI_SLAVE_CNT];
+logic [1:0]direction_B_S[`AXI_SLAVE_CNT];
 
 // connect SLAVE(with ID)
 assign ARID_S0[`AXI_IDS_BITS-1:`AXI_IDM_BITS]={2'd0,direction_AR_S[0]};
@@ -300,12 +300,12 @@ assign direction_W_S[2]=BID_SD[5:`AXI_IDM_BITS];
 `CONNECT_W(S0,S[0])
 `CONNECT_W(S1,S[1])
 `CONNECT_W(SD,S[2])
-// modules
+// slave relate modules
 generate
 for(i=0;i<`AXI_SLAVE_CNT;i++) begin: slave
 	Arbiter Arbiter_AR_S(
 		.ACLK(ACLK),.ARESETn(ARESETn),
-		.begin_sig({ARVALID_M0_S[i],ARVALID_M1_S[i]}),.end_sig({ARREADY_M0_S[i],ARREADY_M1_S[i]}),
+		.begin_sig({ARVALID_M1_S[i],ARVALID_M0_S[i]}),.end_sig({ARREADY_M1_S[i],ARREADY_M0_S[i]}),
 		.direction(direction_AR_S[i])
 	);
 	Mux #(.in_size($bits(`AR_out(S[i]))),.out_size($bits(`AR_in(S[i])))) mux_AR_S(

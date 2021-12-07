@@ -11,10 +11,7 @@ reg [channel-1:0]priority_circle;
 // round robin main logic:
 // direction = begin_sig & ~(begin_sig - priority_circle)
 // concate front to consider search again from begining
-wire [channel*2-1:0]begin_sig_2;
-assign begin_sig_2={begin_sig,begin_sig};
-wire [channel*2-1:0]direction_2;
-assign direction_2=begin_sig_2&~(begin_sig_2-priority_circle);
+logic [channel*2-1:0] direction_2;
 
 reg transmitting;
 // end until next clock
@@ -44,6 +41,7 @@ always_latch begin
 		end
 		if(!transmitting) begin
 			if(begin_sig) begin
+				direction_2={begin_sig,begin_sig}&~({begin_sig,begin_sig}-priority_circle);
 				direction=direction_2[2*channel-1:channel] | direction_2[channel-1:0];
 				transmitting=1'b1;
 			end

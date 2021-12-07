@@ -2,37 +2,37 @@
 	`define AXI_PACKAGE_SVH
 	// create wires
 	`define CREATE_R(NAME,ID_BITS) \
-		wire [ID_BITS-1:0] ARID_``NAME``; \
-		wire [`AXI_ADDR_BITS-1:0] ARADDR_``NAME``; \
-		wire [`AXI_LEN_BITS-1:0] ARLEN_``NAME``; \
-		wire [`AXI_SIZE_BITS-1:0] ARSIZE_``NAME``; \
-		wire [1:0] ARBURST_``NAME``; \
-		wire ARVALID_``NAME``; \
-		wire ARREADY_``NAME``; \
-		wire [ID_BITS-1:0] RID_``NAME``; \
-		wire [`AXI_DATA_BITS-1:0] RDATA_``NAME``; \
-		wire [1:0] RRESP_``NAME``; \
-		wire RLAST_``NAME``; \
-		wire RVALID_``NAME``; \
-		wire RREADY_``NAME``;
+		logic [ID_BITS-1:0] ARID_``NAME``; \
+		logic [`AXI_ADDR_BITS-1:0] ARADDR_``NAME``; \
+		logic [`AXI_LEN_BITS-1:0] ARLEN_``NAME``; \
+		logic [`AXI_SIZE_BITS-1:0] ARSIZE_``NAME``; \
+		logic [1:0] ARBURST_``NAME``; \
+		logic ARVALID_``NAME``; \
+		logic ARREADY_``NAME``; \
+		logic [ID_BITS-1:0] RID_``NAME``; \
+		logic [`AXI_DATA_BITS-1:0] RDATA_``NAME``; \
+		logic [1:0] RRESP_``NAME``; \
+		logic RLAST_``NAME``; \
+		logic RVALID_``NAME``; \
+		logic RREADY_``NAME``;
 
 	`define CREATE_W(NAME,ID_BITS) \
-		wire [ID_BITS-1:0] AWID_``NAME``; \
-		wire [`AXI_ADDR_BITS-1:0] AWADDR_``NAME``; \
-		wire [`AXI_LEN_BITS-1:0] AWLEN_``NAME``; \
-		wire [`AXI_SIZE_BITS-1:0] AWSIZE_``NAME``; \
-		wire [1:0] AWBURST_``NAME``; \
-		wire AWVALID_``NAME``; \
-		wire AWREADY_``NAME``; \
-		wire [`AXI_DATA_BITS-1:0] WDATA_``NAME``; \
-		wire [`AXI_STRB_BITS-1:0] WSTRB_``NAME``; \
-		wire WLAST_``NAME``; \
-		wire WVALID_``NAME``; \
-		wire WREADY_``NAME``; \
-		wire [ID_BITS-1:0] BID_``NAME``; \
-		wire [1:0] BRESP_``NAME``; \
-		wire BVALID_``NAME``; \
-		wire BREADY_``NAME``;
+		logic [ID_BITS-1:0] AWID_``NAME``; \
+		logic [`AXI_ADDR_BITS-1:0] AWADDR_``NAME``; \
+		logic [`AXI_LEN_BITS-1:0] AWLEN_``NAME``; \
+		logic [`AXI_SIZE_BITS-1:0] AWSIZE_``NAME``; \
+		logic [1:0] AWBURST_``NAME``; \
+		logic AWVALID_``NAME``; \
+		logic AWREADY_``NAME``; \
+		logic [`AXI_DATA_BITS-1:0] WDATA_``NAME``; \
+		logic [`AXI_STRB_BITS-1:0] WSTRB_``NAME``; \
+		logic WLAST_``NAME``; \
+		logic WVALID_``NAME``; \
+		logic WREADY_``NAME``; \
+		logic [ID_BITS-1:0] BID_``NAME``; \
+		logic [1:0] BRESP_``NAME``; \
+		logic BVALID_``NAME``; \
+		logic BREADY_``NAME``;
 	
 	// for empty channels
 	// TODO: in and out?
