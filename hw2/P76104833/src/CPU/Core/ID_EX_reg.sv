@@ -1,4 +1,4 @@
-`include "ALU_signal_def.svh"
+`include "CPU/Core/ALU_signal_def.svh"
 `define ID_EX_RESET \
 	begin \
 	pc_out			<=32'd0			; \

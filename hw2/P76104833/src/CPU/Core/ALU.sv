@@ -1,4 +1,4 @@
-`include "ALU_signal_def.svh"
+`include "CPU/Core/ALU_signal_def.svh"
 
 `define CALC_S(EXPR) \
 	begin \

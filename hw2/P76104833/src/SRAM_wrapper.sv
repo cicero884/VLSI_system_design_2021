@@ -1,6 +1,4 @@
 `include "AXI_define.svh"
-`include "AXI_package.svh"
-`include "AXI_wrapper.svh"
 
 `define GET_ADDR(RW) \
 	A``RW``ADDR<=A``RW``ADDR_S; \

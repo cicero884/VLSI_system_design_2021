@@ -2,7 +2,7 @@
 	`define ALU_SIGNAL_DEF
 	`define ALU_SIZE 5
 	typedef enum bit[3:0]{
-		nop_,	//do nothing
+		nop_=4'd0,	//do nothing
 		xor_,
 		add_,
 		sub_,

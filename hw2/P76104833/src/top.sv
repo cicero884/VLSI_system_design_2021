@@ -1,4 +1,4 @@
-`include "CPU_wrapper.sv"
+`include "CPU/CPU_wrapper.sv"
 `include "SRAM_wrapper.sv"
 `include "AXI.sv"
 

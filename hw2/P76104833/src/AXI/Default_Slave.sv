@@ -1,5 +1,4 @@
 `include "AXI_define.svh"
-`include "AXI_wrapper.svh"
 
 module Default_Slave(
 	input ACLK,input ARESETn,

@@ -1,10 +1,8 @@
 `include "AXI_define.svh"
-`include "CPU_define.svh"
-`include "AXI_wrapper.svh"
-`include "CPU_wrapper.svh"
-`include "AXI_package.svh"
+`include "Core_define.svh"
+`include "CPU/CPU_wrapper.svh"
 
-`include "CPU/CPU.sv"
+`include "CORE/CORE.sv"
 
 module CPU_wrapper(
 	input clk,input rst,

@@ -1,5 +1,5 @@
-`ifndef CPU_DEFINE_SVH
-	`define CPU_SVH
+`ifndef CORE_DEFINE_SVH
+	`define CORE_DEFINE_SVH
 	
 	`define CPU_ADDR_BITS 14
 

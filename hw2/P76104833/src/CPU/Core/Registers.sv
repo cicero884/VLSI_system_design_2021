@@ -1,4 +1,4 @@
-module Register(
+module Registers(
 	//input
 	input clk,input rst,
 	input [4:0]rs1_addr,input [4:0]rs2_addr,input reg_w,input [31:0]wd,input [4:0]rd_addr,
@@ -12,7 +12,7 @@ assign rs2_data[31:0] =(rs2_addr==5'd0)? 32'd0:(rd_addr == rs2_addr && reg_w) ? 
 
 always_ff @(posedge clk,posedge rst) begin
 	if(rst) begin
-		for(int i=0;i<32;++i) reg_data[i]<='{default:'0};
+		reg_data<='{default:32'd0};
 	end
 	else if(reg_w && rd_addr!=5'd0) reg_data[rd_addr] <= wd;
 end

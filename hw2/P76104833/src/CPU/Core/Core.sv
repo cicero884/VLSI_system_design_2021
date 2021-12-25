@@ -1,30 +1,30 @@
-`include "CPU_define.svh"
+`include "CPU/Core/Core_define.svh"
 
 
-`include "CPU/Adder.sv"
-`include "CPU/Mux_2in.sv"
-`include "CPU/Mux_3in.sv"
+`include "CPU/Core/Adder.sv"
+`include "CPU/Core/Mux_2in.sv"
+`include "CPU/Core/Mux_3in.sv"
 
-`include "CPU/IF_ID_reg.sv"
-`include "CPU/ID_EX_reg.sv"
-`include "CPU/EX_MEM_reg.sv"
-`include "CPU/MEM_WB_reg.sv"
+`include "CPU/Core/IF_ID_reg.sv"
+`include "CPU/Core/ID_EX_reg.sv"
+`include "CPU/Core/EX_MEM_reg.sv"
+`include "CPU/Core/MEM_WB_reg.sv"
 
-`include "CPU/Control_unit.sv"
-`include "CPU/ALU_control.sv"
-`include "CPU/Branch_control.sv"
-`include "CPU/Forward_control.sv"
-`include "CPU/DM_control.sv"
-`include "CPU/Hazard_control.sv"
+`include "CPU/Core/Control_unit.sv"
+`include "CPU/Core/ALU_control.sv"
+`include "CPU/Core/Branch_control.sv"
+`include "CPU/Core/Forward_control.sv"
+`include "CPU/Core/DM_control.sv"
+`include "CPU/Core/Hazard_control.sv"
 
-`include "CPU/PC_reg.sv"
-`include "CPU/Immidiate_generator.sv"
-`include "CPU/Register.sv"
-`include "CPU/ALU.sv"
+`include "CPU/Core/PC_reg.sv"
+`include "CPU/Core/Immidiate_generator.sv"
+`include "CPU/Core/Registers.sv"
+`include "CPU/Core/ALU.sv"
 
 
 
-module CPU(
+module Core(
 	//input
 	input clk,input rst,input [31:0]im_data_out,input [31:0]dm_data_out,input sync_i,input sync_d,
 	//output
@@ -112,7 +112,7 @@ wire [31:0]wd_wb;
 wire [4:0]rd_addr_wb;
 wire [31:0]rs1_data;
 wire [31:0]rs2_data;
-Register register(
+Registers registers(
 	.clk(clk),.rst(rst),
 	.rs1_addr(instr_id[`sig_Rs1]),.rs2_addr(instr_id[`sig_Rs2]),.reg_w(reg_w_wb),.wd(wd_wb),.rd_addr(rd_addr_wb),
 
